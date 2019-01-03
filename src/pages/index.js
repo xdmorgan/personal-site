@@ -12,7 +12,7 @@ const IndexPage = () => (
         </h1>
         <h2>Hi, I'm Dan.</h2>
         <h3>
-          I'm a Senior Web Engineer at <a href="//hugeinc.com">Huge</a> in
+          A Senior Web Engineer at <a href="//hugeinc.com">Huge</a> in
           Washington D.C.
         </h3>
         <p>

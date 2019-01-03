@@ -4,6 +4,19 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Dan Morgan // UI Engineer`,
+        short_name: `xdmorgan`,
+        start_url: `/`,
+        background_color: `#2b2b31`,
+        theme_color: `#0068fa`,
+        display: `minimal-ui`,
+        icon: `src/images/avatar.png`,
+      },
+    },
+    'gatsby-plugin-offline', // include after manifest!
     'gatsby-plugin-sass',
     {
       resolve: `gatsby-plugin-google-fonts`,

@@ -102,10 +102,6 @@ p {
   background: var(--gradient);
   transition: background 2s ease;
 
-  @media screen and (min-height: to-rem(540)) {
-    height: 100vh;
-  }
-
   h1 {
     font-size: to-rem(60);
     letter-spacing: to-rem(-2);
@@ -148,6 +144,17 @@ p {
     }
   }
 }
+
+@media screen and (min-height: to-rem(540)) {
+  html,
+  body,
+  #___gatsby,
+  #___gatsby > div,
+  .Hero {
+    height: 100%;
+  }
+}
+
 .Container {
   min-width: to-rem(320);
   width: 100%;

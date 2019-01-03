@@ -19,22 +19,19 @@ export default ({ children }) => (
         <Helmet
           titleTemplate={`%s | ${data.site.siteMetadata.title}`}
           defaultTitle={data.site.siteMetadata.title}
-          meta={[
-            {
-              name: 'description',
-              content:
-                'Portfolio of Dan Morgan. UI Engineer in Washington, D.C.',
-            },
-            {
-              name: 'keywords',
-              content: 'Dan Morgan, Daniel Morgan, Danny Morgan, dannydev',
-            },
-          ]}
         >
           <html lang="en" />
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1, viewport-fit=cover, shrink-to-fit=no"
+          />
+          <meta
+            name="description"
+            content="Portfolio of Dan Morgan. UI Engineer in Washington, D.C."
+          />
+          <meta
+            name="keywords"
+            content="Dan Morgan, Daniel Morgan, Danny Morgan, dannydev"
           />
         </Helmet>
         {children}

@@ -30,7 +30,13 @@ export default ({ children }) => (
               content: 'Dan Morgan, Daniel Morgan, Danny Morgan, dannydev',
             },
           ]}
-        />
+        >
+          <html lang="en" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, viewport-fit=cover, shrink-to-fit=no"
+          />
+        </Helmet>
         {children}
       </>
     )}

@@ -1,11 +1,24 @@
-import React from 'react'
-import Layout from '../components/layout'
+import * as React from 'react'
 import { graphql } from 'gatsby'
+import styled from 'styled-components'
 
-const IndexPage = ({ data: { prismicHome } }) => {
+import Layout from '../components/layout'
+// import { SEO } from '../components/seo'
+import { SiteMeta } from '../queries/site-meta';
+
+interface Props {
+  data: {
+    site: {
+      siteMetadata: SiteMeta
+    }
+    prismicHome: any
+  }
+}
+
+export default function Page({ data }: Props) {
   const {
     data: { emoji, lede, summary, title },
-  } = prismicHome
+  } = data.prismicHome
   return (
     <Layout>
       <section className="Hero">
@@ -24,8 +37,11 @@ const IndexPage = ({ data: { prismicHome } }) => {
   )
 }
 
-export const pageQuery = graphql`
-  query {
+export const query = graphql`
+  query IndexPageQuery {
+    site {
+      ...SiteMetaFields
+    }
     prismicHome {
       id
       data {
@@ -45,5 +61,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
-export default IndexPage

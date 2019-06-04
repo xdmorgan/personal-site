@@ -58,9 +58,16 @@ export default class SEO extends React.Component<Props, {}> {
               const { twitter } = query
               const keywords = this.props.keywords || query.keywords
               const { blogPost, url, title, description, image } = options.page
-              const imageUrlWithProtocol = hasLeadingSlashes(image) ? 'https:' + image : image;
+              const imageUrlWithProtocol = hasLeadingSlashes(image)
+                ? 'https:' + image
+                : image
               return (
                 <Helmet htmlAttributes={{ lang }} title={title}>
+                  {/* viewport meta */}
+                  <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1, viewport-fit=cover, shrink-to-fit=no"
+                  />
                   {/* General tags */}
                   <meta name="description" content={description} />
                   <meta name="keywords" content={keywords.join(`, `)} />

@@ -17,28 +17,34 @@ $rem-base: 16;
   // light
   --light-background: #f4f6fa;
   --light-foreground: #2b2b31;
-  --light-headings: black;
   --light-accent: #0068fa;
+  --light-headings: black;
+  --light-links: black;
   --light-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
   // dark
   --dark-background: #2b2b31;
   --dark-foreground: #f4f6fa;
-  --dark-headings: white;
   --dark-accent: #0068fa;
+  --dark-headings: white;
+  --dark-links: white;
   --dark-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
   // active theme
-  --site-background: var(--background-light);
-  --site-foreground: var(--background-dark);
-  --site-heading: black;
-  --site-accent: var(--accent-light);
+  --site-background: var(--light-background);
+  --site-foreground: var(--light-foreground);
+  --site-accent: var(--light-accent);
+  --site-heading: var(--light-headings);
+  --site-links: var(--light-links);
+  --site-shadow: var(--light-shadow);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --site-background: var(--background-dark);
-    --site-foreground: var(--background-light);
-    --site-heading: white;
-    --site-accent: var(--accent-dark);
+    --site-background: var(--dark-background);
+    --site-foreground: var(--dark-foreground);
+    --site-accent: var(--dark-accent);
+    --site-heading: var(--dark-headings);
+    --site-links: var(--dark-links);
+    --site-shadow: var(--dark-shadow);
   }
 }
 
@@ -112,14 +118,25 @@ li {
   }
 
   a {
-    color: white;
+    position: relative;
+    color: var(--site-links);
     font-weight: 700;
     text-decoration: none;
-    box-shadow: inset 0 -0.125em rgba(white, 0.25);
-    transition: box-shadow 180ms ease-out;
 
-    &:hover {
-      box-shadow: inset 0 -0.4em var(--accent);
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.5;
+      box-shadow: inset 0 -0.1em var(--site-accent);
+      transition: box-shadow 180ms ease-out;
+    }
+    &:hover:after {
+      box-shadow: inset 0 -0.4em var(--site-accent);
     }
   }
 

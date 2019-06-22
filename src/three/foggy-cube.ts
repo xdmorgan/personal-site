@@ -1,5 +1,4 @@
 import * as THREE from 'three'
-import anime from 'animejs'
 
 interface ColorScheme {
   background: string
@@ -21,61 +20,57 @@ export class ThreeBackground {
     // create renderer
     this.renderer = new THREE.WebGLRenderer({ antialias: true, canvas })
     // create camera
-    const [fov, aspect, near, far] = [35, 2, 0.1, 100]
+    const [fov, aspect, near, far] = [70, 2, 0.1, 50]
     this.camera = new THREE.PerspectiveCamera(fov, aspect, near, far)
-    this.camera.position.z = 10
+    this.camera.position.z = 12
     // create root scene
     this.scene = new THREE.Scene() // a container
     this.scene.background = new THREE.Color(this.scheme.background)
     // create grid
-    const square = 10
-    const length = Math.pow(square, 2)
+    const cube = 10
+    const length = Math.pow(cube, 3)
     this.nodes = Array.from({ length }).map(
       (_, idx) =>
         new GridNode(
           {
-            x: idx % square,
-            y: (Math.floor(idx / square) % square) - (square - 1) / 2,
-            z: 0,
+            x: idx % cube,
+            y: Math.floor(idx / 10) % cube,
+            z: Math.floor(idx / 100) % cube,
           },
           this.scheme.foreground
         )
     )
-    this.grid = new THREE.Object3D()
-    this.grid.position.y = 3
-    this.nodes.map(node => this.grid.add(node.mesh))
-    this.scene.add(this.grid)
-    this.scene.position.x = (square - 1) / -2
-    this.scene.position.y = (square - 1) / -2
+    this.nodes.map(node => this.scene.add(node.mesh))
+    this.scene.position.x = (cube - 1) / -2
+    this.scene.position.y = (cube - 1) / -2
     const dir_light = new THREE.DirectionalLight(0xffffff, 0.5)
     dir_light.position.set(-1, 2, 4)
     this.scene.add(dir_light)
     const ambient_light = new THREE.AmbientLight(0xffffff, 0.5)
     ambient_light.position.set(-1, 2, 4)
     this.scene.add(ambient_light)
-    this.scene.fog = new THREE.Fog(0xffffff, 0, 50)
+    ambient_light.position.set(-1, 2, 4)
+    this.scene.add(ambient_light)
+    this.scene.fog = new THREE.Fog(0xffffff, -1, 10)
     this.mouseX = 0
     this.mouseY = 0
+
     document.addEventListener('mousemove', this.onMouseMove)
     requestAnimationFrame(this.animate)
-    anime({
-      targets: this.grid.rotation,
-      x: 90 * (Math.PI / 180),
-      duration: 3000,
-      easing: 'easeInOutExpo',
-    })
   }
 
   onMouseMove = e => ([this.mouseX, this.mouseY] = [e.clientX, e.clientY])
 
   animate = () => {
-    const [resize, view] = getCanvasDimensions(this.renderer.domElement)
-    if (resize) {
-      this.renderer.setSize(view.width, view.height, false)
-      this.camera.aspect = view.aspect
+    const [shouldResize, container] = getCanvasDimensions(
+      this.renderer.domElement
+    )
+    if (shouldResize) {
+      this.renderer.setSize(container.width, container.height, false)
+      this.camera.aspect = container.aspect
       this.camera.updateProjectionMatrix()
     }
-    // this.nodes.map(node => node.update())
+    this.nodes.map(node => node.update())
     this.scene.rotation.x = (this.mouseY / window.innerHeight - 0.5) / 25
     this.scene.rotation.y = (this.mouseX / window.innerWidth - 0.5) / 25
     this.renderer.render(this.scene, this.camera)

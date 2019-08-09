@@ -48,7 +48,7 @@ export function Bio() {
           React Native, Swift, Xamarin (C#), PhoneGap, and PWA’s
         </Skill>
         <Skill title="Leadership &amp; Management">
-          Code reviews, Mentorship, Pair programming
+          Code reviews, Mentorship, and Pair programming
         </Skill>
         <Skill title="Design Tools &amp; Handoff">
           Sketch, Figma, Photoshop, Illustrator, Zeplin, Invision, and Framer X
@@ -84,11 +84,8 @@ export function Bio() {
           </a>
         </li>
         <li>
-          <a
-            className="button button--fill"
-            href="https://twitter.com/xdanmorgan"
-          >
-            Twitter
+          <a className="button button--fill" href="mailto:hello@danny.codes">
+            Email
           </a>
         </li>
       </ul>

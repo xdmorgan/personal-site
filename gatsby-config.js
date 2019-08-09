@@ -40,7 +40,14 @@ module.exports = {
       },
     },
     `gatsby-plugin-mdx`,
-
+    {
+      resolve: `gatsby-source-prismic`,
+      options: {
+        repositoryName: `dannycodes`,
+        accessToken: `${process.env.PRISMIC_API_KEY}`,
+        linkResolver: ({ node, key, value }) => post => `/${post.uid}`,
+      },
+    },
     /**
      * Images
      * ------------------------------------------------------------------------
@@ -59,7 +66,12 @@ module.exports = {
       resolve: `gatsby-plugin-styled-components`, // components
       options: {}, // Add any options here
     },
-
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: ['IBM Plex Sans:400,700', 'Montserrat:700'],
+      },
+    },
     /**
      * SEO
      * ------------------------------------------------------------------------
@@ -86,13 +98,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `@xdmorgan/gatsby-starter`,
-        short_name: `starter`,
+        name: `Dan Morgan // UI Engineer`,
+        short_name: `Dan Morgan`,
         start_url: `/`,
-        background_color: `#0068fa`,
+        background_color: `#2b2b31`,
         theme_color: `#0068fa`,
         display: `minimal-ui`,
-        icon: `src/images/avatar.png`, // This path is relative to the root of the site.
+        icon: `src/images/avatar.png`,
       },
     },
     // ...(process.env.NODE_ENV !== 'development'

@@ -3,8 +3,12 @@ import { StaticQuery, graphql } from 'gatsby'
 import { SEO } from '../components/seo'
 import Header from '../components/header'
 
-import '../styles/global.css'
+import '../styles/theme.css'
+import '../styles/space.css'
 import '../styles/base-layout.css'
+import '../styles/typography.css'
+import '../styles/wysiwyg.css'
+import styles from './layout.module.css'
 
 const layoutQuery = graphql`
   query SiteLayoutQuery {
@@ -18,11 +22,14 @@ const Layout = ({ children }) => (
   <StaticQuery
     query={layoutQuery}
     render={data => (
-      <>
-        <SEO title="Welcome" />
-        <Header siteTitle={data.site.siteMetadata.title} />
+      <div className={styles.layout}>
+        <SEO
+          title="Dan Morgan // Senior Engineer"
+          description="Senior Engineer at Huge. Prev: Cvent, PRPL, Gifn, X Studios"
+        />
+        {/* <Header siteTitle={data.site.siteMetadata.title} /> */}
         <main>{children}</main>
-      </>
+      </div>
     )}
   />
 )

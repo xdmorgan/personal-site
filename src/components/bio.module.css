@@ -1,0 +1,13 @@
+.section {
+  padding: var(--space-5);
+  box-sizing: content-box;
+  max-width: 600px;
+}
+
+.section > *:first-child {
+  margin-top: 0;
+}
+
+.section > *:last-child {
+  margin-bottom: 0;
+}

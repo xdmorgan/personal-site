@@ -1,0 +1,38 @@
+:root {
+  /* probably don't need light & dark versions */
+  --font-heading: 'Montserrat', system-ui, sans-serif;
+  --font-default: 'IBM Plex Sans', system-ui, sans-serif;
+
+  /* palette  themes */
+
+  /* light */
+  --light-background: #f3f6fa;
+  --light-foreground: #1c1d0a;
+  --light-foreground-2: #464646;
+  --light-accent: #106aff;
+  --light-headings: black;
+
+  /* dark */
+  --dark-background: #1c1d0a;
+  --dark-foreground: #f3f6fa;
+  --dark-foreground-2: #bcc1c9;
+  --dark-accent: #fff350;
+  --dark-headings: white;
+
+  /* active theme */
+  --theme-background: var(--light-background);
+  --theme-foreground: var(--light-foreground);
+  --theme-foreground-2: var(--light-foreground-2);
+  --theme-accent: var(--light-accent);
+  --theme-heading: var(--light-headings);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --theme-background: var(--dark-background);
+    --theme-foreground: var(--dark-foreground);
+    --theme-foreground-2: var(--dark-foreground-2);
+    --theme-accent: var(--dark-accent);
+    --theme-heading: var(--dark-headings);
+  }
+}

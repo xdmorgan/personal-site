@@ -1,0 +1,31 @@
+.wysiwyg p {
+  line-height: 1.5;
+  color: var(--theme-foreground);
+}
+
+@media screen and (min-width: 768px) {
+  .wysiwyg p {
+    font-size: 1.125rem;
+  }
+}
+
+.wysiwyg p a {
+  color: var(--theme-accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.wysiwyg hr {
+  color: var(--theme-foreground);
+  opacity: 0.2;
+  width: 100%;
+  margin: var(--space-5) 0;
+  border: none;
+  background-color: currentColor;
+  height: 1px;
+}
+
+.wysiwyg hr.hr--accent {
+  color: var(--theme-accent);
+  opacity: 1;
+}

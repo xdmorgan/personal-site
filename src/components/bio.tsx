@@ -85,7 +85,7 @@ export function Bio() {
         </li>
         <li>
           <a className="button button--fill" href="mailto:hello@danny.codes">
-            Email
+            Contact
           </a>
         </li>
       </ul>

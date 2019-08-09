@@ -1,0 +1,27 @@
+.button {
+  /* box-sizing */
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  min-width: 120px;
+  padding: 1rem 2rem;
+
+  /* theme styles */
+  color: var(--theme-background);
+  background-color: var(--theme-accent);
+  border: 1px solid transparent;
+  border-radius: 4px;
+
+  /* content styles */
+  font-family: var(--font-heading);
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  transition: color 140ms ease-in-out;
+}
+
+.button--fill {
+  width: 100%;
+}

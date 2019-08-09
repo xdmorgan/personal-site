@@ -1,13 +1,31 @@
 .section {
   padding: var(--space-5);
   box-sizing: content-box;
-  max-width: 600px;
+  max-width: 800px;
 }
 
-.section > *:first-child {
-  margin-top: 0;
+.skills,
+.profiles {
+  --content-columns: 2;
+  --content-gap: 2rem;
+
+  display: grid;
+  grid-template-columns: repeat(var(--content-columns), 1fr);
+  grid-gap: var(--content-gap);
 }
 
-.section > *:last-child {
-  margin-bottom: 0;
+.profiles {
+  padding: 0;
+  list-style: none;
+}
+
+.profiles li {
+  margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .skills,
+  .profiles {
+    --content-columns: 3;
+  }
 }

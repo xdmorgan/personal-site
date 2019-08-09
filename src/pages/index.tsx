@@ -1,39 +1,48 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
-
-import Layout from '../components/layout'
-// import { SEO } from '../components/seo'
-import { SiteMeta } from '../queries/site-meta';
+import Image from 'gatsby-image'
+import Link from '../components/link'
+import { SEO } from '../components/seo'
+import { SiteMeta } from '../queries/site-meta'
 
 interface Props {
   data: {
     site: {
       siteMetadata: SiteMeta
     }
-    prismicHome: any
+    placeholderImage: any
   }
 }
 
+const StyledSection = styled.section`
+  padding: 4em;
+  max-width: 400px;
+  background: #ededed;
+`
+
 export default function Page({ data }: Props) {
-  const {
-    data: { emoji, lede, summary, title },
-  } = data.prismicHome
   return (
-    <Layout>
-      <section className="Hero">
-        <div className="Container">
-          <h1>
-            <span role="img" aria-label="Man using laptop">
-              {emoji.text}
-            </span>
-          </h1>
-          <h2>{title.text}</h2>
-          <div dangerouslySetInnerHTML={{ __html: lede.html }} />
-          <div dangerouslySetInnerHTML={{ __html: summary.html }} />
-        </div>
-      </section>
-    </Layout>
+    <>
+      <SEO
+        // all fields optional, will fall back to gatsby-config.js global settings
+        // all pages have open graph and twitter card meta tags and website JSON LD schema
+        // pages with a url other than the base url also have a breadcrumbs LD Schema
+        // blogPost prop is only necessary on blog pages, and adds a blogposting JSON-LD schema
+        schema
+        title="Hello!"
+        description="Hi from the homepage"
+        blogPost={{ author: 'Dan Morgan', datePublished: '2019/01/21' }}
+      />
+      <h1>{data.site.siteMetadata.title}</h1>
+      <p>{data.site.siteMetadata.description}</p>
+      <p>Now go build something great.</p>
+      <StyledSection>
+        <Image fluid={data.placeholderImage.childImageSharp.fluid} />
+      </StyledSection>
+      <Link to="/test">Go to MDX page</Link>
+      <Link to="//google.com">Go to Google</Link>
+    </>
   )
 }
 
@@ -42,20 +51,10 @@ export const query = graphql`
     site {
       ...SiteMetaFields
     }
-    prismicHome {
-      id
-      data {
-        emoji {
-          text
-        }
-        title {
-          text
-        }
-        lede {
-          html
-        }
-        summary {
-          html
+    placeholderImage: file(relativePath: { eq: "gatsby-astronaut.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 300) {
+          ...GatsbyImageSharpFluid
         }
       }
     }

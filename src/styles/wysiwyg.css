@@ -1,21 +1,43 @@
 .wysiwyg p {
   line-height: 1.5;
-  color: var(--theme-foreground);
 }
 
 .wysiwyg p.p--small {
   font-size: 0.75rem;
 }
 
-.wysiwyg p a {
+.wysiwyg a {
   color: var(--theme-accent);
-  font-weight: 700;
+  padding: 0;
   text-decoration: none;
+  background-image: linear-gradient(
+    transparent 0%,
+    transparent calc(50% - 0.4em),
+    var(--theme-accent-low-opacity) calc(50% - 0.4em),
+    var(--theme-accent-low-opacity) 100%
+  );
+  transition-property: background-position, padding, color;
+  transition-duration: 120ms;
+  transition-timing-function: ease-in-out;
+  background-size: 100% 200%;
+  background-position: 0 0;
+}
+
+.wysiwyg a:hover {
+  padding: 0.1em 0;
+  background-image: linear-gradient(
+    transparent 0%,
+    transparent calc(50% - 0.4em),
+    var(--theme-accent) calc(50% - 0.4em),
+    var(--theme-accent) 100%
+  );
+  color: var(--theme-background);
+  background-position: 0 100%;
 }
 
 .wysiwyg hr {
   color: var(--theme-foreground);
-  opacity: 0.2;
+  opacity: 0.25;
   width: 100%;
   margin: 3rem 0;
   border: none;

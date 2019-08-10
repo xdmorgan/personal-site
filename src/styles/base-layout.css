@@ -15,6 +15,6 @@ body {
   margin: 0;
   font-size: 1rem;
   font-family: var(--font-default, system-ui);
-  background-color: var(--theme-background, white);
-  color: var(--theme-foreground, #101010);
+  background-color: var(--theme-background);
+  color: var(--theme-foreground);
 }

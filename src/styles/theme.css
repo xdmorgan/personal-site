@@ -10,13 +10,15 @@
   --light-foreground: #1c1d0a;
   --light-foreground-2: #464646;
   --light-accent: #106aff;
+  --light-accent-low-opacity: rgba(16, 106, 255, 0.25);
   --light-headings: black;
 
   /* dark */
-  --dark-background: #1c1d0a;
+  --dark-background: #121406;
   --dark-foreground: #f3f6fa;
   --dark-foreground-2: #bcc1c9;
-  --dark-accent: #26ffda;
+  --dark-accent: #94ff26;
+  --dark-accent-low-opacity: rgba(148, 255, 38, 0.25);
   --dark-headings: white;
 
   /* active theme */
@@ -25,6 +27,7 @@
   --theme-foreground-2: var(--light-foreground-2);
   --theme-accent: var(--light-accent);
   --theme-heading: var(--light-headings);
+  --theme-accent-low-opacity: var(--light-accent-low-opacity);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -33,6 +36,7 @@
     --theme-foreground: var(--dark-foreground);
     --theme-foreground-2: var(--dark-foreground-2);
     --theme-accent: var(--dark-accent);
+    --theme-accent-low-opacity: var(--dark-accent-low-opacity);
     --theme-heading: var(--dark-headings);
   }
 }

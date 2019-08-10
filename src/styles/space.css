@@ -1,6 +1,6 @@
 :root {
   --base: 8px;
-  --base-sm: calc(var(--base) * 0.5);
+  --base-sm: calc(var(--base) * 0.75);
   --base-lg: calc(var(--base) * 1.5);
   --space: var(--base-sm);
   --static: var(--base);

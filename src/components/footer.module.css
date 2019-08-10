@@ -1,0 +1,34 @@
+.content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 3rem;
+}
+
+.links li {
+  margin: 0.5rem 0;
+  text-transform: uppercase;
+}
+
+.links li a {
+  color: var(--theme-foreground-2);
+  text-decoration: none;
+  font-size: 0.75rem;
+  transition: color 120ms ease;
+  position: relative;
+  padding-right: 0.5rem;
+}
+
+.links li a span[aria-hidden] {
+  opacity: 0;
+  display: inline-block;
+  transition: all 120ms ease;
+}
+
+.links li a:hover {
+  color: var(--theme-accent);
+}
+
+.links li a:hover span[aria-hidden] {
+  opacity: 1;
+  transform: translateX(0.5rem);
+}

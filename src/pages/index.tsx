@@ -3,18 +3,12 @@ import { SEO } from '../components/seo'
 import { Section } from '../components/section'
 import { Skill } from '../components/skill'
 import { Divider } from '../components/divider'
-import { Link } from '../components/link'
 import { Projects } from '../components/projects'
 
 export default function Page() {
   return (
     <>
-      <SEO
-        schema
-        title="Dan Morgan // Senior Engineer"
-        description="Senior Engineer at Huge. Prev: Cvent, PRPL, Gifn, X Studios"
-      />
-
+      <SEO schema />
       <Section
         sidebar={() => (
           <div className="wysiwyg child-my-0">

@@ -28,10 +28,7 @@ const Layout = ({ children }) => (
     query={layoutQuery}
     render={data => (
       <div className={styles.layout}>
-        <SEO
-          title="Dan Morgan // Senior Engineer"
-          description="Senior Engineer at Huge. Prev: Cvent, PRPL, Gifn, X Studios"
-        />
+        <SEO />
         {/* <Header siteTitle={data.site.siteMetadata.title} /> */}
         <main>
           {children}

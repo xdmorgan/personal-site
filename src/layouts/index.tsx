@@ -1,15 +1,18 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import { SEO } from '../components/seo'
-import Header from '../components/header'
+import { Footer } from '../components/footer'
+// import Header from '../components/header'
 
 import '../styles/theme.css'
 import '../styles/space.css'
 import '../styles/base-layout.css'
 import '../styles/typography.css'
+import '../styles/utilities.css'
 import '../styles/wysiwyg.css'
 import '../styles/button.css'
-import '../styles/utilities.css'
+import '../styles/container.css'
+
 import styles from './layout.module.css'
 
 const layoutQuery = graphql`
@@ -30,7 +33,11 @@ const Layout = ({ children }) => (
           description="Senior Engineer at Huge. Prev: Cvent, PRPL, Gifn, X Studios"
         />
         {/* <Header siteTitle={data.site.siteMetadata.title} /> */}
-        <main>{children}</main>
+        <main>
+          {children}
+
+          <Footer />
+        </main>
       </div>
     )}
   />

@@ -6,7 +6,8 @@
   /* palette  themes */
 
   /* light */
-  --light-background: #f3f6fa;
+  --light-background: white;
+  --light-background-2: #f3f6fa;
   --light-foreground: #1c1d0a;
   --light-foreground-2: #464646;
   --light-accent: #106aff;
@@ -15,6 +16,7 @@
 
   /* dark */
   --dark-background: #121406;
+  --dark-background-2: #181b0c;
   --dark-foreground: #f3f6fa;
   --dark-foreground-2: #bcc1c9;
   --dark-accent: #94ff26;
@@ -23,6 +25,7 @@
 
   /* active theme */
   --theme-background: var(--light-background);
+  --theme-background-2: var(--light-background-2);
   --theme-foreground: var(--light-foreground);
   --theme-foreground-2: var(--light-foreground-2);
   --theme-accent: var(--light-accent);
@@ -30,13 +33,14 @@
   --theme-accent-low-opacity: var(--light-accent-low-opacity);
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --theme-background: var(--dark-background);
+    --theme-background-2: var(--dark-background-2);
     --theme-foreground: var(--dark-foreground);
     --theme-foreground-2: var(--dark-foreground-2);
     --theme-accent: var(--dark-accent);
     --theme-accent-low-opacity: var(--dark-accent-low-opacity);
     --theme-heading: var(--dark-headings);
   }
-}
+} */

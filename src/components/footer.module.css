@@ -1,12 +1,17 @@
-.content {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-gap: 3rem;
+.footer {
+  padding: var(--space-5) 0;
+  background-color: var(--theme-background-2);
+}
+
+.links {
+  margin: var(--space-2) auto 0;
+  text-align: center;
 }
 
 .links li {
-  margin: 0.5rem 0;
-  text-transform: uppercase;
+  /* balance out the padding dangle */
+  display: inline-block;
+  margin: 0 var(--space) 0 calc(0.5rem + var(--space));
 }
 
 .links li a {
@@ -16,6 +21,7 @@
   transition: color 120ms ease;
   position: relative;
   padding-right: 0.5rem;
+  text-transform: uppercase;
 }
 
 .links li a span[aria-hidden] {

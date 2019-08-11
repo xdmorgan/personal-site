@@ -1,10 +1,10 @@
 import * as React from 'react'
-// import Link from '../components/link'
 import { SEO } from '../components/seo'
 import { Section } from '../components/section'
 import { Skill } from '../components/skill'
-import { Footer } from '../components/footer'
-import Link from '../components/link'
+import { Divider } from '../components/divider'
+import { Link } from '../components/link'
+import { Projects } from '../components/projects'
 
 export default function Page() {
   return (
@@ -18,28 +18,27 @@ export default function Page() {
       <Section
         sidebar={() => (
           <div className="wysiwyg child-my-0">
-            <h1>Dan Morgan</h1>
-            <h2 className="h3">Senior Front End Engineer</h2>
+            <h1>Dan M</h1>
+            <h2 className="h3">Senior Engineer, Washington DC</h2>
           </div>
         )}
       >
         <div className="wysiwyg child-my-0">
           <p>
-            I help companies like Cartoon Network, Cvent, EA Sports, Facebook,
-            Huge, Instagram, Kia, LinkedIn, NASA, Oculus, Parse, and Universal
-            Studios craft scalable and accessible user interfaces for web,
-            mobile, and emerging platforms.
+            Over the last 9 years, I've worked with Cartoon Network, Cvent,
+            Designer Fund, EA Sports, Facebook, Huge, Instagram, Kia, LinkedIn,
+            NASA, Oculus, Parse, and Universal Studios to craft scalable and
+            accessible user interfaces for web, mobile, and emerging platforms.
           </p>
           <p>
-            Over the last 9 years, I've worked with companies large and small to
-            implement multi-platform product design systems, extensible
-            component architectures, award-winning marketing websites, and
-            native mobile applications.
+            I've built command line tools, cloud microservices, multi-platform
+            product design systems, extensible component architectures,
+            award-winning marketing websites, and native mobile applications.
           </p>
           <p>
-            Currently, I'm a Senior Web Engineer at{' '}
+            Currently, I work as a Senior Web Engineer at{' '}
             <a href="https://hugeinc.com">Huge</a> in Washington D.C.
-            Previously, Senior UI Developer at&nbsp;
+            Previously, I was a Senior UI Developer at&nbsp;
             <a href="https://cvent.com/">Cvent</a>, Full-stack Developer
             at&nbsp;
             <a href="https://prpl.rs/">PRPL</a>, Application Developer at&nbsp;
@@ -48,10 +47,17 @@ export default function Page() {
           </p>
         </div>
       </Section>
+
+      <Divider maxWidth margin={false} />
+
+      <Projects />
+
+      <Divider maxWidth margin={false} />
+
       <Section
         sidebar={() => (
           <div className="wysiwyg child-my-0">
-            <h2 className="h3">Skills &amp; Experience</h2>
+            <h2 className="h3">Expertise</h2>
           </div>
         )}
       >
@@ -60,11 +66,10 @@ export default function Page() {
           style={{ marginBottom: 'var(--space-5)' }}
         >
           <p>
-            My experience working as both designer and developer in corporate
-            software development and creative consulting environments has given
-            me a uniquely holistic outlook which helps me bridge the gap between
-            design direction, technical implementation, and business objectives.
-            Some of my areas of expertise are as follows:
+            My design and engineering experience in both corporate software
+            development and creative consulting environments has given me a
+            unique ability to bridge the gaps between design direction,
+            technical implementation, and business objectives.
           </p>
         </div>
         <Skill.Grid>
@@ -103,6 +108,8 @@ export default function Page() {
         </Skill.Grid>
       </Section>
 
+      {/* <Divider maxWidth margin={false} />
+
       <Section
         sidebar={() => (
           <div className="wysiwyg child-my-0">
@@ -110,30 +117,41 @@ export default function Page() {
           </div>
         )}
       >
-        <div
-          className="child-my-0 wysiwyg"
-          style={{ marginBottom: 'var(--space-5)' }}
-        >
+        <div className="child-my-0 wysiwyg">
           <h3 className="h2">
             <Link to="/">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Front-end Supercharged: Gatsby, TypeScript, MDX, CSS Modules and
+              Netlify
             </Link>
           </h3>
           <p className="p--small">Reading time: 2 minutes</p>
         </div>
 
-        <div className="child-my-0 wysiwyg">
+        <div
+          className="child-my-0 wysiwyg"
+          style={{ marginTop: 'var(--space-5)' }}
+        >
           <h3 className="h2">
             <Link to="/">
-              Amet sunt delectus veritatis. Eaque, rerum a veritatis vero quas
-              quaerat ad.
+              Global Style Utitlities That Save Time on Every Project
             </Link>
           </h3>
           <p className="p--small">Reading time: 15 minutes</p>
         </div>
-      </Section>
 
-      <Footer />
+        <div
+          className="child-my-0 wysiwyg"
+          style={{ marginTop: 'var(--space-5)' }}
+        >
+          <h3 className="h2">
+            <Link to="/">
+              @skeletor/validate: Framework-Agnostic Validation Chaining (React
+              Demo)
+            </Link>
+          </h3>
+          <p className="p--small">Reading time: 7 minutes</p>
+        </div>
+      </Section> */}
     </>
   )
 }

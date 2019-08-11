@@ -7,7 +7,7 @@
   grid-gap: var(--content-gap);
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 680px) {
   .grid {
     --content-columns: 3;
   }

@@ -33,7 +33,7 @@
   --theme-accent-low-opacity: var(--light-accent-low-opacity);
 }
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   :root {
     --theme-background: var(--dark-background);
     --theme-background-2: var(--dark-background-2);
@@ -43,4 +43,4 @@
     --theme-accent-low-opacity: var(--dark-accent-low-opacity);
     --theme-heading: var(--dark-headings);
   }
-} */
+}

@@ -125,7 +125,7 @@ export function Projects() {
           <Item
             heading={() => (
               <Link to="https://gist.github.com/xdmorgan/b94de9123503b86de13d02a2f00c734a">
-                useEventTracking Hook
+                useTracking React Hook
               </Link>
             )}
           >

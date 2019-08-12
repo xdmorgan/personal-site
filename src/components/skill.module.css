@@ -1,0 +1,14 @@
+.grid {
+  --content-columns: 2;
+  --content-gap: 2rem;
+
+  display: grid;
+  grid-template-columns: repeat(var(--content-columns), 1fr);
+  grid-gap: var(--content-gap);
+}
+
+@media screen and (min-width: 680px) {
+  .grid {
+    --content-columns: 3;
+  }
+}

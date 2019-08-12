@@ -28,5 +28,3 @@ export const Link = ({ children, to, activeClassName, ...props }: Props) => {
     </GatsbyLink>
   )
 }
-
-export default Link

@@ -1,0 +1,21 @@
+.section {
+  margin: 0 auto;
+  padding: var(--space-10) var(--space-5);
+  max-width: var(--max-content);
+}
+
+.sidebar {
+  margin-bottom: var(--space-5);
+}
+
+@media screen and (min-width: 1024px) {
+  .section {
+    display: grid;
+    grid-gap: var(--space-5);
+    grid-template-columns: 280px 1fr;
+  }
+
+  .sidebar {
+    margin-bottom: 0;
+  }
+}

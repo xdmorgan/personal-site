@@ -60,10 +60,10 @@ export default function Page() {
           style={{ marginBottom: 'var(--space-5)' }}
         >
           <p>
-            My design and engineering experience in both corporate software
-            development and creative consulting environments has given me a
-            unique ability to bridge the gaps between design direction,
-            technical implementation, and business objectives.
+            My design and engineering experience in corporate software and
+            creative consulting environments has given me a unique ability to
+            bridge the gaps between design direction, technical implementation,
+            and business objectives.
           </p>
         </div>
         <Skill.Grid>
@@ -81,7 +81,7 @@ export default function Page() {
           <Skill title="Leadership &amp; Management">
             Code reviews, Mentorship, and Pair programming
           </Skill>
-          <Skill title="Design Tools &amp; Handoff">
+          <Skill title="Design Tools &amp; Hand-off">
             Sketch, Figma, Photoshop, Illustrator, Zeplin, Invision, and Framer
             X
           </Skill>

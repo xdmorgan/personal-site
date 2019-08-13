@@ -10,29 +10,35 @@
   color: var(--theme-accent);
   padding: 0;
   text-decoration: none;
+  transition-property: background-position, padding, color;
+  transition-duration: 120ms;
+  transition-timing-function: ease-in-out;
+  background-size: 100% 200%;
+  background-position: 0 0;
+
+  /* stylelint-disable */
   background-image: linear-gradient(
     transparent 0%,
     transparent calc(50% - 0.4em),
     var(--theme-accent-low-opacity) calc(50% - 0.4em),
     var(--theme-accent-low-opacity) 100%
   );
-  transition-property: background-position, padding, color;
-  transition-duration: 120ms;
-  transition-timing-function: ease-in-out;
-  background-size: 100% 200%;
-  background-position: 0 0;
+  /* stylelint-enable */
 }
 
 .wysiwyg a:hover {
   padding: 0.1em 0;
+  color: var(--theme-background);
+  background-position: 0 100%;
+
+  /* stylelint-disable */
   background-image: linear-gradient(
     transparent 0%,
     transparent calc(50% - 0.4em),
     var(--theme-accent) calc(50% - 0.4em),
     var(--theme-accent) 100%
   );
-  color: var(--theme-background);
-  background-position: 0 100%;
+  /* stylelint-enable */
 }
 
 .wysiwyg hr {

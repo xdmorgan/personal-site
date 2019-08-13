@@ -6,6 +6,10 @@ Array [
     "@context": "http://schema.org",
     "@type": "WebSite",
     "alternateName": "danny.codes",
+    "image": Object {
+      "@type": "ImageObject",
+      "url": "https://danny.codes/icons/icon-256x256.png",
+    },
     "name": "Hello, world!",
     "url": "https://danny.codes/blog/hello-world",
   },
@@ -61,6 +65,10 @@ Array [
     "@context": "http://schema.org",
     "@type": "WebSite",
     "alternateName": "danny.codes",
+    "image": Object {
+      "@type": "ImageObject",
+      "url": "https://danny.codes/icons/icon-256x256.png",
+    },
     "name": "About",
     "url": "https://danny.codes/about",
   },
@@ -88,6 +96,10 @@ Array [
     "@context": "http://schema.org",
     "@type": "WebSite",
     "alternateName": "danny.codes",
+    "image": Object {
+      "@type": "ImageObject",
+      "url": "https://danny.codes/icons/icon-256x256.png",
+    },
     "name": "Home",
     "url": "https://danny.codes",
   },

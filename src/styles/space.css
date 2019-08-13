@@ -27,6 +27,7 @@
   --static-5: calc(var(--static) * 5);
   --static-10: calc(var(--static) * 10);
 
+  /* container width */
   --max-content: calc(280px + 720px + var(--space-10) + var(--space-5));
 }
 

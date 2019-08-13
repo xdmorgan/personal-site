@@ -30,6 +30,10 @@ const getWebsiteSchema = ({
   url: page.url,
   name: page.title,
   alternateName: site.title,
+  image: {
+    '@type': 'ImageObject',
+    url: site.logo,
+  },
 })
 
 const getBreadcrumbSchema = ({

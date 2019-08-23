@@ -1,0 +1,42 @@
+---
+title: 'MailChimp Subscriber Interests with the PHP API'
+---
+
+I was recently tasked with updating a MailChimp subscription script to add support for the subgroup ("interest") feature and found documentation on the exact process surprisingly limited.
+
+## Prerequisites
+
+First, we need this amazing [MailChimp API wrapper](https://github.com/drewm/mailchimp-api/blob/master/src/MailChimp.php), which makes list subscription trivial. In the example below, the API wrapper
+
+```php
+<?php
+
+// Define API config constants
+define('MAILCHIMP_API', 'API_TOKEN');
+define('MAILCHIMP_LIST', 'LIST_ID');
+define('MAILCHIMP_SUBGROUP', 'SUBGROUP_ID');
+
+// Include the API Wrapper Class
+include('./MailChimp.php');
+
+use \DrewM\MailChimp\MailChimp;
+
+// Instantiate class
+$MailChimp = new MailChimp(MAILCHIMP_API);
+
+// grab email address from request
+$email = $_REQUEST['email'];
+$result = '';
+
+// if there's an address make the request to mailchimp, store the response
+if ($email != '') {
+  $result = $MailChimp->post("lists/" . MAILCHIMP_LIST . "/members", array(
+    'email_address' => $email,
+    'status' => 'subscribed',
+    'interests' => array(MAILCHIMP_SUBGROUP => true),
+  ));
+}
+
+// return status
+echo json_encode($result);
+```

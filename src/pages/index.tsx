@@ -103,7 +103,7 @@ export default function Page() {
         </Skill.Grid>
       </Section>
 
-      <Divider maxWidth margin={false} />
+      {/* <Divider maxWidth margin={false} />
 
       <Section
         sidebar={() => (
@@ -120,7 +120,7 @@ export default function Page() {
           </h3>
           <p className="p--small">Reading time: 4 minutes</p>
         </div>
-      </Section>
+      </Section> */}
     </>
   )
 }

@@ -4,7 +4,7 @@ import { Section } from '../components/section'
 import { Skill } from '../components/skill'
 import { Divider } from '../components/divider'
 import { Projects } from '../components/projects'
-import { Link } from '../components/link'
+// import { Link } from '../components/link'
 
 export default function Page() {
   return (

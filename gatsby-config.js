@@ -65,19 +65,11 @@ module.exports = {
           },
         ],
       },
-    },
-    {
-      resolve: `gatsby-source-prismic`,
-      options: {
-        repositoryName: `dannycodes`,
-        accessToken: `${process.env.PRISMIC_API_KEY}`,
-        linkResolver: ({ node, key, value }) => post => `/${post.uid}`,
-      },
-    },
+    }
     /**
      * Images
      * ------------------------------------------------------------------------
-     */
+     */,
 
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,

@@ -1,0 +1,143 @@
+/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ * ----
+ * Converted for use with CSS variables
+ * @author xdmorgan
+ */
+
+:root {
+  --prism-theme-fonts: 'Dank Mono', 'Fira Code', Consolas, Monaco, 'Andale Mono',
+    'Ubuntu Mono', monospace;
+  --prism-theme-background: #272822;
+  --prism-theme-text: #f8f8f2;
+  --prism-theme-text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  --prism-theme-comment: slategray;
+  --prism-theme-punctuation: #f8f8f2;
+  --prism-theme-constant: #f92672;
+  --prism-theme-boolean: #ae81ff;
+  --prism-theme-string: #a6e22e;
+  --prism-theme-variable: #f8f8f2;
+  --prism-theme-function: #e6db74;
+  --prism-theme-keyword: #66d9ef;
+  --prism-theme-regex: #fd971f;
+}
+
+code[class*='language-'],
+pre[class*='language-'] {
+  color: var(--prism-theme-text);
+  background: none;
+  text-shadow: var(--prism-theme-text-shadow);
+  font-family: var(--prism-theme-fonts);
+  font-size: 0.9em;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*='language-'] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+  border-radius: 0.3em;
+}
+
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
+  background: var(--prism-theme-background);
+}
+
+/* Inline code */
+:not(pre) > code[class*='language-'] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+  white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: var(--prism-theme-comment);
+}
+
+.token.punctuation {
+  color: var(--prism-theme-punctuation);
+}
+
+.namespace {
+  opacity: 0.7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: var(--prism-theme-constant);
+}
+
+.token.boolean,
+.token.number {
+  color: var(--prism-theme-boolean);
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: var(--prism-theme-string);
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+  color: var(--prism-theme-variable);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+  color: var(--prism-theme-function);
+}
+
+.token.keyword {
+  color: var(--prism-theme-keyword);
+}
+
+.token.regex,
+.token.important {
+  color: var(--prism-theme-regex);
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}

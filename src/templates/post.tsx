@@ -2,16 +2,20 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 
-import './post.css'
-
 export default function Template({ data }) {
   const {
     body,
     frontmatter: { title },
   } = data.post
   return (
-    <div>
-      <div className="wysiwyg">
+    <div className="container">
+      <div
+        className="wysiwyg child-my-0"
+        style={{
+          paddingTop: 'var(--space-10)',
+          paddingBottom: 'var(--space-10)',
+        }}
+      >
         <h1>{title}</h1>
         <MDXRenderer>{body}</MDXRenderer>
       </div>

@@ -47,11 +47,21 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [`gatsby-remark-images`],
+      },
+    },
+    {
       resolve: `gatsby-plugin-mdx`,
       options: {
         gatsbyRemarkPlugins: [
           {
-            resolve: `gatsby-remark-prismjs`,
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1200,
+              linkImagesToOriginal: false,
+            },
           },
         ],
       },

@@ -1,7 +1,0 @@
-@import 'prismjs/themes/prism-okaidia.css';
-
-code[class*='language-'],
-pre[class*='language-'] {
-  font-family: 'Dank Mono', 'FiraCode-Retina', 'Fira Code', Consolas, Monaco,
-    'Andale Mono', 'Ubuntu Mono', monospace;
-}

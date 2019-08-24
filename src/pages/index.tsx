@@ -4,6 +4,7 @@ import { Section } from '../components/section'
 import { Skill } from '../components/skill'
 import { Divider } from '../components/divider'
 import { Projects } from '../components/projects'
+// import { Link } from '../components/link'
 
 export default function Page() {
   return (
@@ -113,37 +114,11 @@ export default function Page() {
       >
         <div className="child-my-0 wysiwyg">
           <h3 className="h2">
-            <Link to="/">
-              Front-end Supercharged: Gatsby, TypeScript, MDX, CSS Modules and
-              Netlify
+            <Link to="/blog/mailchimp-api-interests">
+              How to Find and Use Interest IDs with the Mailchimp API
             </Link>
           </h3>
-          <p className="p--small">Reading time: 2 minutes</p>
-        </div>
-
-        <div
-          className="child-my-0 wysiwyg"
-          style={{ marginTop: 'var(--space-5)' }}
-        >
-          <h3 className="h2">
-            <Link to="/">
-              Global Style Utitlities That Save Time on Every Project
-            </Link>
-          </h3>
-          <p className="p--small">Reading time: 15 minutes</p>
-        </div>
-
-        <div
-          className="child-my-0 wysiwyg"
-          style={{ marginTop: 'var(--space-5)' }}
-        >
-          <h3 className="h2">
-            <Link to="/">
-              @skeletor/validate: Framework-Agnostic Validation Chaining (React
-              Demo)
-            </Link>
-          </h3>
-          <p className="p--small">Reading time: 7 minutes</p>
+          <p className="p--small">Reading time: 4 minutes</p>
         </div>
       </Section> */}
     </>

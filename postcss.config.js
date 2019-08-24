@@ -3,6 +3,7 @@ module.exports = {
     stylelint: {
       config: {
         extends: 'stylelint-config-standard',
+        ignoreFiles: ['./node_modules/**', './src/**/prism.css'],
       },
     },
     'postcss-import': {},

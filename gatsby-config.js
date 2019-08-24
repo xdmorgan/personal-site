@@ -39,19 +39,37 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-plugin-mdx`,
     {
-      resolve: `gatsby-source-prismic`,
+      resolve: `gatsby-source-filesystem`,
       options: {
-        repositoryName: `dannycodes`,
-        accessToken: `${process.env.PRISMIC_API_KEY}`,
-        linkResolver: ({ node, key, value }) => post => `/${post.uid}`,
+        name: `posts`,
+        path: `${__dirname}/src/content/posts`,
       },
     },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [`gatsby-remark-images`],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1200,
+              linkImagesToOriginal: false,
+            },
+          },
+        ],
+      },
+    }
     /**
      * Images
      * ------------------------------------------------------------------------
-     */
+     */,
 
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,

@@ -69,3 +69,15 @@
     margin: 4rem 0;
   }
 }
+
+.wysiwyg .gatsby-resp-image-wrapper {
+  margin-top: var(--space-10);
+  margin-bottom: var(--space-10);
+  margin-left: calc(var(--space-5) * -1) !important;
+  margin-right: calc(var(--space-5) * -1) !important;
+}
+
+.wysiwyg .gatsby-highlight {
+  margin-top: var(--space-10);
+  margin-bottom: var(--space-10);
+}

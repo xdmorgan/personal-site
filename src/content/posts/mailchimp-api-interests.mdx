@@ -1,0 +1,67 @@
+---
+title: How to Find and Use Interest IDs with the Mailchimp API
+date: 2019-08-22
+tags: PHP, API, Guide
+image: ./mailchimp-api-interests/asa-rodger-unsplash.jpg
+---
+
+I was recently asked to update a Mailchimp list subscription script to add support for sub-group targeting via "interests" and found documentation on the exact process surprisingly limited.
+
+## Creating an API Key
+
+In order to create new users using we'll first need to create an API key with access to our account. Sign into Mailchimp then go to the [Account Settings > Extras > API Keys](https://us4.admin.mailchimp.com/account/api/) page then **Create a Key**.
+
+![Mailchimp API Playground: Enter API token](./mailchimp-api-interests/create-api-key.png)
+
+## Finding the Interest ID
+
+Now that we have an API key, we need to find the interest ID and to do that, we'll need to use the [Mailchimp API Playground](https://us1.api.mailchimp.com/playground/). Using the API Key we just created, log into the API Playground and follow the steps below to navigate through the ensuing screens to find the desired interest.
+
+![Mailchimp API Playground: Enter API token](./mailchimp-api-interests/api-playground.png)
+
+First, select `Lists` then use the Subresources dropdown to select `interest-categories`. Find the relevant category in the list then use the Subresources dropdown again to access `interests`. You should now be presented with the list of relevant interests, click the name of the one we want an ID for and you should arrive on the screen above with all the information we'll need.
+
+![Mailchimp API Playground: Interest detail page](./mailchimp-api-interests/interest-id-page.png)
+
+## Usage in PHP
+
+Download this [Mailchimp API wrapper](https://github.com/drewm/mailchimp-api/blob/master/src/Mailchimp.php) class, and save it next to our script so it can be found by the `include(./Mailchimp.php)` call on line 9 below.
+
+Next, we need the API Token created in the first section, as well as the List ID and Interest ID from the second. Replace `API_TOKEN`, `LIST_ID`, and `INTEREST_ID` in the constant definitions on lines 4–6.
+
+```php
+// Define API config constants
+define('MAILCHIMP_API', 'API_TOKEN');
+define('MAILCHIMP_LIST', 'LIST_ID');
+define('MAILCHIMP_INTEREST', 'INTEREST_ID');
+
+// Include the API Wrapper Class
+include('./Mailchimp.php');
+
+use \DrewM\Mailchimp\Mailchimp;
+
+// Instantiate class
+$Mailchimp = new Mailchimp(MAILCHIMP_API);
+
+// grab email address from request
+$email = $_REQUEST['email'];
+$result = '';
+
+// if there's an address make the request to mailchimp, store the response
+if ($email != '') {
+  $result = $Mailchimp->post("lists/" . MAILCHIMP_LIST . "/members", array(
+    'email_address' => $email,
+    'status' => 'subscribed',
+    'interests' => array(MAILCHIMP_INTEREST => true),
+  ));
+}
+
+// return status
+echo json_encode($result);
+```
+
+## References & Resources
+
+- [Mailchimp API PHP Class](https://github.com/drewm/mailchimp-api/blob/master/src/Mailchimp.php)
+- [StackOverflow: Finding Mailchimp List IDs](https://stackoverflow.com/questions/37311116/can-you-get-a-mailchimp-interest-group-id-without-using-the-api)
+- Photo by Asa Rodger on Unsplash

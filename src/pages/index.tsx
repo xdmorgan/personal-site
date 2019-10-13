@@ -37,14 +37,14 @@ export default function Page() {
           <p>
             In that time, I've built: award-winning marketing websites, APIs
             &amp; cloud services, scalable design systems &amp; accessible
-            component libraries, developer-empowering command line tools &amp;
-            automation scripts, machine-learning powered chatbots, plus web and
-            mobile (native and cross-platform) applications.
+            component libraries, command line tools &amp; automation scripts,
+            machine-learning powered chatbots, plus web and mobile (native and
+            cross-platform) applications.
           </p>
           <p>
             When I close my computer for the day, I love to work up a sweat in
-            cycling classes or playing pick-up soccer as well as relaxing by
-            cooking, watching food documentaries, and playing video games.
+            cycling classes and playing pick-up soccer as well as relaxing
+            watching food documentaries and playing video games.
           </p>
         </div>
       </Section>

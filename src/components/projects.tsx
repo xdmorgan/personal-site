@@ -28,19 +28,6 @@ export function Projects() {
 
           <Item
             heading={() => (
-              <Link to="https://github.com/xdmorgan/skeletor">
-                Skeletor CSS Framework
-              </Link>
-            )}
-          >
-            <p className="p--small">
-              Spacing, typography, and color utility generator for rapid
-              prototyping and design systems
-            </p>
-          </Item>
-
-          <Item
-            heading={() => (
               <Link to="http://yasly.com/work/hotpoints/">Hotpoints App</Link>
             )}
           >
@@ -52,21 +39,25 @@ export function Projects() {
 
           <Item
             heading={() => (
-              <Link to="https://github.com/fbsamples/f8app">
-                Facebook F8 App
+              <Link to="https://gifn.it">Gifn Photobooth App</Link>
+            )}
+          >
+            <p className="p--small">
+              Worked on the Swift native iOS application rewrite (previously
+              PWA) for the gif-generating event photo booth start-up.
+            </p>
+          </Item>
+
+          <Item
+            heading={() => (
+              <Link to="https://designerfund.com/business-impact">
+                Design for Business Impact
               </Link>
             )}
           >
             <p className="p--small">
-              React Native client application, Node.js Parse Server, and
-              Electron Parse Admin interface
-            </p>
-          </Item>
-
-          <Item heading={() => <Link to="https://gifn.it">Gifn App</Link>}>
-            <p className="p--small">
-              Worked on the native (Swift) application rewrite for the
-              gif-generating event photo booth
+              Gatsby, Netlify, and Contentful for the Designer Fund.
+              Authentication using a custom Mailchimp integration
             </p>
           </Item>
 
@@ -98,19 +89,6 @@ export function Projects() {
 
           <Item
             heading={() => (
-              <Link to="https://github.com/xdmorgan/gatsby-starter">
-                Gatsby v2 Starter Project
-              </Link>
-            )}
-          >
-            <p className="p--small">
-              TypeScript, PostCSS, Styled Components, Jest, MDX, CircleCI,
-              Netlify, Prettier, Stylelint, and dotenv
-            </p>
-          </Item>
-
-          <Item
-            heading={() => (
               <Link to="https://github.com/xdmorgan/wordpress-to-contentful">
                 Wordpress to Contentful
               </Link>
@@ -124,6 +102,47 @@ export function Projects() {
 
           <Item
             heading={() => (
+              <Link to="https://github.com/xdmorgan/netlify-functions">
+                Netlify Functions
+              </Link>
+            )}
+          >
+            <p className="p--small">
+              Collection of open-source Lambda functions written for personal
+              Netlify projects but applicable to any Lambda environment
+            </p>
+          </Item>
+
+          <Item
+            heading={() => (
+              <Link to="https://github.com/xdmorgan/skeletor">
+                Skeletor CSS Framework
+              </Link>
+            )}
+          >
+            <p className="p--small">
+              Spacing, typography, and color utility generator for rapid
+              prototyping and design systems
+            </p>
+          </Item>
+
+          <Item
+            heading={() => (
+              <Link to="https://github.com/xdmorgan/gatsby-starter">
+                Gatsby v2 Starter Project
+              </Link>
+            )}
+          >
+            <p className="p--small">
+              TypeScript, PostCSS, Styled Components, Jest, MDX, CircleCI,
+              Netlify, Prettier, Stylelint, and dotenv
+            </p>
+          </Item>
+
+          {/* Make an 'other project' also pull some public gists and codepens
+          
+          <Item
+            heading={() => (
               <Link to="https://gist.github.com/xdmorgan/b94de9123503b86de13d02a2f00c734a">
                 useTracking React Hook
               </Link>
@@ -133,7 +152,7 @@ export function Projects() {
               Custom React Hook to generate static or dynamic event tracking
               callbacks for performant and declarative analytics
             </p>
-          </Item>
+          </Item> */}
         </ul>
       </div>
     </Section>

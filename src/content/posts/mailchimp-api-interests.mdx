@@ -1,11 +1,23 @@
 ---
-title: How to Find and Use Interest IDs with the Mailchimp API
+title: 'Using Interest Groups With The Mailchimp V3 API'
 date: 2019-08-22
-tags: PHP, API, Guide
-image: ./mailchimp-api-interests/asa-rodger-unsplash.jpg
+tags: Mailchimp, PHP, Tutorial
+image: ./mailchimp-api-interests/header.jpg
 ---
 
-I was recently asked to update a Mailchimp list subscription script to add support for sub-group targeting via "interests" and found documentation on the exact process surprisingly limited.
+A client recently asked me to update their Mailchimp integration to add support for sub-group targeting using interest groups. Finding the process more involved than I expected, I wanted to share my experience locating the relevant IDs in the admin interface and examples including them in an API request.
+
+---
+
+## Table of Contents
+
+1. Creating an API Key
+1. Finding the Interest ID
+1. Usage in PHP
+1. Usage in Node.js
+1. References
+
+---
 
 ## Creating an API Key
 
@@ -25,9 +37,9 @@ First, select `Lists` then use the Subresources dropdown to select `interest-cat
 
 ## Usage in PHP
 
-Download this [Mailchimp API wrapper](https://github.com/drewm/mailchimp-api/blob/master/src/Mailchimp.php) class, and save it next to our script so it can be found by the `include(./Mailchimp.php)` call on line 9 below.
+Download this [Mailchimp API wrapper](https://github.com/drewm/mailchimp-api/blob/master/src/Mailchimp.php) class, and save it next to our script so it can be found by the `include(./Mailchimp.php)` call on line 7 below.
 
-Next, we need the API Token created in the first section, as well as the List ID and Interest ID from the second. Replace `API_TOKEN`, `LIST_ID`, and `INTEREST_ID` in the constant definitions on lines 4–6.
+Next, we need the API Token created in the first section, as well as the List ID and Interest ID from the second. Replace `API_TOKEN`, `LIST_ID`, and `INTEREST_ID` in the constant definitions on lines 2–4.
 
 ```php
 // Define API config constants
@@ -60,8 +72,12 @@ if ($email != '') {
 echo json_encode($result);
 ```
 
+## Update: Usage in Node.js
+
+Since writing the original version of this post, I was asked to implement similar functionality for a static site deployed to Netlify. Using the same method for locating the necessary API information described above, [see here](https://github.com/xdmorgan/netlify-functions/tree/master/functions/mailchimp-subscribe) for a drop-in Node-based Lambda function solution.
+
 ## References & Resources
 
 - [Mailchimp API PHP Class](https://github.com/drewm/mailchimp-api/blob/master/src/Mailchimp.php)
 - [StackOverflow: Finding Mailchimp List IDs](https://stackoverflow.com/questions/37311116/can-you-get-a-mailchimp-interest-group-id-without-using-the-api)
-- Photo by Asa Rodger on Unsplash
+- Header photo provided by [Mathyas Kurmann on Unsplash](https://unsplash.com/photos/fb7yNPbT0l8)

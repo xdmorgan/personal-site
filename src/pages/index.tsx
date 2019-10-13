@@ -4,7 +4,7 @@ import { Section } from '../components/section'
 import { Skill } from '../components/skill'
 import { Divider } from '../components/divider'
 import { Projects } from '../components/projects'
-import { Link } from '../components/link'
+// import { Link } from '../components/link'
 
 export default function Page() {
   return (
@@ -36,15 +36,15 @@ export default function Page() {
             <a href="https://xstudios.agency/">X Studios</a>.
           </p>
           <p>
-            Since graduating university in 2010, I've built: award-winning
-            websites, cloud services, accessible component libraries, command
-            line tools, machine-learning powered chatbots, plus web and mobile
-            (native and cross-platform) applications.
+            Since graduating university in 2010, I've built award-winning
+            websites, scalable cloud services, accessible component libraries,
+            machine-learning powered chatbots, native &amp; cross-platform
+            mobile applications, and web-based SaaS applications.
           </p>
           <p>
-            When I close my computer for the day, my hobbies include: playing
-            and watching soccer, taking cycling classes, watching food
-            documentaries, and playing video games.
+            Once I've closed my computer for the day, my hobbies include
+            watching and playing soccer, working up a sweat in cycling classes,
+            watching food documentaries, and playing video games.
           </p>
         </div>
       </Section>
@@ -117,7 +117,7 @@ export default function Page() {
         </Skill.Grid>
       </Section>
 
-      <Divider maxWidth margin={false} />
+      {/* <Divider maxWidth margin={false} />
 
       <Section
         sidebar={() => (
@@ -134,7 +134,7 @@ export default function Page() {
           </h3>
           <p className="p--small">1 minute read &bull; PHP, Mailchimp, APIs</p>
         </div>
-      </Section>
+      </Section> */}
     </>
   )
 }

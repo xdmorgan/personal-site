@@ -20,8 +20,15 @@ export default function Page() {
       >
         <div className="wysiwyg child-my-0">
           <p>
-            I'm an Associate Tech Lead at <a href="https://hugeinc.com">Huge</a>{' '}
-            in Washington D.C. Previously, a Senior UI Developer at&nbsp;
+            Over my career, I've worked with Cartoon Network, Cvent, Designer
+            Fund, EA Sports, Facebook, Huge, Instagram, Kia Motors, LinkedIn,
+            NASA, Oculus, and Universal Studios to craft digital experiences for
+            web, mobile, and emerging platforms.
+          </p>
+          <p>
+            Currently, I work as an Associate Tech Lead at{' '}
+            <a href="https://hugeinc.com">Huge</a> in Washington D.C.
+            Previously, I have held roles as a Senior UI Developer at&nbsp;
             <a href="https://cvent.com/">Cvent</a>, Full-stack Developer
             at&nbsp;
             <a href="https://prpl.rs/">PRPL</a>, Application Developer at&nbsp;
@@ -29,22 +36,15 @@ export default function Page() {
             <a href="https://xstudios.agency/">X Studios</a>.
           </p>
           <p>
-            In 9 years experience, I've worked with Cartoon Network, Cvent,
-            Designer Fund, EA Sports, Facebook, Huge, Instagram, Kia Motors,
-            LinkedIn, NASA, Oculus, and Universal Studios to craft digital
-            experiences for web, mobile, and emerging platforms.
+            Since graduating university in 2010, I've built: award-winning
+            websites, cloud services, accessible component libraries, command
+            line tools, machine-learning powered chatbots, plus web and mobile
+            (native and cross-platform) applications.
           </p>
           <p>
-            In that time, I've built: award-winning marketing websites, APIs
-            &amp; cloud services, scalable design systems &amp; accessible
-            component libraries, command line tools &amp; automation scripts,
-            machine-learning powered chatbots, plus web and mobile (native and
-            cross-platform) applications.
-          </p>
-          <p>
-            When I close my computer for the day, I love to work up a sweat in
-            cycling classes and playing pick-up soccer as well as relaxing
-            watching food documentaries and playing video games.
+            When I close my computer for the day, my hobbies include: playing
+            and watching soccer, taking cycling classes, watching food
+            documentaries, and playing video games.
           </p>
         </div>
       </Section>

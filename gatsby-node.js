@@ -16,13 +16,18 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     const value = createFilePath({ node, getNode })
     createNodeField({
       // Name of the field you are adding
-      name: 'slug',
+      name: 'route',
       // Individual MDX node
       node,
       // Generated value based on filepath with "blog" prefix. We
       // don't need a separating "/" before the value because
       // createFilePath returns a path with the leading "/".
       value: `/blog${value}`,
+    })
+    createNodeField({
+      name: 'slug',
+      node,
+      value: value.slice(1, -1), // this is sketchy
     })
   }
 }
@@ -36,7 +41,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         nodes {
           id
           fields {
-            slug
+            route
           }
         }
       }
@@ -50,7 +55,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // We'll call `createPage` for each result
   posts.forEach(node => {
     createPage({
-      path: node.fields.slug,
+      path: node.fields.route,
       component: path.resolve(`./src/templates/post.tsx`),
       context: { id: node.id },
     })

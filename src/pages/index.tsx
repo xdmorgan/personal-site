@@ -20,25 +20,31 @@ export default function Page() {
       >
         <div className="wysiwyg child-my-0">
           <p>
-            Over the last 9 years, I've worked with Cartoon Network, Cvent,
-            Designer Fund, EA Sports, Facebook, Huge, Instagram, Kia, LinkedIn,
-            NASA, Oculus, Parse, and Universal Studios to craft scalable and
-            accessible user interfaces for web, mobile, and emerging platforms.
+            Over my career, I've worked with Cartoon Network, Cvent, Designer
+            Fund, EA Sports, Facebook, Huge, Instagram, Kia Motors, LinkedIn,
+            NASA, Oculus, and Universal Studios to craft digital experiences for
+            web, mobile, and emerging platforms.
           </p>
           <p>
-            I've built command line tools, cloud microservices, multi-platform
-            product design systems, extensible component architectures,
-            award-winning marketing websites, and native mobile applications.
-          </p>
-          <p>
-            Currently, I work as a Senior Web Engineer at{' '}
+            Currently, I work as an Associate Tech Lead at{' '}
             <a href="https://hugeinc.com">Huge</a> in Washington D.C.
-            Previously, I was a Senior UI Developer at&nbsp;
+            Previously, I have held roles as a Senior UI Developer at&nbsp;
             <a href="https://cvent.com/">Cvent</a>, Full-stack Developer
             at&nbsp;
             <a href="https://prpl.rs/">PRPL</a>, Application Developer at&nbsp;
             <a href="https://gifn.it/">Gifn</a> and UI Designer at&nbsp;
             <a href="https://xstudios.agency/">X Studios</a>.
+          </p>
+          <p>
+            Since graduating university in 2010, I've built award-winning
+            websites, scalable cloud services, accessible component libraries,
+            machine-learning powered chatbots, native &amp; cross-platform
+            mobile applications, and web-based SaaS applications.
+          </p>
+          <p>
+            Once I've closed my computer for the day, my hobbies include
+            watching and playing soccer, working up a sweat in cycling classes,
+            watching food documentaries, and playing video games.
           </p>
         </div>
       </Section>
@@ -68,38 +74,46 @@ export default function Page() {
           </p>
         </div>
         <Skill.Grid>
-          <Skill title="Client-Side Development">
-            HTML, CSS, Sass, JavaScript, React, CSS-in-JS, Angular, Vue, and
-            emails
+          <Skill title="Front-End Development">
+            HTML, JavaScript, React, redux, Angular, Vue, GraphQL, REST, CSS,
+            Sass, CSS-in-JS, and email
           </Skill>
-          <Skill title="Server-Side Development">
-            Node, Python, JAMstack, Serverless, PHP, headless CMS, and API
-            design
+          <Skill title="Full-Stack Development">
+            Node, Python, PHP, WordPress, GraphQL, REST, Firebase, and
+            Relational &amp; Document DBs
           </Skill>
-          <Skill title="Mobile App Development">
-            React Native, Swift, Xamarin (C#), PhoneGap, and PWA’s
+          <Skill title="Design Systems">
+            Atomic design, tokens, theming, Storybook, Lerna, documentation and
+            component API design
           </Skill>
-          <Skill title="Leadership &amp; Management">
-            Code reviews, Mentorship, and Pair programming
-          </Skill>
-          <Skill title="Design Tools &amp; Hand-off">
-            Sketch, Figma, Photoshop, Illustrator, Zeplin, Invision, and Framer
-            X
-          </Skill>
-          <Skill title="Accessibility Standards">
-            WCAG 2.1 guidelines, Section 508 compliance, ARIA, and screenreaders
+          <Skill title="Project Architecture">
+            AWS, GCP, Docker, NPM, JAMStack, headless CMS, cloud functions, and
+            CI/CD pipelines
           </Skill>
           <Skill title="Testing &amp; Tooling">
-            Webpack, Jest, Prettier, ESLint, Flow, TypeScript, Babel, aXe, and
-            Cypress
+            Webpack, Jest, Prettier, ESLint, Flow, TypeScript, Babel, aXe,
+            Parcel, Gulp, and Cypress
+          </Skill>
+          <Skill title="Mobile &amp; Emerging Tech">
+            Swift, React Native, Xamarin (C#), PWAs, Actions on Google, and
+            Dialogflow
+          </Skill>
+          <Skill title="Accessibility &amp; i18n">
+            WCAG 2.1 guidelines, Section 508, ARIA, RTL, screenreaders, and
+            internationalization
           </Skill>
           <Skill title="Project Management">
-            Git, SVN, GitHub, BitBucket, JIRA, with agile and waterfall project
-            experience
+            Git, GitHub, BitBucket, JIRA, Trello, Asana, kanban &amp; scrum
+            agile processes
           </Skill>
-          <Skill title="Deployments &amp; Architecture">
-            AWS, NPM, GCP, Netlify, Docker, Cloudflare, and CI/CD pipelines
+          <Skill title="Design Tools &amp; Hand-off">
+            Sketch, Figma, Photoshop, Illustrator, Zeplin, Invision, asset
+            optimization, and Framer X
           </Skill>
+          {/* <Skill title="Team Leadership">
+            Architecture, mentorship, code reviews, presentations, diagrams, and
+            pair programming
+          </Skill> */}
         </Skill.Grid>
       </Section>
 
@@ -118,7 +132,7 @@ export default function Page() {
               How to Find and Use Interest IDs with the Mailchimp API
             </Link>
           </h3>
-          <p className="p--small">Reading time: 4 minutes</p>
+          <p className="p--small">1 minute read &bull; PHP, Mailchimp, APIs</p>
         </div>
       </Section> */}
     </>

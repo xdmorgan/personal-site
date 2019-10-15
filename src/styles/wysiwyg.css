@@ -81,3 +81,7 @@
   margin-top: var(--space-10);
   margin-bottom: var(--space-10);
 }
+
+.wysiwyg--lede > p:first-child {
+  font-size: 1.5em;
+}

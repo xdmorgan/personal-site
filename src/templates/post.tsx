@@ -1,11 +1,11 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import Image from 'gatsby-image'
-import { MDXProvider } from '@mdx-js/react'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
-import { CodeBlock } from '../components/code-block'
-import { SEO } from '../components/seo'
-import { Link } from '../components/link'
+import React from "react";
+import { graphql } from "gatsby";
+import Image from "gatsby-image";
+import { MDXProvider } from "@mdx-js/react";
+import { MDXRenderer } from "gatsby-plugin-mdx";
+// import { CodeBlock } from '../components/code-block'
+import { SEO } from "../components/seo";
+import { Link } from "../components/link";
 
 export default function Template({ data }) {
   const {
@@ -13,9 +13,8 @@ export default function Template({ data }) {
     excerpt,
     timeToRead,
     fields: { slug },
-    frontmatter: { title, image, date, tags },
-  } = data.post
-  const { organization } = data.site.siteMetadata
+    frontmatter: { title, image, date, tags }
+  } = data.post;
   return (
     <div className="container">
       <SEO
@@ -24,15 +23,15 @@ export default function Template({ data }) {
         title={title}
         description={excerpt}
         blogPost={{
-          author: organization,
-          datePublished: date,
+          author: "@xdanmorgan",
+          datePublished: date
         }}
       />
       <div
         className="wysiwyg child-my-0"
         style={{
-          marginTop: 'var(--space-10)',
-          marginBottom: 'var(--space-5)',
+          marginTop: "var(--space-10)",
+          marginBottom: "var(--space-5)"
         }}
       >
         <Image fluid={image.childImageSharp.fluid} alt={title} />
@@ -44,22 +43,27 @@ export default function Template({ data }) {
       <div
         className="wysiwyg wysiwyg--lede child-my-0"
         style={{
-          marginTop: 'var(--space-5)',
-          marginBottom: 'var(--space-10)',
+          marginTop: "var(--space-5)",
+          marginBottom: "var(--space-10)"
         }}
       >
         <MDXProvider
           components={{
             pre: props => {
-              const langClass = props.children.props.className || ''
-              const matches = langClass.match(/language-(?<lang>.*)/)
+              const langClass = props.children.props.className || "";
+              const matches = langClass.match(/language-(?<lang>.*)/);
               const language =
                 matches && matches.groups && matches.groups.lang
                   ? matches.groups.lang
-                  : ''
-              const code = props.children.props.children.trim()
-              return <CodeBlock code={code} language={language} />
-            },
+                  : "";
+              const code = props.children.props.children.trim();
+              // return <CodeBlock code={code} language={language} />
+              return (
+                <pre>
+                  <code>{code}</code>
+                </pre>
+              );
+            }
           }}
         >
           <MDXRenderer>{body}</MDXRenderer>
@@ -68,26 +72,23 @@ export default function Template({ data }) {
         <h2>Want to Leave a Comment?</h2>
         <p>
           If you have questions, feedback, or found an issue, I would love to
-          hear from you.{' '}
+          hear from you.{" "}
           <Link
             to={`https://github.com/xdmorgan/personal-site/tree/master/src/content/posts/${slug}.mdx`}
             target="_blank"
           >
             See here
-          </Link>{' '}
+          </Link>{" "}
           to create a pull request or view the source for this post on GitHub.
           Thanks for reading!
         </p>
       </div>
     </div>
-  )
+  );
 }
 
 export const query = graphql`
   query PostPage($id: String!) {
-    site {
-      ...SiteMetaFields
-    }
     post: mdx(id: { eq: $id }) {
       body
       excerpt
@@ -109,4 +110,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

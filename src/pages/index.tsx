@@ -1,14 +1,15 @@
-import * as React from "react";
-import { SEO } from "../components/seo";
-import { Section } from "../components/section";
-import { Skill } from "../components/skill";
-import { Divider } from "../components/divider";
-import { Projects } from "../components/projects";
+import * as React from 'react'
+import { SEO } from 'gatsby-theme-xdmorgan'
+import { Section } from '../components/section'
+import { Skill } from '../components/skill'
+import { Divider } from '../components/divider'
+import { Projects } from '../components/projects'
 // import { Link } from '../components/link'
 
 export default function Page() {
   return (
     <>
+      <SEO title="Dan Morgan" />
       <Section
         sidebar={() => (
           <div className="wysiwyg child-my-0">
@@ -25,7 +26,7 @@ export default function Page() {
             web, mobile, and emerging platforms.
           </p>
           <p>
-            Currently, I work as an Associate Tech Lead at{" "}
+            Currently, I work as an Associate Tech Lead at{' '}
             <a href="https://hugeinc.com">Huge</a> in Washington D.C.
             Previously, I have held roles as a Senior UI Developer at&nbsp;
             <a href="https://cvent.com/">Cvent</a>, Full-stack Developer
@@ -63,7 +64,7 @@ export default function Page() {
       >
         <div
           className="wysiwyg child-my-0"
-          style={{ marginBottom: "var(--space-5)" }}
+          style={{ marginBottom: 'var(--space-5)' }}
         >
           <p>
             My design and engineering experience in corporate software and
@@ -135,5 +136,5 @@ export default function Page() {
         </div>
       </Section> */}
     </>
-  );
+  )
 }

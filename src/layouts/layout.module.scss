@@ -1,0 +1,5 @@
+$test: 1px + 1px;
+
+.layout {
+  border-top: $test solid var(--theme-accent);
+}

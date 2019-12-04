@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { SEO } from '../components/seo'
+import { SEO } from 'gatsby-theme-xdmorgan'
 import { Section } from '../components/section'
 import { Skill } from '../components/skill'
 import { Divider } from '../components/divider'
@@ -9,7 +9,7 @@ import { Projects } from '../components/projects'
 export default function Page() {
   return (
     <>
-      <SEO schema />
+      <SEO title="Dan Morgan" />
       <Section
         sidebar={() => (
           <div className="wysiwyg child-my-0">

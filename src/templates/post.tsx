@@ -3,8 +3,8 @@ import { graphql } from 'gatsby'
 import Image from 'gatsby-image'
 import { MDXProvider } from '@mdx-js/react'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
-import { CodeBlock } from '../components/code-block'
-import { SEO } from '../components/seo'
+// import { CodeBlock } from '../components/code-block'
+import { SEO } from 'gatsby-theme-xdmorgan'
 import { Link } from '../components/link'
 
 export default function Template({ data }) {
@@ -15,7 +15,6 @@ export default function Template({ data }) {
     fields: { slug },
     frontmatter: { title, image, date, tags },
   } = data.post
-  const { organization } = data.site.siteMetadata
   return (
     <div className="container">
       <SEO
@@ -24,7 +23,7 @@ export default function Template({ data }) {
         title={title}
         description={excerpt}
         blogPost={{
-          author: organization,
+          author: '@xdanmorgan',
           datePublished: date,
         }}
       />
@@ -58,7 +57,12 @@ export default function Template({ data }) {
                   ? matches.groups.lang
                   : ''
               const code = props.children.props.children.trim()
-              return <CodeBlock code={code} language={language} />
+              // return <CodeBlock code={code} language={language} />
+              return (
+                <pre>
+                  <code>{code}</code>
+                </pre>
+              )
             },
           }}
         >
@@ -85,9 +89,6 @@ export default function Template({ data }) {
 
 export const query = graphql`
   query PostPage($id: String!) {
-    site {
-      ...SiteMetaFields
-    }
     post: mdx(id: { eq: $id }) {
       body
       excerpt

@@ -2,19 +2,20 @@
   "name": "@xdmorgan/personal-site",
   "private": true,
   "description": "Its my website fam",
-  "version": "1.0.0",
+  "version": "2020.0.0-0",
   "author": "Dan Morgan",
   "engines": {
-    "node": "^12.0.0"
+    "node": ">=12.0.0"
   },
   "dependencies": {
+    "classnames": "^2.2.6",
     "dotenv": "^8.0.0",
-    "gatsby": "^2.13.50",
-    "gatsby-theme-xdmorgan": "^1.1.1",
-    "prism-react-renderer": "^0.1.7",
-    "prismjs": "^1.17.1",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "gatsby": "^2.19.17",
+    "gatsby-theme-xdmorgan": "^2.0.0",
+    "prism-react-renderer": "^1.0.2",
+    "prismjs": "^1.19.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
   },
   "keywords": [
     "gatsby",
@@ -27,9 +28,9 @@
     "serve": "http-server -p 8000 public",
     "preview": "yarn build && yarn serve",
     "develop": "gatsby develop",
-    "start": "npm run develop",
+    "start": "yarn develop",
     "format": "prettier --write \"src/**/*.js\"",
-    "test": "jest"
+    "test": "echo \"naw\" && exit 0"
   },
   "devDependencies": {
     "http-server": "^0.11.1"

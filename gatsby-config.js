@@ -7,7 +7,7 @@ module.exports = {
       resolve: 'gatsby-theme-xdmorgan',
       options: {
         gtag: process.env.UA_TRACKING_ID,
-        gfonts: ['IBM Plex Sans:400,700', 'Montserrat:700'],
+        gfonts: ['Lora:400,700'],
         filesystem: [
           {
             name: `images`,
@@ -19,7 +19,7 @@ module.exports = {
           },
         ],
         manifest: {
-          name: `Dan Morgan // UI Engineer`,
+          name: `Dan Morgan • Front End Engineer`,
           short_name: `Dan Morgan`,
           start_url: `/`,
           background_color: `#2b2b31`,

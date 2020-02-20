@@ -1,0 +1,14 @@
+@import 'sass/base/custom-fonts';
+
+html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  font-size: 0.875rem;
+  font-family: var(--font-body);
+  line-height: var(--line-default);
+}

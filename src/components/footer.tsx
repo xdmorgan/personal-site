@@ -1,44 +1,146 @@
 import React from 'react'
 import { Link } from 'gatsby-theme-xdmorgan'
-import styles from './footer.module.css'
+import cx from 'classnames'
+import styles from './footer.module.scss'
 
-const y = new Date().getFullYear()
+const YEAR = new Date().getFullYear()
+const GITHUB = '//github.com/xdmorgan'
+const TWITTER = '//twitter.com/xdanmorgan'
+const LINKEDIN = '//linkedin.com/in/xdmorgan'
 
 export function Footer() {
   return (
-    <footer className={styles.footer}>
+    <footer
+      className={cx(
+        styles.footer,
+        'bg-big-stone',
+        'c-white',
+        'py-4x',
+        'md:pt-8x',
+        'md:pb-10x'
+      )}
+    >
       <div className="container">
-        <div className="wysiwyg text-center child-my-0">
-          <p className="p--small">
-            Built with <Link to="//gatsbyjs.org">Gatsby</Link>, hosted on{' '}
-            <Link to="//netlify.com">Netlify</Link>, source on{' '}
-            <Link to="//github.com/xdmorgan/personal-site">GitHub</Link> ❤️ All
-            rights reserved, {y}.
-          </p>
-          {/* <p className="p--small">
-            For more information, see <Link to="/colophon">this article</Link>{' '}
-            about how I built it.
-          </p> */}
-        </div>
-        <div className={styles.links}>
-          <ul className="list-reset child-my-0">
-            <li>
-              <Link to="//github.com/xdmorgan">
+        <div className={styles.grid}>
+          <h2
+            className={cx(
+              styles.grid__heading,
+              'h3',
+              'mt-0',
+              'mb-4x',
+              'md:mb-0'
+            )}
+          >
+            Thanks for stopping by.
+          </h2>
+          <ul
+            className={cx(
+              styles.links,
+              styles.grid__links,
+              'list-reset',
+              'mt-0',
+              'mb-8x',
+              'md:mb-0',
+              'md:align-r'
+            )}
+          >
+            <li className={cx('mt-0', 'mb-1x', 'md:mb-2x')}>
+              <Link to="/" className={cx('stealth')}>
+                About
+              </Link>
+            </li>
+            <li className={cx('mt-0', 'mb-1x', 'md:mb-2x')}>
+              <Link to="/" className={cx('stealth')}>
+                Blog
+              </Link>
+            </li>
+            <li className={cx('mt-0', 'mb-1x', 'md:mb-2x')}>
+              <Link to="/" className={cx('stealth')}>
+                Contact
+              </Link>
+            </li>
+            <li className={cx('mt-0', 'mb-1x', 'md:mb-2x')}>
+              <Link to={GITHUB} className={cx('stealth')}>
                 GitHub
-                <span aria-hidden> 👉</span>
               </Link>
             </li>
-            <li>
-              <Link to="//linkedin.com/in/xdmorgan">
-                LinkedIn <span aria-hidden> 👉</span>
+            <li className={cx('mt-0', 'mb-1x', 'md:mb-2x')}>
+              <Link to={TWITTER} className={cx('stealth')}>
+                Twitter
               </Link>
             </li>
-            <li>
-              <Link to="mailto:hello@danny.codes">
-                Contact <span aria-hidden> 👉</span>
+            <li className={cx('mt-0', 'mb-1x', 'md:mb-2x')}>
+              <Link to={LINKEDIN} className={cx('stealth')}>
+                LinkedIn
+              </Link>
+            </li>
+            <li className={cx('mt-0', 'mb-1x', 'md:mb-2x')}>
+              <Link to="/" className={cx('stealth')}>
+                RSS
+              </Link>
+            </li>
+            <li className={cx('mt-0', 'mb-1x', 'md:mb-2x')}>
+              <Link to="/" className={cx('stealth')}>
+                Uses
+              </Link>
+            </li>
+            <li className={cx('mt-0', 'mb-1x', 'md:mb-2x')}>
+              <Link to="/styleguide" className={cx('stealth')}>
+                Styleguide
               </Link>
             </li>
           </ul>
+          <p
+            className={cx(
+              styles.grid__colophon,
+              'c-mystic',
+              'mt-0',
+              'mb-1x',
+              'md:mt-12x'
+            )}
+          >
+            {' '}
+            Built with{' '}
+            <span className="c-white">
+              <Link
+                className={cx('fw-bold', 'stealth', 'c-white')}
+                to="//gatsbyjs.org"
+              >
+                Gatsby
+              </Link>
+            </span>{' '}
+            and{' '}
+            <span className="c-white">
+              <Link
+                className={cx('fw-bold', 'stealth', 'c-white')}
+                to="//www.npmjs.com/package/@skeletor/css"
+              >
+                Skeletor
+              </Link>
+            </span>
+            , hosted on{' '}
+            <span className="c-white">
+              <Link
+                className={cx('fw-bold', 'stealth', 'c-white')}
+                to="//netlify.com"
+              >
+                Netlify
+              </Link>
+            </span>
+            , source on{' '}
+            <span className="c-white">
+              <Link
+                className={cx('fw-bold', 'stealth', 'c-white')}
+                to="//github.com/xdmorgan/personal-site"
+              >
+                GitHub
+              </Link>
+            </span>{' '}
+            ❤️
+          </p>
+          <p className={cx(styles.grid__legal, 'my-0')}>
+            All rights reserved, {YEAR}.
+          </p>
         </div>
       </div>
     </footer>

@@ -19,7 +19,7 @@ export function Button({
   className: string
   [props: string]: any
 }) {
-  const Element = as || href || to ? Link : 'button'
+  const Element = as || (href || to ? Link : 'button')
   return (
     <Element
       {...props}

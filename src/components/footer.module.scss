@@ -1,0 +1,53 @@
+@import '../styles/skeletor/sass/skeletor.core';
+
+// .footer {
+// }
+
+.grid {
+  display: grid;
+  grid-auto-flow: dense;
+  row-gap: 0;
+  column-gap: spacing(2x);
+  grid-template-areas:
+    'heading'
+    'links'
+    'colophon'
+    'legal';
+
+  &__heading {
+    grid-area: heading;
+  }
+  &__links {
+    grid-area: links;
+  }
+  &__colophon {
+    grid-area: colophon;
+  }
+  &__legal {
+    grid-area: legal;
+  }
+
+  @include min-width(breakpoint(md)) {
+    grid-template-areas:
+      'heading links'
+      'colophon links'
+      'legal links';
+  }
+  @include min-width(breakpoint(xl)) {
+    grid-template-columns: 1fr minmax(auto, 480px);
+  }
+}
+
+.links {
+  columns: 2;
+
+  @include min-width(breakpoint(sm)) {
+    columns: 3;
+  }
+  @include min-width(breakpoint(md)) {
+    columns: 2;
+  }
+  @include min-width(breakpoint(lg)) {
+    columns: 3;
+  }
+}

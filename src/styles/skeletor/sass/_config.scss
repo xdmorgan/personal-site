@@ -28,9 +28,13 @@ $skeletor: (
   ),
   container: (
     initial: (
-      min: 320px,
+      min: 272px,
       inset: 24px,
-      max: 1500px
+      max: 1400px
+    ),
+    md: (
+      inset: 48px,
+      max: 1400px
     )
   ),
   dimensions: (

@@ -1,14 +1,11 @@
-@import 'sass/base/custom-fonts';
+@import 'skeletor/sass/skeletor.core';
 
-html {
-  box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+$REM_BASE: 16;
+
+@function to-rem($px) {
+  @return ($px / $REM_BASE) * 1rem;
 }
 
-body {
-  margin: 0;
-  font-size: 0.875rem;
-  font-family: var(--font-body);
-  line-height: var(--line-default);
-}
+@import 'base/global-layout';
+@import 'base/custom-fonts';
+@import 'base/typography';

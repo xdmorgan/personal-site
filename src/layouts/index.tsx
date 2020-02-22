@@ -2,7 +2,7 @@ import React from 'react'
 import { SEO } from 'gatsby-theme-xdmorgan'
 import { Footer } from '../components/footer'
 
-import '../styles/skeletor/skeletor.min.css'
+import '../styles/skeletor/skeletor.css'
 import '../styles/main.scss'
 
 import styles from './layout.module.scss'

@@ -5,7 +5,7 @@ import { MDXProvider } from '@mdx-js/react'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 // import { CodeBlock } from '../components/code-block'
 import { SEO } from 'gatsby-theme-xdmorgan'
-import { Link } from '../components/link'
+import { Link } from 'gatsby-theme-xdmorgan'
 
 export default function Template({ data }) {
   const {

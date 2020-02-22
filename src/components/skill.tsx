@@ -4,7 +4,7 @@ import styles from './skill.module.css'
 
 export function Skill({ title, children }) {
   return (
-    <div className="wysiwyg child-my-0">
+    <div className="child-my-0">
       <h3 className="h5">{title}</h3>
       <p className="p--small">{children}</p>
     </div>

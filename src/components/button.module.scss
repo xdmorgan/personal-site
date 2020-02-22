@@ -1,0 +1,44 @@
+@import '../styles/skeletor/sass/skeletor.core.scss';
+
+.button {
+  // boz-sizing
+  position: relative;
+  display: inline-block;
+  min-width: spacing(2x);
+  padding: 12px spacing(3x) 14px;
+  border-radius: rounded-corners(normal);
+  border: none;
+  // theme styles
+  color: color(white);
+  background-color: color(denim);
+  font-weight: bold;
+  // content styles
+  text-align: center;
+  text-decoration: none;
+  line-height: line-height(compact);
+  transition: all 200ms ease-in-out;
+  box-shadow: 0 0 0 0 transparent;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px color(blue-ribbon, 0.3);
+  }
+  &:hover,
+  &:active {
+    color: color(white);
+  }
+  &:hover {
+    background-color: color(blue-ribbon);
+  }
+  &:active {
+    background-color: color(midnight-blue);
+  }
+  &[disabled] {
+    color: color(abbey);
+    background-color: color(silver);
+  }
+
+  &.fill {
+    width: 100%;
+  }
+}

@@ -1502,10 +1502,10 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
   integrity sha512-ONhaKPIufzzrlNbqtWFFd+jlnemX6lJAgq9ZeiZtS7I1PIf/la7CW4m83rTXRnVnsMbW2k56pGYu7AUFJD9Pow==
 
-"@skeletor/css@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@skeletor/css/-/css-0.6.0.tgz#443d2741d6f643efcd9e28bb0f1efe6aac8fc7cd"
-  integrity sha512-DPM1TvTV5gOJGpmAF8t2nUreeCEHLBf+fY6tLmFeByiZvVw+G0uE+sjS+cG9ZfbrGi2BGABld2eaRw7fNBqd3g==
+"@skeletor/css@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@skeletor/css/-/css-0.8.0.tgz#7232c85fc79b9ce4680e392387f0f86bedb3c780"
+  integrity sha512-qSW93iXEpHsQR4lmESx4SuJw0IlnK1Zs1Sk6llu4GwbfP7kGHoc/H3epiJxI1NrldcmF3I50/RIVDIMlB6fuGw==
   dependencies:
     cross-spawn "^7.0.1"
     fs-extra "^8.1.0"
@@ -6344,10 +6344,10 @@ gatsby-telemetry@^1.1.49:
     stack-utils "1.0.2"
     uuid "3.3.3"
 
-gatsby-theme-xdmorgan@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/gatsby-theme-xdmorgan/-/gatsby-theme-xdmorgan-2.0.1.tgz#42a1b1fb92eb427f9af95eec8be277c47aa08e91"
-  integrity sha512-xcq+1gJKU48oz1gO/5oQtJFJi15cOkPMTSwq6MR7c+1o9+sFoAD3nxnU0BbeItukPuTtrp380zeD9pw26GT2qw==
+gatsby-theme-xdmorgan@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/gatsby-theme-xdmorgan/-/gatsby-theme-xdmorgan-2.1.0.tgz#dd50383b4db4b61cc0f5fbe6d7fe4734a05de241"
+  integrity sha512-OuIuH6bBgxPgWDOvSueu+YZb0FSG8AeZohqinKIWME5T1nQpNNJ2rrPVgUEOw2vXMzb5CHmDWXfWd970X9jCYw==
   dependencies:
     "@mdx-js/mdx" "^1.5.5"
     "@mdx-js/react" "^1.5.5"

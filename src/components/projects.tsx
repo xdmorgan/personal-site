@@ -2,18 +2,18 @@ import React from 'react'
 import cx from 'classnames'
 import styles from './projects.module.css'
 import { Section } from './section'
-import { Link } from './link'
+import { Link } from 'gatsby-theme-xdmorgan'
 
 export function Projects() {
   return (
     <Section
       sidebar={() => (
-        <div className="wysiwyg child-my-0">
+        <div className="child-my-0">
           <h2 className="h3">Projects &amp; Experiments</h2>
         </div>
       )}
     >
-      <div className="child-my-0 wysiwyg">
+      <div className="child-my-0">
         <ul className={cx(styles.list, 'list-reset')}>
           <Item
             heading={() => (

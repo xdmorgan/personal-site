@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config()
 
 module.exports = {
   siteMetadata: {},
@@ -7,7 +7,7 @@ module.exports = {
       resolve: 'gatsby-theme-xdmorgan',
       options: {
         gtag: process.env.UA_TRACKING_ID,
-        gfonts: ['Lora:400,700'],
+        gfonts: ['Lora:400,700', 'Fira Code:400,700'],
         filesystem: [
           {
             name: `images`,
@@ -46,4 +46,4 @@ module.exports = {
       },
     },
   ],
-};
+}

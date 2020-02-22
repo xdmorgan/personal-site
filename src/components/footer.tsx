@@ -1,7 +1,6 @@
 import React from 'react'
-import cx from 'classnames'
+import { Link } from 'gatsby-theme-xdmorgan'
 import styles from './footer.module.css'
-import { Link } from './link'
 
 const y = new Date().getFullYear()
 

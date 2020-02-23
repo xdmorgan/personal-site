@@ -4,7 +4,7 @@ import { Button } from '../../components'
 
 export default function Page() {
   return (
-    <div className="container py-2x md:py-4x">
+    <div className="container py-10x md:pt-12x">
       <div>
         <Link to="/styleguide">Styleguide</Link>
       </div>

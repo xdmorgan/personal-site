@@ -65,10 +65,6 @@ export function Footer() {
           >
             <> Built with </>
             <ColophonLink to="//gatsbyjs.org">Gatsby</ColophonLink>
-            <> and </>
-            <ColophonLink to="//www.npmjs.com/package/@skeletor/css">
-              Skeletor
-            </ColophonLink>
             <>, hosted on </>
             <ColophonLink to="//netlify.com">Netlify</ColophonLink>
             <>, source on </>

@@ -3,7 +3,7 @@ import { Link } from 'gatsby-theme-xdmorgan'
 
 export default function Page() {
   return (
-    <div className="container">
+    <div className="container py-10x md:pt-12x">
       <div>
         <Link to="/styleguide">Styleguide</Link>
       </div>

@@ -1,0 +1,21 @@
+@import '../styles/skeletor/sass/skeletor.core';
+
+.absolute {
+  position: absolute;
+  left: 0;
+}
+
+.nav {
+  @include min-width(breakpoint(sm)) {
+    @include property-x(margin, (spacing(1x) * -1));
+  }
+  @include min-width(breakpoint(lg)) {
+    @include property-x(margin, (spacing(2x) * -1));
+  }
+
+  &__skip {
+    position: absolute;
+    left: 0;
+    top: 100%;
+  }
+}

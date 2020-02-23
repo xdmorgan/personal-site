@@ -207,12 +207,6 @@ a.stealth {
   .h1--xxl {
     @include type-d-h1--xxl;
   }
-  .h1--xl {
-    @include type-d-h1--xl;
-  }
-  .h1--xxl {
-    @include type-d-h1--xxl;
-  }
   .h2,
   .wysiwyg h2 {
     @include type-d-h2;

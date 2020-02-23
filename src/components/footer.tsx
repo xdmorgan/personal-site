@@ -44,51 +44,15 @@ export function Footer() {
               'md:align-r'
             )}
           >
-            <li className={cx('mt-0', 'mb-1x', 'md:mb-2x')}>
-              <Link to="/" className={cx('stealth')}>
-                About
-              </Link>
-            </li>
-            <li className={cx('mt-0', 'mb-1x', 'md:mb-2x')}>
-              <Link to="/" className={cx('stealth')}>
-                Blog
-              </Link>
-            </li>
-            <li className={cx('mt-0', 'mb-1x', 'md:mb-2x')}>
-              <Link to="/" className={cx('stealth')}>
-                Contact
-              </Link>
-            </li>
-            <li className={cx('mt-0', 'mb-1x', 'md:mb-2x')}>
-              <Link to={GITHUB} className={cx('stealth')}>
-                GitHub
-              </Link>
-            </li>
-            <li className={cx('mt-0', 'mb-1x', 'md:mb-2x')}>
-              <Link to={TWITTER} className={cx('stealth')}>
-                Twitter
-              </Link>
-            </li>
-            <li className={cx('mt-0', 'mb-1x', 'md:mb-2x')}>
-              <Link to={LINKEDIN} className={cx('stealth')}>
-                LinkedIn
-              </Link>
-            </li>
-            <li className={cx('mt-0', 'mb-1x', 'md:mb-2x')}>
-              <Link to="/" className={cx('stealth')}>
-                RSS
-              </Link>
-            </li>
-            <li className={cx('mt-0', 'mb-1x', 'md:mb-2x')}>
-              <Link to="/" className={cx('stealth')}>
-                Uses
-              </Link>
-            </li>
-            <li className={cx('mt-0', 'mb-1x', 'md:mb-2x')}>
-              <Link to="/styleguide" className={cx('stealth')}>
-                Styleguide
-              </Link>
-            </li>
+            <NavLink to="/">About</NavLink>
+            <NavLink to="/">Blog</NavLink>
+            <NavLink to="/">Contact</NavLink>
+            <NavLink to={GITHUB}>GitHub</NavLink>
+            <NavLink to={TWITTER}>Twitter</NavLink>
+            <NavLink to={LINKEDIN}>Linked In</NavLink>
+            <NavLink to="/">RSS</NavLink>
+            <NavLink to="/">Uses</NavLink>
+            <NavLink to="/styleguide">Styleguide</NavLink>
           </ul>
           <p
             className={cx(
@@ -99,44 +63,15 @@ export function Footer() {
               'md:mt-12x'
             )}
           >
-            {' '}
-            Built with{' '}
-            <span className="c-white">
-              <Link
-                className={cx('fw-bold', 'stealth', 'c-white')}
-                to="//gatsbyjs.org"
-              >
-                Gatsby
-              </Link>
-            </span>{' '}
-            and{' '}
-            <span className="c-white">
-              <Link
-                className={cx('fw-bold', 'stealth', 'c-white')}
-                to="//www.npmjs.com/package/@skeletor/css"
-              >
-                Skeletor
-              </Link>
-            </span>
-            , hosted on{' '}
-            <span className="c-white">
-              <Link
-                className={cx('fw-bold', 'stealth', 'c-white')}
-                to="//netlify.com"
-              >
-                Netlify
-              </Link>
-            </span>
-            , source on{' '}
-            <span className="c-white">
-              <Link
-                className={cx('fw-bold', 'stealth', 'c-white')}
-                to="//github.com/xdmorgan/personal-site"
-              >
-                GitHub
-              </Link>
-            </span>{' '}
-            ❤️
+            <> Built with </>
+            <ColophonLink to="//gatsbyjs.org">Gatsby</ColophonLink>
+            <>, hosted on </>
+            <ColophonLink to="//netlify.com">Netlify</ColophonLink>
+            <>, source on </>
+            <ColophonLink to="//github.com/xdmorgan/personal-site">
+              GitHub
+            </ColophonLink>
+            <> ❤️</>
           </p>
           <p className={cx(styles.grid__legal, 'my-0')}>
             All rights reserved, {YEAR}.
@@ -144,5 +79,31 @@ export function Footer() {
         </div>
       </div>
     </footer>
+  )
+}
+
+function NavLink({ to, children }: { to: string; children: React.ReactNode }) {
+  return (
+    <li className={cx('mt-0', 'mb-1x', 'md:mb-2x')}>
+      <Link to={to} className="stealth">
+        {children}
+      </Link>
+    </li>
+  )
+}
+
+function ColophonLink({
+  to,
+  children,
+}: {
+  to: string
+  children: React.ReactNode
+}) {
+  return (
+    <span className="c-white">
+      <Link className={cx('fw-bold', 'stealth', 'c-white')} to={to}>
+        {children}
+      </Link>
+    </span>
   )
 }

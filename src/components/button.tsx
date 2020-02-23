@@ -12,11 +12,11 @@ export function Button({
   ...props
 }: {
   children: React.ReactNode
-  fill: boolean
-  as: string
-  href: string
-  to: string
-  className: string
+  fill?: boolean
+  as?: string
+  href?: string
+  to?: string
+  className?: string
   [props: string]: any
 }) {
   const Element = as || (href || to ? Link : 'button')

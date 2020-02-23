@@ -1,5 +1,6 @@
 normalize: true
 displays: true
+flex: true
 
 breakpoints:
   sm: 420px

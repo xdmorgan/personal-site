@@ -1,15 +1,13 @@
 import * as React from 'react'
-import { SEO } from 'gatsby-theme-xdmorgan'
+// import { Link } from 'gatsby-theme-xdmorgan'
 import { Section } from '../components/section'
 import { Skill } from '../components/skill'
 import { Divider } from '../components/divider'
 import { Projects } from '../components/projects'
-// import { Link } from 'gatsby-theme-xdmorgan'
 
 export default function Page() {
   return (
     <>
-      <SEO title="Dan Morgan" />
       <Section
         sidebar={() => (
           <div className="wysiwyg child-my-0">

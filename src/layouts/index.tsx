@@ -1,21 +1,17 @@
 import React from 'react'
 import { SEO } from 'gatsby-theme-xdmorgan'
-import { Footer } from '../components/footer'
+import { Header, Footer } from '../components'
 
 import '../styles/skeletor/skeletor.css'
 import '../styles/main.scss'
 
-import styles from './layout.module.scss'
-
-const Layout = ({ children }) => (
-  <div className={styles.layout}>
-    <SEO />
-    <main>
-      {children}
-
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <SEO />
+      <Header />
+      <main id="content">{children}</main>
       <Footer />
-    </main>
-  </div>
-)
-
-export default Layout
+    </>
+  )
+}

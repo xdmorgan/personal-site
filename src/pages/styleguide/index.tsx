@@ -6,10 +6,13 @@ export default function Page() {
     <div className="container py-10x md:pt-12x">
       <ul>
         <li>
-          <Link to="/styleguide/typography">Typograhy</Link>
+          <Link to="/styleguide/button">Button</Link>
         </li>
         <li>
-          <Link to="/styleguide/button">Button</Link>
+          <Link to="/styleguide/contact">Contact</Link>
+        </li>
+        <li>
+          <Link to="/styleguide/typography">Typograhy</Link>
         </li>
       </ul>
     </div>

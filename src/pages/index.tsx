@@ -11,70 +11,32 @@ export default function Page() {
   return (
     <>
       <div className="container py-10x md:pt-16x md:pb-12x">
-        <Section
-          sidebar={() => (
-            <div className="wysiwyg child-my-0">
-              <h1>Dan M</h1>
-              <h2 className="h3">Senior Engineer, Washington DC</h2>
-            </div>
-          )}
-        >
-          <div className="wysiwyg child-my-0">
-            <p>
-              Over my career, I've worked with Cartoon Network, Cvent, Designer
-              Fund, EA Sports, Facebook, Huge, Instagram, Kia Motors, LinkedIn,
-              NASA, Oculus, and Universal Studios to craft digital experiences
-              for web, mobile, and emerging platforms.
-            </p>
-            <p>
-              Currently, I work as an Associate Tech Lead at{' '}
-              <a href="https://hugeinc.com">Huge</a> in Washington D.C.
-              Previously, I have held roles as a Senior UI Developer at&nbsp;
-              <a href="https://cvent.com/">Cvent</a>, Full-stack Developer
-              at&nbsp;
-              <a href="https://prpl.rs/">PRPL</a>, Application Developer
-              at&nbsp;
-              <a href="https://gifn.it/">Gifn</a> and UI Designer at&nbsp;
-              <a href="https://xstudios.agency/">X Studios</a>.
-            </p>
-            <p>
-              Since graduating university in 2010, I've built award-winning
-              websites, scalable cloud services, accessible component libraries,
-              machine-learning powered chatbots, native &amp; cross-platform
-              mobile applications, and web-based SaaS applications.
-            </p>
-            <p>
-              Once I've closed my computer for the day, my hobbies include
-              watching and playing soccer, working up a sweat in cycling
-              classes, watching food documentaries, and playing video games.
-            </p>
-          </div>
-        </Section>
-
-        <Divider maxWidth margin={false} />
-
-        <Projects />
-
-        <Divider maxWidth margin={false} />
-
-        <Section
-          sidebar={() => (
-            <div className="wysiwyg child-my-0">
-              <h2 className="h3">Expertise</h2>
-            </div>
-          )}
-        >
-          <div
-            className="wysiwyg child-my-0"
-            style={{ marginBottom: 'var(--space-5)' }}
+        <div className="child-my-0 py-8x md:py-10x xl: lg:py-12x">
+          <h1
+            className="h1--xl align-c"
+            style={{ maxWidth: 1000, marginLeft: 'auto', marginRight: 'auto' }}
           >
-            <p>
-              My design and engineering experience in corporate software and
-              creative consulting environments has given me a unique ability to
-              bridge the gaps between design direction, technical
-              implementation, and business objectives.
-            </p>
-          </div>
+            Dan is a Front End Engineer{' '}
+            <span className="fw-normal">
+              working on design systems at Wayfair
+            </span>{' '}
+            in Washington D.C.
+          </h1>
+        </div>
+
+        <Section
+          sidebar={() => (
+            <div className="child-my-0 md:pr-4x">
+              <h2 className="h3">Skills &amp; Expertise</h2>
+              <p className="small">
+                Throughout his career, Dan has worked with companies including:
+                Cartoon Network, EA Sports, Facebook, Huge, LinkedIn, NASA,
+                Oculus, and Wayfair to craft digital products for web, mobile,
+                and emerging platforms.
+              </p>
+            </div>
+          )}
+        >
           <Skill.Grid>
             <Skill title="Front-End Development">
               HTML, JavaScript, React, redux, Angular, Vue, GraphQL, REST, CSS,
@@ -112,12 +74,14 @@ export default function Page() {
               Sketch, Figma, Photoshop, Illustrator, Zeplin, Invision, asset
               optimization, and Framer X
             </Skill>
-            {/* <Skill title="Team Leadership">
-            Architecture, mentorship, code reviews, presentations, diagrams, and
-            pair programming
-          </Skill> */}
           </Skill.Grid>
         </Section>
+
+        <div className="mt-8x md:mt-10x lg:mt-12x">
+          <Projects />
+        </div>
+
+        <Divider maxWidth margin={false} />
       </div>
 
       {/* <Divider maxWidth margin={false} />

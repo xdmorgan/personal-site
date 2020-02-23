@@ -8,7 +8,7 @@
     "node": ">=12.0.0"
   },
   "dependencies": {
-    "@skeletor/css": "^0.8.0",
+    "@skeletor/css": "^0.9.0",
     "classnames": "^2.2.6",
     "dotenv": "^8.0.0",
     "gatsby": "^2.19.17",

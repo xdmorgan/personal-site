@@ -1,0 +1,34 @@
+@import '../styles/skeletor/sass/skeletor.core';
+
+.grid {
+  display: grid;
+  gap: spacing(3x);
+
+  @include min-width(breakpoint(md)) {
+    gap: spacing(4x);
+  }
+  @include min-width(breakpoint(lg)) {
+    grid-template-columns: repeat(12, 1fr);
+
+    &__bio {
+      grid-column: 1 / 5;
+    }
+    &__skills {
+      grid-column: 5 / -1;
+    }
+  }
+}
+
+.skills {
+  display: grid;
+  gap: spacing(3x);
+  grid-template-columns: repeat(2, 1fr);
+
+  @include min-width(breakpoint(md)) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: spacing(4x);
+  }
+
+  @include min-width(breakpoint(lg)) {
+  }
+}

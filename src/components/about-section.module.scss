@@ -30,7 +30,4 @@
     grid-template-columns: repeat(3, 1fr);
     column-gap: spacing(4x);
   }
-
-  @include min-width(breakpoint(lg)) {
-  }
 }

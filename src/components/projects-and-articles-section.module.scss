@@ -1,0 +1,72 @@
+@import '../styles/skeletor/sass/skeletor.core';
+
+.section {
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  gap: spacing(3x);
+
+  &__projects {
+    position: relative;
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: -100vw;
+      right: -100vw;
+      bottom: 0;
+      background-color: color(spring-wood);
+    }
+
+    & > * {
+      position: relative;
+    }
+  }
+
+  @include min-width(breakpoint(md)) {
+    grid-template-columns: repeat(12, 1fr);
+    gap: spacing(4x);
+
+    &__projects {
+      grid-column: 1 / -5;
+
+      &:before {
+        right: (spacing(4x) * -1);
+      }
+    }
+    &__articles {
+      grid-column: -5 / -1;
+    }
+  }
+}
+
+.projects {
+  display: grid;
+  position: relative;
+  column-gap: spacing(3x);
+  row-gap: spacing(4x);
+  grid-template-columns: repeat(2, 1fr);
+
+  @include min-width(breakpoint(md)) {
+    gap: spacing(4x);
+  }
+}
+
+.articles {
+  display: grid;
+  position: relative;
+  column-gap: spacing(3x);
+  row-gap: spacing(4x);
+  grid-template-columns: 1fr;
+
+  @include min-width(breakpoint(sm)) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include min-width(breakpoint(md)) {
+    grid-template-columns: 1fr;
+  }
+}

@@ -180,17 +180,20 @@
 
 a,
 .link {
-  color: var(--color-blue-ribbon);
+  color: color(blue-ribbon);
   &:hover {
-    color: var(--color-denim);
+    color: color(denim);
   }
   &:active {
-    color: var(--color-midnight-blue);
+    color: color(midnight-blue);
   }
-}
-a.stealth {
-  text-decoration: none;
-  color: inherit;
+  &.stealth {
+    text-decoration: none;
+    color: inherit;
+  }
+  &.no-underline:not(:hover):not(:active):not(:focus) {
+    text-decoration: none;
+  }
 }
 
 /* Responsives

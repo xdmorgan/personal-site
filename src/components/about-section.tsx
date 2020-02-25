@@ -93,7 +93,10 @@ export function Skill({
   [props: string]: any
 }) {
   return (
-    <div {...props} className={cx(styles.grid__skill, 'child-my-0', className)}>
+    <div
+      {...props}
+      className={cx(styles.grid__skill, 'child-my-0 lg:mb-2x', className)}
+    >
       <h3 className="h5 mb-1x md:mb-2x">{title}</h3>
       <p className="c-mystic m-0">{children}</p>
     </div>

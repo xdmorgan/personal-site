@@ -2,10 +2,11 @@
 
 .grid {
   display: grid;
-  gap: spacing(3x);
+  column-gap: spacing(3x);
+  row-gap: spacing(4x);
 
   @include min-width(breakpoint(md)) {
-    gap: spacing(4x);
+    column-gap: spacing(4x);
   }
   @include min-width(breakpoint(lg)) {
     grid-template-columns: repeat(12, 1fr);
@@ -21,12 +22,13 @@
 
 .skills {
   display: grid;
-  gap: spacing(3x);
+  column-gap: spacing(3x);
+  row-gap: spacing(4x);
   grid-template-columns: repeat(2, 1fr);
 
   @include min-width(breakpoint(md)) {
     grid-template-columns: repeat(3, 1fr);
-    gap: spacing(4x);
+    column-gap: spacing(4x);
   }
 
   @include min-width(breakpoint(lg)) {

@@ -3,19 +3,17 @@ import * as React from 'react'
 import { Divider } from '../components/divider'
 import { Projects } from '../components/projects'
 
-import { AboutSection, ContactSection } from '../components'
+import {
+  AboutSection,
+  ContactSection,
+  ProjectsAndArticlesSection,
+} from '../components'
 
 export default function Page() {
   return (
     <>
       <AboutSection />
-      <div className="container">
-        <div className="my-8x md:my-8x lg:my-10x">
-          <Projects />
-        </div>
-
-        <Divider maxWidth margin={false} />
-      </div>
+      <ProjectsAndArticlesSection />
 
       {/* <Divider maxWidth margin={false} />
 

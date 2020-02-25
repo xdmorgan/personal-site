@@ -9,7 +9,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <SEO />
-      <Header />
+      <Header textColor="white" />
       <main id="content">{children}</main>
       <Footer />
     </>

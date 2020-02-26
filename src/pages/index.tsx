@@ -8,25 +8,35 @@ import {
   ProjectsAndArticlesSection,
 } from '../components'
 
+const postSlugToRoute = s => `/blog/${s}`
+
 export default function Page({ data }: any) {
-  console.log(data)
   const {
     posts: { nodes: posts },
-    featuredPostImage,
+    featuredProjectImage,
   } = data
-  const [featuredPost, ...recentPosts] = posts
+  const [featuredPost, ...recentPosts] = posts // real posts
   return (
     <>
       <AboutSection />
-      <FeaturedProjectSection />
+      <FeaturedProjectSection
+        imageSrc={featuredProjectImage.childImageSharp}
+        imageAlt="Designer fund employees"
+        title="Design for Business Impact"
+        description="A triumvirate of Gatsby, Contentful, and Netlify power this Designer Fund microsite. The site was featured on Awwwards and integrates with the Mailchimp API using serverless Netlify Functions."
+        url="https://designerfund.com/business-impact"
+      />
       <ProjectsAndArticlesSection
-        featuredPostImage={featuredPost.frontmatter.thumbnail.childImageSharp}
+        featuredPostImageSrc={
+          featuredPost.frontmatter.image.thumbnail.childImageSharp
+        }
+        featuredPostImageAlt={featuredPost.frontmatter.image.alt}
         featuredPostTitle={featuredPost.frontmatter.title}
-        featuredPostURL={`/${featuredPost.fields.slug}`}
+        featuredPostURL={postSlugToRoute(featuredPost.fields.slug)}
         featuredPostExcerpt={featuredPost.excerpt}
         recentPosts={recentPosts.map(recentPost => ({
           title: recentPost.frontmatter.title,
-          url: `/${recentPost.fields.slug}`,
+          url: postSlugToRoute(recentPost.fields.slug),
         }))}
       />
       <ContactSection />
@@ -36,9 +46,9 @@ export default function Page({ data }: any) {
 
 export const query = graphql`
   query {
-    featuredPostImage: file(relativePath: { eq: "featured-dfbi.jpg" }) {
+    featuredProjectImage: file(relativePath: { eq: "featured-dfbi.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 700) {
+        fluid(maxWidth: 1400, quality: 50) {
           ...GatsbyImageSharpFluid_noBase64
         }
       }

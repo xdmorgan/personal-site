@@ -4,7 +4,7 @@ import styles from './about-section.module.scss'
 
 export function AboutSection() {
   return (
-    <section className="bg-blue-gradient c-white py-8x md:py-10x lg:py-12x xl:py-16x">
+    <section className="bg-blue-gradient c-white py-10x lg:py-12x xl:py-16x">
       <div className="container">
         <div className="child-my-0 py-10x md:py-12x lg:py-16x sm:px-4x">
           <h1
@@ -39,32 +39,32 @@ export function AboutSection() {
           </div>
           <div className={cx(styles.grid__skills, styles.skills)}>
             <Skill title="Front-End Development">
-              HTML, JavaScript, React, redux, Angular, Vue, GraphQL, REST, CSS,
-              Sass, CSS-in-JS, and email
+              HTML, JavaScript, React, Angular, Vue, CSS, Sass,
+              styled-components, SVG, animation, and HTML email
             </Skill>
             <Skill title="Full-Stack Development">
-              Node, Python, PHP, WordPress, GraphQL, REST, Firebase, and
-              Relational &amp; Document DBs
+              Node, Python, WordPress, GraphQL, REST, Firebase, and Relational
+              &amp; Document DBs
             </Skill>
             <Skill title="Design Systems">
-              Atomic design, tokens, theming, Storybook, Lerna, documentation
-              and component API design
+              Atomic design, Storybook, tokens, theming, and component API
+              design
             </Skill>
             <Skill title="Project Architecture">
-              AWS, GCP, Docker, NPM, JAMStack, headless CMS, cloud functions,
-              and CI/CD pipelines
+              AWS, GCP, Docker, NPM, JAMStack, headless CMS, serverless lambda
+              functions, and CI/CD pipelines
             </Skill>
             <Skill title="Testing &amp; Tooling">
-              Webpack, Jest, Prettier, ESLint, Flow, TypeScript, Babel, aXe,
-              Parcel, Gulp, and Cypress
+              Webpack, Jest, Prettier, ESLint, Flow, TypeScript, Babel, Parcel,
+              Gulp, and Cypress
             </Skill>
             <Skill title="Mobile &amp; Emerging Tech">
               Swift, React Native, Xamarin (C#), PWAs, Actions on Google, and
               Dialogflow
             </Skill>
             <Skill title="Accessibility &amp; i18n">
-              WCAG 2.1 guidelines, Section 508, ARIA, RTL, screenreaders, and
-              internationalization
+              WCAG 2.1 &amp; Section 508 guidelines, ARIA accessible
+              applications, axe, JAWS, Wave, and Accessibility Insights for Web
             </Skill>
             <Skill title="Project Management">
               Git, GitHub, BitBucket, JIRA, Trello, Asana, kanban &amp; scrum
@@ -72,7 +72,7 @@ export function AboutSection() {
             </Skill>
             <Skill title="Design Tools &amp; Hand-off">
               Sketch, Figma, Photoshop, Illustrator, Zeplin, Invision, asset
-              optimization, and Framer X
+              optimization, Abstract, and Framer X
             </Skill>
             <Skill className="d-block md:d-none" title="Team Leadership">
               Architecture, mentorship, code reviews, presentations, diagrams,

@@ -16,10 +16,10 @@ export default function Template({ data }) {
     frontmatter: { title, image, date, tags },
   } = data.post
   return (
-    <div className="container">
+    <div className="container py-10x md:py-12x lg:py-16x">
       <SEO
         schema={true}
-        image={image.childImageSharp.fluid.src}
+        image={image.src.childImageSharp.fluid.src}
         title={title}
         description={excerpt}
         blogPost={{
@@ -34,7 +34,7 @@ export default function Template({ data }) {
           marginBottom: 'var(--space-5)',
         }}
       >
-        <Image fluid={image.childImageSharp.fluid} alt={title} />
+        <Image fluid={image.src.childImageSharp.fluid} alt={image.alt} />
         <h1>{title}</h1>
         <p>
           {tags} • {timeToRead} minute read
@@ -96,9 +96,12 @@ export const query = graphql`
       frontmatter {
         title
         image {
-          childImageSharp {
-            fluid(maxWidth: 1200, quality: 75) {
-              ...GatsbyImageSharpFluid_withWebp
+          alt
+          src {
+            childImageSharp {
+              fluid(maxWidth: 1920, quality: 75) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
             }
           }
         }

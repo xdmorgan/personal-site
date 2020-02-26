@@ -16,7 +16,7 @@ export const metaFields = graphql`
 `
 
 export const content = graphql`
-  fragment PostContent on Mdx {
+  fragment PostBodyContent on Mdx {
     body
   }
 `
@@ -25,10 +25,12 @@ export const featureImage = graphql`
   fragment PostFeatureImage on Mdx {
     frontmatter {
       image {
-        childImageSharp {
-          fluid(maxWidth: 1920, quality: 75) {
-            # ...GatsbyImageSharpFluid_withWebp
-            src
+        alt
+        full: src {
+          childImageSharp {
+            fluid(maxWidth: 1920, quality: 75) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
           }
         }
       }
@@ -39,11 +41,13 @@ export const featureImage = graphql`
 export const thumbnailImage = graphql`
   fragment PostThumbnailImage on Mdx {
     frontmatter {
-      thumbnail: image {
-        childImageSharp {
-          fluid(maxWidth: 960, quality: 75) {
-            # ...GatsbyImageSharpFluid_withWebp
-            src
+      image {
+        alt
+        thumbnail: src {
+          childImageSharp {
+            fluid(maxWidth: 960, quality: 50) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
           }
         }
       }

@@ -1,5 +1,6 @@
 import React from 'react'
 import cx from 'classnames'
+import Image from 'gatsby-image'
 import { Link } from 'gatsby-theme-xdmorgan'
 import styles from './projects-and-articles-section.module.scss'
 
@@ -27,17 +28,6 @@ function ProjectsSection() {
           <ul className={cx(styles.projects, 'list-reset')}>
             <Project
               heading={() => (
-                <Link className="no-underline" to="https://designerfund.com">
-                  Designer Fund
-                </Link>
-              )}
-            >
-              Redesign and replatform; migrated to JAMStack via Gatsby, Netlify,
-              and Contentful
-            </Project>
-
-            <Project
-              heading={() => (
                 <Link
                   className="no-underline"
                   to="http://yasly.com/work/hotpoints/"
@@ -57,22 +47,19 @@ function ProjectsSection() {
                 </Link>
               )}
             >
-              Worked on the Swift native iOS application rewrite (previously
-              PWA) for the gif-generating event photo booth start-up.
+              Worked on the native Swift iOS application for the gif-generating
+              photobooth start-up
             </Project>
 
             <Project
               heading={() => (
-                <Link
-                  className="no-underline"
-                  to="https://designerfund.com/business-impact"
-                >
-                  Design for Business Impact
+                <Link className="no-underline" to="https://designerfund.com">
+                  Designer Fund
                 </Link>
               )}
             >
-              Gatsby, Netlify, and Contentful for the Designer Fund.
-              Authentication using a custom Mailchimp integration
+              Replatformed from two WordPress sites to a single JAMStack site
+              using Gatsby, Netlify, and Contentful
             </Project>
 
             <Project
@@ -85,8 +72,8 @@ function ProjectsSection() {
                 </Link>
               )}
             >
-              Now.sh and Next.js project to live-preview blog posts using the
-              Contentful Preview API
+              Now.sh and Next.js project to live-preview markdown blog posts
+              using the Contentful Preview API
             </Project>
 
             <Project
@@ -99,8 +86,8 @@ function ProjectsSection() {
                 </Link>
               )}
             >
-              Wrote the Node AWS Lambda services to generate gifs from the Vue
-              application's Powfactor quiz
+              Node.js AWS Lambda services to generate gifs based on the Vue
+              client application's Powfactor quiz results
             </Project>
 
             <Project
@@ -121,14 +108,29 @@ function ProjectsSection() {
               heading={() => (
                 <Link
                   className="no-underline"
+                  to="https://designerfund.com/business-impact"
+                >
+                  Automate the Boring Stuff with Python
+                </Link>
+              )}
+            >
+              Collection of solutions to exercises from the second edition of
+              the popular{' '}
+              <Link to="https://automatetheboringstuff.com/">Python book</Link>.
+            </Project>
+
+            <Project
+              heading={() => (
+                <Link
+                  className="no-underline"
                   to="https://github.com/xdmorgan/netlify-functions"
                 >
                   Netlify Functions
                 </Link>
               )}
             >
-              Collection of open-source Lambda functions written for personal
-              Netlify projects but applicable to any Lambda environment
+              Collection of misc. Lambda functions. Instantly use with Netlify
+              and compatible with comparable services on AWS, GCP, etc.
             </Project>
 
             <Project
@@ -142,29 +144,38 @@ function ProjectsSection() {
               )}
             >
               Spacing, typography, and color utility generator for rapid
-              prototyping and design systems
+              prototyping and design systems.{' '}
+              <Link to="https://www.npmjs.com/package/@skeletor/css">
+                Available on NPM
+              </Link>
+              .
             </Project>
 
             <Project
               heading={() => (
                 <Link
                   className="no-underline"
-                  to="https://github.com/xdmorgan/gatsby-starter"
+                  to="https://github.com/xdmorgan/gatsby-theme-xdmorgan"
                 >
-                  Gatsby v2 Starter Project
+                  gatsby-theme-xdmorgan
                 </Link>
               )}
             >
-              TypeScript, PostCSS, Styled Components, Jest, MDX, CircleCI,
-              Netlify, Prettier, Stylelint, and dotenv
+              Pre-configured TypeScript, Sass, MDX, SEO, Local Files, Google
+              Fonts, and Google Analytics.{' '}
+              <Link to="https://www.npmjs.com/package/gatsby-theme-xdmorgan">
+                Available on NPM
+              </Link>
+              .
             </Project>
           </ul>
         </div>
         <footer className="child-my-0">
           <p>
-            For more project, check out my profiles on{' '}
-            <Link to="//github.com/xdmorgan">GitHub</Link> and{' '}
-            <Link to="//codepen.io/xdmorgan">CodePen</Link>
+            For more, see my profiles on{' '}
+            <Link to="https://github.com/xdmorgan">GitHub</Link>,{' '}
+            <Link to="https://www.codewars.com/users/xdmorgan">Codewars</Link>,{' '}
+            and <Link to="https://codepen.io/xdmorgan">CodePen</Link>
           </p>
         </footer>
       </div>
@@ -186,7 +197,7 @@ function Project({
   return (
     <li
       {...props}
-      className={cx(styles.item, 'child-my-0 lg:pr-2x xl:pr-4x', className)}
+      className={cx(styles.item, 'child-my-0 lg:pr-2x xl:pr-8x', className)}
     >
       <h3 className="h4 mb-1x">{heading()}</h3>
       <p className="m-0">{children}</p>
@@ -195,7 +206,6 @@ function Project({
 }
 
 function ArticlesSection(props) {
-  console.log(props)
   return (
     <div
       className={cx(
@@ -205,42 +215,38 @@ function ArticlesSection(props) {
       )}
     >
       <aside className={styles.articles__featured}>
-        <header className="child-my-0 lg:mt-4x lg:pt-2x">
+        <header className="child-my-0 lg:mt-4x">
           <h2 className="h6">Featured Post</h2>
         </header>
-        <img
+        <Image
           className="w-fill mt-3x mb-2x md:mt-4x md:mb-3x"
-          src="https://source.unsplash.com/random/1600x900"
-          alt="Unsplash ranodm placeholder image"
+          fluid={props.featuredPostImageSrc.fluid}
+          alt={props.featurePostImageAlt}
         />
         <Link
-          className="h3 d-block no-underline mb-2x"
+          className="h2 d-block no-underline my-2x"
           to={props.featuredPostURL}
         >
           {props.featuredPostTitle}
         </Link>
         <p className="small m-0">{props.featuredPostExcerpt}</p>
       </aside>
-      <section className={styles.articles__recent}>
-        <header className="child-my-0">
+      <section
+        className={cx(styles.articles__recent, {
+          'd-none': !props.recentPosts.length,
+        })}
+      >
+        <header className="child-my-0 mb-3x md:mb-4x">
           <h2 className="h2">Articles &amp; Tutorials</h2>
         </header>
         <ul className="list-reset mb-4x md:mb-8x">
-          <li className="mb-2x md:mb-3x">
-            <Link className="h4 no-underline" to="/">
-              Using Interest Groups With The Mailchimp V3 API
-            </Link>
-          </li>
-          <li className="mb-2x md:mb-3x">
-            <Link className="h4 no-underline" to="/">
-              Gatsby Themes: Publish to NPM
-            </Link>
-          </li>
-          <li className="mb-2x md:mb-3x">
-            <Link className="h4 no-underline" to="/">
-              Best of the week: February 22 2020
-            </Link>
-          </li>
+          {props.recentPosts.map(recentPost => (
+            <li key={recentPost.title} className="mb-2x md:mb-3x">
+              <Link className="h4 no-underline" to={recentPost.url}>
+                {recentPost.title}
+              </Link>
+            </li>
+          ))}
         </ul>
         <footer className="child-my-0">
           <p>

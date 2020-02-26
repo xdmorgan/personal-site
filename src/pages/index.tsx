@@ -34,10 +34,12 @@ export default function Page({ data }: any) {
         featuredPostTitle={featuredPost.frontmatter.title}
         featuredPostURL={postSlugToRoute(featuredPost.fields.slug)}
         featuredPostExcerpt={featuredPost.excerpt}
-        recentPosts={recentPosts.map(recentPost => ({
-          title: recentPost.frontmatter.title,
-          url: postSlugToRoute(recentPost.fields.slug),
-        }))}
+        recentPosts={[featuredPost, featuredPost, featuredPost].map(
+          recentPost => ({
+            title: recentPost.frontmatter.title,
+            url: postSlugToRoute(recentPost.fields.slug),
+          })
+        )}
       />
       <ContactSection />
     </>

@@ -33,9 +33,9 @@ export function Header({
               'm-0 list-reset d-flex flx-g-1 flx-a-c flx-j-fe child-mx-0'
             )}
           >
-            <NavLink to="/">About</NavLink>
-            <NavLink to="/">Articles</NavLink>
-            <NavLink to="/">Contact</NavLink>
+            <NavLink to="/#about">About</NavLink>
+            <NavLink to="/#projects">Work</NavLink>
+            <NavLink to="/#contact">Contact</NavLink>
           </ul>
         </nav>
       </div>

@@ -1,39 +1,53 @@
 import * as React from 'react'
-// import { Link } from 'gatsby-theme-xdmorgan'
-import { Divider } from '../components/divider'
-import { Projects } from '../components/projects'
+import { graphql } from 'gatsby'
 
 import {
   AboutSection,
   ContactSection,
+  FeaturedProjectSection,
   ProjectsAndArticlesSection,
 } from '../components'
 
-export default function Page() {
+export default function Page({ data }: any) {
+  console.log(data)
+  const {
+    posts: { nodes: posts },
+    featuredPostImage,
+  } = data
+  const [featuredPost, ...recentPosts] = posts
   return (
     <>
       <AboutSection />
-      <ProjectsAndArticlesSection />
-
-      {/* <Divider maxWidth margin={false} />
-
-      <Section
-        sidebar={() => (
-          <div className="wysiwyg child-my-0">
-            <h2 className="h3">Articles</h2>
-          </div>
-        )}
-      >
-        <div className="child-my-0 wysiwyg">
-          <h3 className="h2">
-            <Link to="/blog/mailchimp-api-interests">
-              How to Find and Use Interest IDs with the Mailchimp API
-            </Link>
-          </h3>
-          <p className="p--small">1 minute read &bull; PHP, Mailchimp, APIs</p>
-        </div>
-      </Section> */}
+      <FeaturedProjectSection />
+      <ProjectsAndArticlesSection
+        featuredPostImage={featuredPost.frontmatter.thumbnail.childImageSharp}
+        featuredPostTitle={featuredPost.frontmatter.title}
+        featuredPostURL={`/${featuredPost.fields.slug}`}
+        featuredPostExcerpt={featuredPost.excerpt}
+        recentPosts={recentPosts.map(recentPost => ({
+          title: recentPost.frontmatter.title,
+          url: `/${recentPost.fields.slug}`,
+        }))}
+      />
       <ContactSection />
     </>
   )
 }
+
+export const query = graphql`
+  query {
+    featuredPostImage: file(relativePath: { eq: "featured-dfbi.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 700) {
+          ...GatsbyImageSharpFluid_noBase64
+        }
+      }
+    }
+    posts: allMdx(sort: { order: DESC, fields: [frontmatter___date] }) {
+      nodes {
+        ...PostMetaFields
+        ...PostThumbnailImage
+      }
+    }
+  }
+`

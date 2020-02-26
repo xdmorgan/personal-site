@@ -6,10 +6,14 @@ export function AboutSection() {
   return (
     <section className="bg-blue-gradient c-white py-8x md:py-10x lg:py-12x xl:py-16x">
       <div className="container">
-        <div className="child-my-0 py-10x md:py-12x lg:py-16x">
+        <div className="child-my-0 py-10x md:py-12x lg:py-16x sm:px-4x">
           <h1
             className="h1--xl align-c"
-            style={{ maxWidth: 1000, marginLeft: 'auto', marginRight: 'auto' }}
+            style={{
+              maxWidth: 1000,
+              marginLeft: 'auto',
+              marginRight: 'auto',
+            }}
           >
             Dan is a Front End Engineer{' '}
             <span className="fw-normal c-mystic">building design systems</span>{' '}
@@ -17,7 +21,7 @@ export function AboutSection() {
           </h1>
         </div>
       </div>
-      <div className="container">
+      <div className="container md:py-4x">
         <div className={styles.grid}>
           <div
             className={cx(
@@ -27,10 +31,10 @@ export function AboutSection() {
           >
             <h2 className="h3 mb-2x lg:mb-4x">Skills &amp; Expertise</h2>
             <p className="small c-mystic">
-              Throughout his career, Dan has worked with companies including:
-              Cartoon Network, EA Sports, Facebook, Huge, LinkedIn, NASA,
-              Oculus, and Wayfair to craft digital products for web, mobile, and
-              emerging platforms.
+              Throughout his career, Dan has worked with companies like: Cartoon
+              Network, EA Sports, Facebook, Huge, LinkedIn, NASA, Oculus, and
+              Wayfair to craft digital products for web, mobile, and emerging
+              platforms.
             </p>
           </div>
           <div className={cx(styles.grid__skills, styles.skills)}>

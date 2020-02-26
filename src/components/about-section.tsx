@@ -21,7 +21,7 @@ export function AboutSection() {
           </h1>
         </div>
       </div>
-      <div className="container md:py-4x">
+      <div id="about" className="container md:py-8x">
         <div className={styles.grid}>
           <div
             className={cx(

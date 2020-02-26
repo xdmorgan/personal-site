@@ -3,7 +3,7 @@ import { Button } from '.'
 
 export function ContactSection() {
   return (
-    <section className="bg-midnight-blue c-white">
+    <section id="contact" className="bg-midnight-blue c-white">
       <div className="container align-c child-my-0 py-8x md:pt-10x lg:pt-12x lg:pb-10x">
         <h2 className="h1 my-0">Want to get in touch?</h2>
         <p

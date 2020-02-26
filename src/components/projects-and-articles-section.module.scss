@@ -28,8 +28,11 @@
   }
 
   @include min-width(breakpoint(md)) {
-    grid-template-columns: repeat(12, 1fr);
     gap: spacing(4x);
+  }
+
+  @include min-width(breakpoint(lg)) {
+    grid-template-columns: repeat(12, 1fr);
 
     &__projects {
       grid-column: 1 / -5;
@@ -59,14 +62,23 @@
 .articles {
   display: grid;
   position: relative;
-  column-gap: spacing(3x);
-  row-gap: spacing(4x);
-  grid-template-columns: 1fr;
+  gap: spacing(3x);
 
-  @include min-width(breakpoint(sm)) {
-    grid-template-columns: repeat(2, 1fr);
+  &__featuredImage {
+    margin-right: (spacing(3x) * -1);
   }
   @include min-width(breakpoint(md)) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: spacing(4x);
+
+    &__featuredImage {
+      margin-right: 0;
+    }
+  }
+  @include min-width(breakpoint(lg)) {
     grid-template-columns: 1fr;
+    &__featuredImage {
+      margin-right: (spacing(1x) * -6);
+    }
   }
 }

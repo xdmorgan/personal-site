@@ -19,7 +19,10 @@ export function ProjectsAndArticlesSection({ ...articlesProps }) {
 
 function ProjectsSection() {
   return (
-    <section className={cx(styles.grid__projects, 'py-8x md:py-12x lg:py-16x')}>
+    <section
+      id="projects"
+      className={cx(styles.grid__projects, 'pt-4x pb-8x md:py-12x lg:py-16x')}
+    >
       <div className="lg:py-4x">
         <header className="child-my-0">
           <h2 className="h2">Projects &amp; Experiments</h2>
@@ -197,7 +200,7 @@ function Project({
   return (
     <li
       {...props}
-      className={cx(styles.item, 'child-my-0 lg:pr-2x xl:pr-8x', className)}
+      className={cx(styles.item, 'child-my-0 lg:pr-4x xl:pr-8x', className)}
     >
       <h3 className="h4 mb-1x">{heading()}</h3>
       <p className="m-0">{children}</p>
@@ -208,29 +211,38 @@ function Project({
 function ArticlesSection(props) {
   return (
     <div
+      id="articles"
       className={cx(
         styles.grid__articles,
         styles.articles,
-        'pt-4x pb-8x md:py-12x md:pl-4x lg:py-16x lg:pl-8x'
+        'pt-4x pb-8x md:pt-8x lg:py-16x lg:pl-8x'
       )}
     >
       <aside className={styles.articles__featured}>
-        <header className="child-my-0 lg:mt-4x">
+        <header className="child-my-0 d-block md:d-none lg:d-block lg:mt-4x">
           <h2 className="h6">Featured Post</h2>
         </header>
-        <Image
-          className="w-fill mt-3x mb-2x md:mt-4x md:mb-3x"
-          fluid={props.featuredPostImageSrc.fluid}
-          alt={props.featurePostImageAlt}
-        />
+        <div
+          className={cx(
+            styles.articles__featuredImage,
+            'mt-3x mb-2x md:mt-4x md:mb-3x'
+          )}
+        >
+          <Image
+            className="w-fill"
+            fluid={props.featuredPostImageSrc.fluid}
+            alt={props.featurePostImageAlt}
+          />
+        </div>
         <Link
-          className="h2 d-block no-underline my-2x"
+          className="h3 d-block no-underline my-2x"
           to={props.featuredPostURL}
         >
           {props.featuredPostTitle}
         </Link>
         <p className="small m-0">{props.featuredPostExcerpt}</p>
       </aside>
+
       <section
         className={cx(styles.articles__recent, {
           'd-none': !props.recentPosts.length,

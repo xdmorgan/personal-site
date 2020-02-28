@@ -13,7 +13,7 @@ export default function Template({ data }) {
     excerpt,
     timeToRead,
     fields: { slug },
-    frontmatter: { title, image, date, tags, theme },
+    frontmatter: { title, image, date, category, theme },
   } = data.post
   const lede =
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in elementum risus, eget egestas nibh. Mauris eget ligula convallis lacus varius tristique. Maecenas lacus nisl, dapibus nec dapibus eu, fermentum in ligula.'
@@ -30,24 +30,37 @@ export default function Template({ data }) {
         }}
       />
       <header
-        className="bg-shark py-10x md:py-12x lg:py-16x c-white"
+        className="bg-shark pt-10x pb-4x md:py-12x lg:py-16x c-white"
         style={{ backgroundColor: theme.header }}
       >
         <div className="container">
-          <h1 className="h1--xxl mb-3x md:mb-4x lg:mb-8x">{title}</h1>
-          <p className="lede c-alabaster">{lede}</p>
+          <h1 className="h1--xxl mb-4x md:mb-8x">{title}</h1>
+          <ul
+            className="list-reset mt-0 mb-2x md:mb-0 lg:align-r d-flex lg:d-block"
+            style={{ flexWrap: 'wrap' }}
+          >
+            <li className="child-my-0 mb-2x pr-3x sm:pr-4x lg:pr-0 flx-s-0">
+              <span className="d-block c-mystic">Published</span>
+              <span className="d-block h5 mt-1x md:mt-2x">{date}</span>
+            </li>
+            <li className="child-my-0 mb-2x pr-3x sm:pr-4x lg:pr-0 flx-s-0">
+              <span className="d-block c-mystic">Length</span>
+              <span className="d-block h5 mt-1x md:mt-2x">
+                {timeToRead} Minute{timeToRead > 1 ? 's' : ''}
+              </span>
+            </li>
+            <li className="child-my-0 mb-2x pr-3x sm:pr-4x lg:pr-0 flx-s-0">
+              <span className="d-block c-mystic">Category</span>
+              <span className="d-block h5 mt-1x md:mt-2x">{category}</span>
+            </li>
+          </ul>
+          <p className="m-0 lede c-alabaster">{lede}</p>
         </div>
       </header>
-      <figure>
+      <figure className="m-0">
         <Image fluid={image.full.childImageSharp.fluid} alt={image.alt} />
         <figcaption>{image.attribution}</figcaption>
       </figure>
-
-      <div className="wysiwyg child-my-0">
-        <p>
-          {tags} • {timeToRead} minute read
-        </p>
-      </div>
       <div className="container wysiwyg child-my-0">
         <MDXProvider
           components={{

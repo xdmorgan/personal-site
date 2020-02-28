@@ -1,7 +1,7 @@
 import React from 'react'
 import cx from 'classnames'
 import Highlight, { defaultProps } from 'prism-react-renderer'
-import theme from 'prism-react-renderer/themes/vsDark'
+import theme from 'prism-react-renderer/themes/oceanicNext'
 
 import styles from './code-block.module.scss'
 
@@ -9,7 +9,7 @@ export const CodeBlock = ({ code, language }) => (
   <Highlight {...defaultProps} theme={theme} code={code} language={language}>
     {({ className, style, tokens, getLineProps, getTokenProps }) => (
       <pre
-        className={cx(styles.pre, 'p-2x md:p-3x lg:py-4x md:rad-normal')}
+        className={cx(styles.pre, 'p-2x md:p-3x lg:py-4x md:rc-normal')}
         style={style}
       >
         {tokens.map((line, i) => (

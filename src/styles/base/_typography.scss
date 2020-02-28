@@ -196,6 +196,12 @@ a,
   }
 }
 
+pre,
+code,
+kbd {
+  font-family: font-family(mono);
+}
+
 /* Responsives
 ----------------------------------*/
 
@@ -265,16 +271,15 @@ a,
   blockquote,
   figure,
   pre {
-    @include property-y(margin, to-rem(18));
+    @include property-y(margin, to-rem(16));
 
     @include min-width(breakpoint(md)) {
-      @include property-y(margin, to-rem(24));
+      @include property-y(margin, to-rem(20));
     }
   }
 
   code {
     font-size: 0.9em;
-    font-family: font-family(mono);
     color: color(eucalyptus);
     background-color: color(panache);
     border-radius: rounded-corners(small);
@@ -283,7 +288,6 @@ a,
 
   kbd {
     font-size: 0.9em;
-    font-family: font-family(mono);
     position: relative;
     border: 1px solid color(silver);
     color: color(tundora);

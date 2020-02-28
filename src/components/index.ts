@@ -1,5 +1,6 @@
 export { AboutSection } from './about-section'
 export { Button } from './button'
+export { CodeBlock } from './code-block'
 export { ContactSection } from './contact-section'
 export { FeaturedProjectSection } from './featured-project-section'
 export { Footer } from './footer'

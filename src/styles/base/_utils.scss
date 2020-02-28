@@ -7,11 +7,12 @@
 }
 
 .bg-blue-gradient {
-  background: color(denim)
-    linear-gradient(
-      140deg,
-      color(denim) -2.77%,
-      #062860 43.63%,
-      color(big-stone) 91%
-    );
+  // background: color(denim)
+  //   linear-gradient(
+  //     140deg,
+  //     color(denim) -2.77%,
+  //     #062860 43.63%,
+  //     color(big-stone) 91%
+  //   );
+  background: #170f2e linear-gradient(-60deg, #274d8c, #170f2e 76%, #180d1f);
 }

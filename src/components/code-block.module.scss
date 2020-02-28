@@ -1,0 +1,23 @@
+@import '../styles/skeletor/sass/skeletor.core';
+
+.pre {
+  overflow-x: auto;
+
+  @include max-width(breakpoint(md)) {
+    @include property-x(margin, (spacing(3x) * -1));
+  }
+
+  :global {
+    .token-line {
+      line-height: 1.25em;
+      height: 1.25em;
+    }
+  }
+}
+
+.line {
+  display: inline-block;
+  width: 2em;
+  user-select: none;
+  opacity: 0.3;
+}

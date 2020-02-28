@@ -6,9 +6,13 @@ export const metaFields = graphql`
       slug
     }
     frontmatter {
+      date(formatString: "MMMM D, YYYY")
       title
       tags
-      date(formatString: "MMMM D, YYYY")
+      category
+      theme {
+        header
+      }
     }
     timeToRead
     excerpt(pruneLength: 140)
@@ -21,11 +25,22 @@ export const content = graphql`
   }
 `
 
-export const featureImage = graphql`
-  fragment PostFeatureImage on Mdx {
+export const imageMeta = graphql`
+  fragment PostImageMeta on Mdx {
     frontmatter {
       image {
         alt
+        attribution
+      }
+    }
+  }
+`
+
+export const featureImage = graphql`
+  fragment PostFeatureImage on Mdx {
+    ...PostImageMeta
+    frontmatter {
+      image {
         full: src {
           childImageSharp {
             fluid(maxWidth: 1920, quality: 75) {
@@ -40,9 +55,9 @@ export const featureImage = graphql`
 
 export const thumbnailImage = graphql`
   fragment PostThumbnailImage on Mdx {
+    ...PostImageMeta
     frontmatter {
       image {
-        alt
         thumbnail: src {
           childImageSharp {
             fluid(maxWidth: 960, quality: 50) {

@@ -265,10 +265,10 @@ a,
   blockquote,
   figure,
   pre {
-    margin: to-rem(18) 0;
+    @include property-y(margin, to-rem(18));
 
     @include min-width(breakpoint(md)) {
-      margin: to-rem(24) 0;
+      @include property-y(margin, to-rem(24));
     }
   }
 

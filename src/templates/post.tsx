@@ -67,7 +67,7 @@ export default function Template({ data }) {
             <Image fluid={image.full.childImageSharp.fluid} alt={image.alt} />
           </div>
         </div>
-        <figcaption className="container lg:align-r pt-2x lg:pt-3x c-abbey">
+        <figcaption className="container lg:align-r pt-2x lg:pt-3x c-abbey caption">
           <Link className="stealth" to={image.attribution.link}>
             {image.attribution.text}
           </Link>

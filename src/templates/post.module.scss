@@ -1,0 +1,33 @@
+@import '../styles/skeletor/sass/skeletor.core';
+
+.header {
+  display: grid;
+
+  @include min-width(breakpoint(lg)) {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 32px;
+    grid-auto-flow: dense;
+    grid-template-areas:
+      'heading heading heading heading heading heading heading heading heading meta meta meta'
+      'lede    lede    lede    lede    lede    lede    lede    lede    lede    meta meta meta';
+    h1 {
+      grid-area: heading;
+    }
+    ul {
+      grid-area: meta;
+    }
+    p {
+      grid-area: lede;
+    }
+  }
+}
+
+.hero {
+  @include property-x(margin, (spacing(3x) * -1));
+
+  @include min-width(breakpoint(md)) {
+    margin-top: spacing(10x) * -1;
+    margin-left: 0;
+    margin-right: spacing(1x) * -6;
+  }
+}

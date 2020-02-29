@@ -78,6 +78,7 @@ spacings:
   2x: 16px
   3x: 24px
   4x: 32px
+  6x: 48px
   8x: 64px
   10x: 80px
   12x: 96px

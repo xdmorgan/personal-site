@@ -30,7 +30,10 @@ export const imageMeta = graphql`
     frontmatter {
       image {
         alt
-        attribution
+        attribution {
+          text
+          link
+        }
       }
     }
   }

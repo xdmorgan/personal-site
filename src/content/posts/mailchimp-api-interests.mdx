@@ -8,18 +8,12 @@ theme:
 image:
   src: ./mailchimp-api-interests/header.jpg
   alt: 'Row of mailboxes'
-  attribution: 'Photo credit: Mathyas Kurmann on Unsplash'
+  attribution:
+    text: 'Photo credit: Mathyas Kurmann on Unsplash'
+    link: 'https://unsplash.com/photos/fb7yNPbT0l8'
 ---
 
 A client recently asked me to update their Mailchimp integration to add support for sub-group targeting using interest groups. Finding the process more involved than I expected, I wanted to share my experience locating the relevant IDs in the admin interface and examples including them in an API request.
-
-## Table of Contents
-
-1. Creating an API Key
-1. Finding the Interest ID
-1. Usage in PHP
-1. Usage in Node.js
-1. References
 
 ## Creating an API Key
 
@@ -29,7 +23,7 @@ In order to create new users using we'll first need to create an API key with ac
 
 ## Finding the Interest ID
 
-Now that we have an API key, we need to find the interest ID and to do that, we'll need to use the [Mailchimp API Playground](https://us1.api.mailchimp.com/playground/). Using the API Key we just created, log into the API Playground and follow the steps below to navigate through the ensuing screens to find the desired interest.
+Now that we have an API key, we need to find the interest ID. To do that, we'll need to use the [Mailchimp API Playground](https://us1.api.mailchimp.com/playground/). Using the API Key we just created, log into the API Playground and follow the steps below to navigate through the ensuing screens to find the desired interest.
 
 ![Mailchimp API Playground: Enter API token](./mailchimp-api-interests/api-playground.png)
 
@@ -82,4 +76,3 @@ Since writing the original version of this post, I was asked to implement simila
 
 - [Mailchimp API PHP Class](https://github.com/drewm/mailchimp-api/blob/master/src/Mailchimp.php)
 - [StackOverflow: Finding Mailchimp List IDs](https://stackoverflow.com/questions/37311116/can-you-get-a-mailchimp-interest-group-id-without-using-the-api)
-- Header photo provided by [Mathyas Kurmann on Unsplash](https://unsplash.com/photos/fb7yNPbT0l8)

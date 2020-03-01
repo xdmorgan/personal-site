@@ -5,7 +5,7 @@
 
   @include min-width(breakpoint(lg)) {
     grid-template-columns: repeat(12, 1fr);
-    column-gap: 32px;
+    column-gap: spacing(4x);
     grid-auto-flow: dense;
     grid-template-areas:
       'heading heading heading heading heading heading heading heading heading meta meta meta'
@@ -29,5 +29,26 @@
     margin-top: spacing(10x) * -1;
     margin-left: 0;
     margin-right: spacing(1x) * -6;
+  }
+}
+
+.main {
+  display: grid;
+  &__content {
+    min-width: 0;
+  }
+  @include min-width(breakpoint(lg)) {
+    grid-template-columns: 244px 1fr;
+    column-gap: spacing(8x);
+  }
+  @include min-width(breakpoint(xl)) {
+    column-gap: spacing(12x);
+  }
+}
+
+.toc {
+  & > div {
+    position: sticky;
+    top: 0;
   }
 }

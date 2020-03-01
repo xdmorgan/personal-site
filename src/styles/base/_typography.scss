@@ -1,3 +1,24 @@
+/* Headings
+----------------------------------*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+blockquote,
+figure,
+pre {
+  @include property-y(margin, 1rem);
+}
+
+/* Headings
+----------------------------------*/
+
 @mixin typebeast(
   $size,
   $line: null,
@@ -147,7 +168,12 @@
 }
 
 .para,
-.wysiwyg p {
+.wysiwyg p,
+.wysiwyg ul,
+.wysiwyg ol,
+.wysiwyg dl,
+.wysiwyg blockquote,
+.wysiwyg figcaption {
   @include type-m-para;
 }
 
@@ -175,7 +201,7 @@
   @include type-m-caption;
 }
 
-/* Links
+/* Links & other inlines
 ----------------------------------*/
 
 a,
@@ -200,6 +226,33 @@ pre,
 code,
 kbd {
   font-family: font-family(mono);
+}
+
+code {
+  font-size: 0.9em;
+  color: color(eucalyptus);
+  background-color: color(panache);
+  border-radius: rounded-corners(small);
+  padding: 0.2em 0.3em 0.3em;
+}
+
+kbd {
+  font-size: 0.9em;
+  position: relative;
+  border: 1px solid color(silver);
+  color: color(tundora);
+  background-color: color(alabaster);
+  border-radius: rounded-corners(small);
+  padding: 0.1em 0.3em 0.15em;
+  box-shadow: 0 0.15em 0 0 color(silver);
+}
+
+/* Uhhh misc 
+----------------------------------*/
+
+figure,
+blockquote {
+  @include property-x(margin, 0);
 }
 
 /* Responsives
@@ -245,7 +298,12 @@ kbd {
     @include type-d-lede;
   }
   .para,
-  .wysiwyg p {
+  .wysiwyg p,
+  .wysiwyg ul,
+  .wysiwyg ol,
+  .wysiwyg dl,
+  .wysiwyg blockquote,
+  .wysiwyg figcaption {
     @include type-d-para;
   }
   .small,
@@ -258,7 +316,19 @@ kbd {
   }
 }
 
+/* WYSIWYG rhythm 
+----------------------------------*/
+
 .wysiwyg {
+  // h1,
+  // h2,
+  // h3,
+  // h4,
+  // h5,
+  // h6 {
+  //   scroll-margin-top: spacing(6x);
+  // }
+
   h1,
   h2,
   h3,
@@ -268,32 +338,56 @@ kbd {
   p,
   ul,
   ol,
+  dl,
   blockquote,
   figure,
   pre {
-    @include property-y(margin, to-rem(16));
+    @include property-y(margin, spacing(2x));
 
     @include min-width(breakpoint(md)) {
-      @include property-y(margin, to-rem(20));
+      @include property-y(margin, spacing(3x));
     }
   }
 
-  code {
-    font-size: 0.9em;
-    color: color(eucalyptus);
-    background-color: color(panache);
-    border-radius: rounded-corners(small);
-    padding: 0.2em 0.3em 0.3em;
+  h1,
+  h2 {
+    margin-top: spacing(6x);
+
+    @include min-width(breakpoint(md)) {
+      margin-top: spacing(10x);
+    }
+  }
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: spacing(4x);
+
+    @include min-width(breakpoint(md)) {
+      margin-top: spacing(6x);
+    }
   }
 
-  kbd {
-    font-size: 0.9em;
-    position: relative;
+  pre,
+  figure,
+  & > img,
+  blockquote,
+  & > p > .gatsby-resp-image-wrapper {
+    @include property-y(margin, spacing(6x));
+
+    @include min-width(breakpoint(md)) {
+      @include property-y(margin, spacing(8x));
+    }
+  }
+
+  figure,
+  & > img {
+    display: block;
+  }
+
+  figure,
+  & > img,
+  & > p > .gatsby-resp-image-wrapper {
     border: 1px solid color(silver);
-    color: color(tundora);
-    background-color: color(alabaster);
-    border-radius: rounded-corners(small);
-    padding: 0.1em 0.3em 0.15em;
-    box-shadow: 0 0.15em 0 0 color(silver);
   }
 }

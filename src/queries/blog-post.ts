@@ -21,6 +21,7 @@ export const metaFields = graphql`
 
 export const content = graphql`
   fragment PostBodyContent on Mdx {
+    tableOfContents
     body
   }
 `

@@ -197,7 +197,7 @@ pre {
 }
 
 .caption,
-.wysiwyg caption {
+.wysiwyg figcaption {
   @include type-m-caption;
 }
 
@@ -302,8 +302,7 @@ blockquote {
   .wysiwyg ul,
   .wysiwyg ol,
   .wysiwyg dl,
-  .wysiwyg blockquote,
-  .wysiwyg figcaption {
+  .wysiwyg blockquote {
     @include type-d-para;
   }
   .small,
@@ -320,15 +319,6 @@ blockquote {
 ----------------------------------*/
 
 .wysiwyg {
-  // h1,
-  // h2,
-  // h3,
-  // h4,
-  // h5,
-  // h6 {
-  //   scroll-margin-top: spacing(6x);
-  // }
-
   h1,
   h2,
   h3,
@@ -360,7 +350,8 @@ blockquote {
   h3,
   h4,
   h5,
-  h6 {
+  h6,
+  pre {
     margin-top: spacing(4x);
 
     @include min-width(breakpoint(md)) {
@@ -368,7 +359,6 @@ blockquote {
     }
   }
 
-  pre,
   figure,
   & > img,
   blockquote,
@@ -380,14 +370,42 @@ blockquote {
     }
   }
 
-  figure,
   & > img {
     display: block;
+    border: 1px solid color(silver);
   }
 
-  figure,
-  & > img,
-  & > p > .gatsby-resp-image-wrapper {
+  .gatsby-resp-image-wrapper {
     border: 1px solid color(silver);
+  }
+
+  figure {
+    & > * {
+      margin: 0;
+    }
+    figcaption {
+      padding-top: spacing(2x);
+      color: color(abbey);
+    }
+
+    @include min-width(breakpoint(md)) {
+      figcaption {
+        padding-top: spacing(3x);
+      }
+    }
+  }
+}
+
+/* WYSIWYG post 
+----------------------------------*/
+
+.wysiwyg--post {
+  & > * {
+    max-width: 720px;
+  }
+  & > pre,
+  & > figure,
+  & > iframe {
+    max-width: none;
   }
 }

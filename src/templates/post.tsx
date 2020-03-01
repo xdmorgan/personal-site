@@ -9,7 +9,8 @@ import { SEO, Link } from 'gatsby-theme-xdmorgan'
 import { CodeBlock } from '../components'
 import styles from './post.module.scss'
 
-export default function Template({ data }) {
+export default function Template({ data: { post, avatar } }) {
+  console.log(avatar)
   const {
     body,
     excerpt,
@@ -17,7 +18,7 @@ export default function Template({ data }) {
     tableOfContents,
     fields: { slug },
     frontmatter: { title, image, date, category, theme },
-  } = data.post
+  } = post
   const lede =
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in elementum risus, eget egestas nibh. Mauris eget ligula convallis lacus varius tristique. Maecenas lacus nisl, dapibus nec dapibus eu, fermentum in ligula.'
   return (
@@ -79,7 +80,16 @@ export default function Template({ data }) {
           <div
             className={cx(styles.main__sidebar, 'd-none lg:d-flex lg:flx-d-c')}
           >
-            <div className="flx-g-0 p-3x md:p-4x bg-spring-wood">
+            <div className="flx-g-0 p-3x pt-0 md:p-4x md:pt-0 bg-spring-wood">
+              <div
+                className="rc-normal position-relative mb-3x"
+                style={{ overflow: 'hidden', marginTop: 8 * -3, width: 74 }}
+              >
+                <Image
+                  fluid={avatar.childImageSharp.fluid}
+                  alt="Dan in silhouette"
+                />
+              </div>
               <h2 className="h5 mt-0 mb-2x md:mb-2x md:pb-05x">
                 About the Author
               </h2>
@@ -89,14 +99,20 @@ export default function Template({ data }) {
               </p>
             </div>
             <div className={cx(styles.toc, 'flx-g-1')}>
-              <div className="p-3x lg:p-6x">
+              <div className="p-3x md:px-4x md:py-6x">
                 <h2 className="h5 mt-0 mb-2x md:mb-2x md:pb-05x">
                   Table of Contents
                 </h2>
                 <ul className="list-reset p-0 m-0">
-                  {tableOfContents.items.map(heading => (
+                  {tableOfContents.items.map((heading, idx) => (
                     <li key={heading.url}>
-                      <Link className="stealth" to={heading.url}>
+                      <Link
+                        className={cx(
+                          'stealth caption d-block position-relative',
+                          { 'is-active': false }
+                        )}
+                        to={heading.url}
+                      >
                         {heading.title}
                       </Link>
                     </li>
@@ -104,7 +120,10 @@ export default function Template({ data }) {
                 </ul>
               </div>
             </div>
-            <div className="flx-g-0 p-3x md:p-4x">
+            <div
+              style={{ borderTop: '1px solid var(--color-mystic)' }}
+              className="flx-g-0 p-3x md:px-4x md:py-6x"
+            >
               <h2 className="h5 mt-0 mb-2x md:mb-2x md:pb-05x">
                 Questions &amp; Comments
               </h2>
@@ -124,9 +143,23 @@ export default function Template({ data }) {
               </p>
             </div>
           </div>
-          <div className={cx(styles.main__content, 'wysiwyg')}>
+          <div
+            className={cx(
+              styles.main__content,
+              'wysiwyg wysiwyg--post child-my-0'
+            )}
+          >
             <MDXProvider
               components={{
+                highlight: ({ className, ...props }) => (
+                  <div
+                    className={cx(
+                      'bg-spring-wood p-3x md:p-4x child-my-0',
+                      className
+                    )}
+                    {...props}
+                  />
+                ),
                 pre: props => {
                   const langClass = props.children.props.className || ''
                   const matches = langClass.match(/language-(?<lang>.*)/)
@@ -150,6 +183,13 @@ export default function Template({ data }) {
 
 export const query = graphql`
   query PostPage($id: String!) {
+    avatar: file(relativePath: { eq: "avatar.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 148, quality: 50) {
+          ...GatsbyImageSharpFluid_noBase64
+        }
+      }
+    }
     post: mdx(id: { eq: $id }) {
       ...PostMetaFields
       ...PostFeatureImage

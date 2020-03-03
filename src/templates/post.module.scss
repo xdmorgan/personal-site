@@ -64,7 +64,8 @@
       top: 6px;
       width: 6px;
       height: 6px;
-      border: 1px solid color(silver);
+      color: color(silver);
+      border: 1px solid currentColor;
       background-color: transparent;
       transition: all 200ms ease;
       border-radius: 50%;
@@ -72,9 +73,10 @@
   }
   :global {
     .is-active::before {
-      transform: scale(1.5);
-      border-color: color(blue-ribbon);
-      background-color: color(blue-ribbon);
+      // transform: scale(1.5);
+      // border-color: color(blue-ribbon);
+      color: color(blue-ribbon);
+      background-color: currentColor;
     }
   }
 }

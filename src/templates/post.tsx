@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { graphql } from 'gatsby'
 import cx from 'classnames'
 import Image from 'gatsby-image'
@@ -10,7 +10,6 @@ import { CodeBlock } from '../components'
 import styles from './post.module.scss'
 
 export default function Template({ data: { post, avatar } }) {
-  console.log(avatar)
   const {
     body,
     excerpt,
@@ -98,28 +97,7 @@ export default function Template({ data: { post, avatar } }) {
                 Washington D.C. Previously: Huge, Cvent, Gifn and PRPL.
               </p>
             </div>
-            <div className={cx(styles.toc, 'flx-g-1')}>
-              <div className="p-3x md:px-4x md:py-6x">
-                <h2 className="h5 mt-0 mb-2x md:mb-2x md:pb-05x">
-                  Table of Contents
-                </h2>
-                <ul className="list-reset p-0 m-0">
-                  {tableOfContents.items.map((heading, idx) => (
-                    <li key={heading.url}>
-                      <Link
-                        className={cx(
-                          'stealth caption d-block position-relative',
-                          { 'is-active': false }
-                        )}
-                        to={heading.url}
-                      >
-                        {heading.title}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+            <TableOfContents items={tableOfContents.items} />
             <div
               style={{ borderTop: '1px solid var(--color-mystic)' }}
               className="flx-g-0 p-3x md:px-4x md:py-6x"
@@ -178,6 +156,70 @@ export default function Template({ data: { post, avatar } }) {
         </div>
       </div>
     </article>
+  )
+}
+
+function TableOfContents({
+  items = [],
+}: {
+  items: { url: string; title: string }[]
+}) {
+  const initial = items.reduce((acc, cur) => ({ ...acc, [cur.url]: false }), {})
+  const [status, setStatus] = useState({ ...initial })
+  // rules:
+  // 1. visible item can be the only one active after halfway
+  // 2. can show multiple on screen
+  // 3. if thre's none above halfway go back to the previous
+  // 4. if there is no previous, none active
+  // recalculate on resize
+  // const waypoints = items
+  //   .map(item => document.querySelector(item.url))
+  //   .filter(Boolean)
+  //   .reduce((acc, cur) => ({ ...acc, [cur.id]: cur.offsetTop }), {})
+  // // refresh when waypoints are recalculated
+  // useEffect(() => {
+  //   function onScroll() {
+  //     const pos = window.scrollY || window.pageYOffset
+  //     const viewport = {
+  //       min: pos,
+  //       mid: pos + window.innerHeight / 2,
+  //       max: pos + window.innerHeight,
+  //     }
+  //     const inView = Object.keys(waypoints).filter(
+  //       k => waypoints[k] <= viewport.max
+  //     )
+  //     const update = inView.reduce(
+  //       (acc, cur) => ({ ...acc, [`#${cur}`]: true }),
+  //       {
+  //         ...initial,
+  //       }
+  //     )
+  //     setStatus(update)
+  //   }
+  //   window.addEventListener('scroll', onScroll)
+  //   return () => window.removeEventListener('scroll', onScroll)
+  // }, [waypoints])
+
+  return (
+    <div className={cx(styles.toc, 'flx-g-1')}>
+      <div className="p-3x md:px-4x md:py-6x">
+        <h2 className="h5 mt-0 mb-2x md:mb-2x md:pb-05x">Table of Contents</h2>
+        <ul className="list-reset p-0 m-0">
+          {items.map((heading, idx) => (
+            <li key={heading.url}>
+              <Link
+                className={cx('stealth caption d-block position-relative', {
+                  'is-active': status[heading.url],
+                })}
+                to={heading.url}
+              >
+                {heading.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
   )
 }
 

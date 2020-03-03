@@ -9,14 +9,16 @@ import { SEO, Link } from 'gatsby-theme-xdmorgan'
 import { CodeBlock } from '../components'
 import styles from './post.module.scss'
 
-export default function Template({ data }) {
+export default function Template({ data: { post, avatar } }) {
+  console.log(avatar)
   const {
     body,
     excerpt,
     timeToRead,
+    tableOfContents,
     fields: { slug },
     frontmatter: { title, image, date, category, theme },
-  } = data.post
+  } = post
   const lede =
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in elementum risus, eget egestas nibh. Mauris eget ligula convallis lacus varius tristique. Maecenas lacus nisl, dapibus nec dapibus eu, fermentum in ligula.'
   return (
@@ -73,35 +75,107 @@ export default function Template({ data }) {
           </Link>
         </figcaption>
       </figure>
-      <div className="container wysiwyg child-my-0" style={{ maxWidth: 1024 }}>
-        <MDXProvider
-          components={{
-            pre: props => {
-              const langClass = props.children.props.className || ''
-              const matches = langClass.match(/language-(?<lang>.*)/)
-              const language =
-                matches && matches.groups && matches.groups.lang
-                  ? matches.groups.lang
-                  : ''
-              const code = props.children.props.children.trim()
-              return <CodeBlock code={code} language={language} />
-            },
-          }}
-        >
-          <MDXRenderer>{body}</MDXRenderer>
-        </MDXProvider>
-        {/* <p>
-          If you have questions, feedback, or found an issue, I would love to
-          hear from you.{' '}
-          <Link
-            to={`https://github.com/xdmorgan/personal-site/tree/master/src/content/posts/${slug}.mdx`}
-            target="_blank"
+      <div className={'container child-my-0 pb-8x md:pb-10x lg:pb-12x'}>
+        <div className={styles.main}>
+          <div
+            className={cx(styles.main__sidebar, 'd-none lg:d-flex lg:flx-d-c')}
           >
-            See here
-          </Link>{' '}
-          to create a pull request or view the source for this post on GitHub.
-          Thanks for reading!
-        </p> */}
+            <div className="flx-g-0 p-3x pt-0 md:p-4x md:pt-0 bg-spring-wood">
+              <div
+                className="rc-normal position-relative mb-3x"
+                style={{ overflow: 'hidden', marginTop: 8 * -3, width: 74 }}
+              >
+                <Image
+                  fluid={avatar.childImageSharp.fluid}
+                  alt="Dan in silhouette"
+                />
+              </div>
+              <h2 className="h5 mt-0 mb-2x md:mb-2x md:pb-05x">
+                About the Author
+              </h2>
+              <p className="caption m-0">
+                Dan Morgan is a Front End Engineer at Wayfair based in
+                Washington D.C. Previously: Huge, Cvent, Gifn and PRPL.
+              </p>
+            </div>
+            <div className={cx(styles.toc, 'flx-g-1')}>
+              <div className="p-3x md:px-4x md:py-6x">
+                <h2 className="h5 mt-0 mb-2x md:mb-2x md:pb-05x">
+                  Table of Contents
+                </h2>
+                <ul className="list-reset p-0 m-0">
+                  {tableOfContents.items.map((heading, idx) => (
+                    <li key={heading.url}>
+                      <Link
+                        className={cx(
+                          'stealth caption d-block position-relative',
+                          { 'is-active': false }
+                        )}
+                        to={heading.url}
+                      >
+                        {heading.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div
+              style={{ borderTop: '1px solid var(--color-mystic)' }}
+              className="flx-g-0 p-3x md:px-4x md:py-6x"
+            >
+              <h2 className="h5 mt-0 mb-2x md:mb-2x md:pb-05x">
+                Questions &amp; Comments
+              </h2>
+              <p className="caption m-0">
+                <>If you have feedback, </>
+                <Link
+                  to={`https://github.com/xdmorgan/personal-site/tree/master/src/content/posts/${slug}.mdx`}
+                  target="_blank"
+                >
+                  view this post on GitHub
+                </Link>
+                <> </>
+                <>
+                  and create an issue or open a pull request with edits. Thanks
+                  for reading!
+                </>
+              </p>
+            </div>
+          </div>
+          <div
+            className={cx(
+              styles.main__content,
+              'wysiwyg wysiwyg--post child-my-0'
+            )}
+          >
+            <MDXProvider
+              components={{
+                highlight: ({ className, ...props }) => (
+                  <div
+                    className={cx(
+                      'bg-spring-wood p-3x md:p-4x child-my-0',
+                      className
+                    )}
+                    {...props}
+                  />
+                ),
+                pre: props => {
+                  const langClass = props.children.props.className || ''
+                  const matches = langClass.match(/language-(?<lang>.*)/)
+                  const language =
+                    matches && matches.groups && matches.groups.lang
+                      ? matches.groups.lang
+                      : ''
+                  const code = props.children.props.children.trim()
+                  return <CodeBlock code={code} language={language} />
+                },
+              }}
+            >
+              <MDXRenderer>{body}</MDXRenderer>
+            </MDXProvider>
+          </div>
+        </div>
       </div>
     </article>
   )
@@ -109,6 +183,13 @@ export default function Template({ data }) {
 
 export const query = graphql`
   query PostPage($id: String!) {
+    avatar: file(relativePath: { eq: "avatar.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 148, quality: 50) {
+          ...GatsbyImageSharpFluid_noBase64
+        }
+      }
+    }
     post: mdx(id: { eq: $id }) {
       ...PostMetaFields
       ...PostFeatureImage

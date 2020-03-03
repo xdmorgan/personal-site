@@ -25,7 +25,12 @@ In order to create new users using we'll first need to create an API key with ac
 
 Now that we have an API key, we need to find the interest ID. To do that, we'll need to use the [Mailchimp API Playground](https://us1.api.mailchimp.com/playground/). Using the API Key we just created, log into the API Playground and follow the steps below to navigate through the ensuing screens to find the desired interest.
 
+<figure>
+
 ![Mailchimp API Playground: Enter API token](./mailchimp-api-interests/api-playground.png)
+
+<figcaption>Sign into your account, it should look something like the image this caption is captioning</figcaption>
+</figure>
 
 First, select `Lists` then use the Subresources dropdown to select `interest-categories`. Find the relevant category in the list then use the Subresources dropdown again to access `interests`. You should now be presented with the list of relevant interests, click the name of the one we want an ID for and you should arrive on the screen above with all the information we'll need.
 

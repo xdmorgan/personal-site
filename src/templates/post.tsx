@@ -17,6 +17,7 @@ export default function Template({ data: { post, avatar } }) {
     fields: { slug },
     frontmatter: { title, image, date, category, theme, lede },
   } = post
+
   return (
     <article>
       <SEO
@@ -94,7 +95,14 @@ export default function Template({ data: { post, avatar } }) {
                 Washington D.C. Previously: Huge, Cvent, Gifn and PRPL.
               </p>
             </div>
-            <TableOfContents items={tableOfContents.items} />
+            <div className={cx(styles.toc, 'flx-g-1')}>
+              <div className="p-3x md:px-4x md:py-6x">
+                <h2 className="h5 mt-0 mb-2x md:mb-2x md:pb-05x">
+                  Table of Contents
+                </h2>
+                <TableOfContents items={tableOfContents.items} />
+              </div>
+            </div>
             <div
               style={{ borderTop: '1px solid var(--color-mystic)' }}
               className="flx-g-0 p-3x md:px-4x md:py-6x"
@@ -156,31 +164,30 @@ export default function Template({ data: { post, avatar } }) {
   )
 }
 
-function TableOfContents({
-  items = [],
-}: {
-  items: { url: string; title: string }[]
-}) {
+type TocItem = { url: string; title: string; items?: TocItem[] }
+
+function TableOfContents({ items = [] }: { items: TocItem[] }) {
+  const initial = items.reduce((acc, cur) => ({ ...acc, [cur.url]: false }), {})
+  const [status, setStatus] = useState({ ...initial })
   return (
-    <div className={cx(styles.toc, 'flx-g-1')}>
-      <div className="p-3x md:px-4x md:py-6x">
-        <h2 className="h5 mt-0 mb-2x md:mb-2x md:pb-05x">Table of Contents</h2>
-        <ul className="list-reset p-0 m-0">
-          {items.map((heading, idx) => (
-            <li key={heading.url}>
-              <Link
-                className={cx('stealth caption d-block position-relative', {
-                  'is-active': false,
-                })}
-                to={heading.url}
-              >
-                {heading.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
+    <ul className="list-reset p-0 m-0">
+      {items.map((heading, idx) => (
+        <li key={heading.url}>
+          <Link
+            className={cx('stealth caption d-block position-relative', {
+              'is-active': status[heading.url],
+            })}
+            to={heading.url}
+          >
+            {heading.title}
+          </Link>
+
+          {(heading.items || []).length ? (
+            <TableOfContents items={heading.items} />
+          ) : null}
+        </li>
+      ))}
+    </ul>
   )
 }
 

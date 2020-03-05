@@ -1,6 +1,7 @@
 ---
 title: 'Using Interest Groups With The Mailchimp V3 API'
 date: 2019-08-22
+status: published
 category: Tutorials
 tags: Mailchimp, PHP, Tutorial
 lede: 'A client recently asked me to update their Mailchimp integration to add support for sub-group targeting using interest groups. Finding the process more involved than I expected, I wanted to share my experience locating the relevant IDs in the admin interface and examples including them in an API request.'
@@ -35,7 +36,9 @@ First, select `Lists` then use the Subresources dropdown to select `interest-cat
 
 ![Mailchimp API Playground: Interest detail page](./mailchimp-api-interests/interest-id-page.png)
 
-## Usage in PHP
+## Usage in API Requests
+
+### PHP Requests
 
 Download this [Mailchimp API wrapper](https://github.com/drewm/mailchimp-api/blob/master/src/Mailchimp.php) class, and save it next to our script so it can be found by the `include(./Mailchimp.php)` call on line 7 below.
 
@@ -72,9 +75,69 @@ if ($email != '') {
 echo json_encode($result);
 ```
 
-## Update: Usage in Node.js
+### Node.js Requests
 
 Since writing the original version of this post, I was asked to implement similar functionality for a static site deployed to Netlify. Using the same method for locating the necessary API information described above, [see here](https://github.com/xdmorgan/netlify-functions/tree/master/functions/mailchimp-subscribe) for a drop-in Node-based Lambda function solution.
+
+```js
+// Node SDK
+const Mailchimp = require('mailchimp-api-v3')
+
+// Create MC API instance
+const mc_api = new Mailchimp(MAILCHIMP_API_KEY)
+
+// Call subscribe func
+const response = await create_subscriber({
+  email: 'yo@danny.dev', 
+  list_id: LIST_ID, 
+  status: 'subscribed', 
+  interests: [INTEREST_ID]
+});
+
+// Example subscriber function, see here for the unabridged source:
+// https://github.com/xdmorgan/netlify-functions/tree/master/functions/mailchimp-subscribe
+async function create_subscriber({ 
+  email, 
+  list_id, 
+  status, 
+  interests, 
+  merge_fields = {} 
+}, api) {
+  const path = `/lists/${list_id}/members`
+  let [statusCode, error] = [null, null]
+
+  try {
+    await api.post({ 
+      path, 
+      body: {
+        email_address: email,
+        status,
+        merge_fields,
+        ...format_interests(interests),
+      } 
+    })
+  } catch (e) {
+    statusCode = e.status
+    error = e.message
+  }
+
+  return {
+    created: !error,
+    error_response: { statusCode, error },
+    success_response: {
+      email,
+      subscribed: true,
+      existing_member: false,
+      profile_updated: false,
+    },
+  }
+}
+
+// convert from Array to interest objects of `{ [key]: status }` shape
+function format_interests(arr = []) {
+  return { interests: arr.reduce((acc, cur) => ({ ...acc, [cur]: true }), {}) }
+}
+```
 
 ## References & Resources
 

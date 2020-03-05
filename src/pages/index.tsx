@@ -55,6 +55,7 @@ export const query = graphql`
     }
     posts: allMdx(
       limit: 4
+      filter: { frontmatter: { status: { ne: "draft" } } }
       sort: { order: DESC, fields: [frontmatter___date] }
     ) {
       nodes {

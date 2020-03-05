@@ -53,7 +53,10 @@ export const query = graphql`
         }
       }
     }
-    posts: allMdx(sort: { order: DESC, fields: [frontmatter___date] }) {
+    posts: allMdx(
+      limit: 4
+      sort: { order: DESC, fields: [frontmatter___date] }
+    ) {
       nodes {
         ...PostMetaFields
         ...PostThumbnailImage

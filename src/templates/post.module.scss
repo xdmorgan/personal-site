@@ -52,15 +52,19 @@
     top: 0;
   }
 
+  li > ul {
+    padding-left: spacing(2x);
+  }
+
   a {
     margin-bottom: 6px;
-    padding-left: 22px;
+    padding-left: 16px;
 
     &:before {
       content: '';
       display: block;
       position: absolute;
-      left: 4px;
+      left: 0px;
       top: 6px;
       width: 6px;
       height: 6px;
@@ -71,6 +75,7 @@
       border-radius: 50%;
     }
   }
+
   :global {
     .is-active::before {
       // transform: scale(1.5);

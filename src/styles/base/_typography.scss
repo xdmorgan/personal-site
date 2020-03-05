@@ -339,6 +339,15 @@ blockquote {
     }
   }
 
+  ul,
+  ol {
+    padding-left: 1em;
+
+    li + li {
+      margin-top: 0.5em;
+    }
+  }
+
   h1,
   h2 {
     margin-top: spacing(6x);

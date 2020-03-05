@@ -33,13 +33,11 @@ export default function Page({ data }: any) {
         featuredPostImageAlt={featuredPost.frontmatter.image.alt}
         featuredPostTitle={featuredPost.frontmatter.title}
         featuredPostURL={postSlugToRoute(featuredPost.fields.slug)}
-        featuredPostExcerpt={featuredPost.excerpt}
-        recentPosts={[featuredPost, featuredPost, featuredPost].map(
-          recentPost => ({
-            title: recentPost.frontmatter.title,
-            url: postSlugToRoute(recentPost.fields.slug),
-          })
-        )}
+        featuredPostExcerpt={featuredPost.frontmatter.lede}
+        recentPosts={recentPosts.map(recentPost => ({
+          title: recentPost.frontmatter.title,
+          url: postSlugToRoute(recentPost.fields.slug),
+        }))}
       />
       <ContactSection />
     </>

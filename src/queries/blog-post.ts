@@ -9,6 +9,7 @@ export const metaFields = graphql`
       date(formatString: "MMMM D, YYYY")
       title
       tags
+      lede
       category
       theme {
         header

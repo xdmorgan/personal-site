@@ -12,21 +12,18 @@ import styles from './post.module.scss'
 export default function Template({ data: { post, avatar } }) {
   const {
     body,
-    excerpt,
     timeToRead,
     tableOfContents,
     fields: { slug },
-    frontmatter: { title, image, date, category, theme },
+    frontmatter: { title, image, date, category, theme, lede },
   } = post
-  const lede =
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in elementum risus, eget egestas nibh. Mauris eget ligula convallis lacus varius tristique. Maecenas lacus nisl, dapibus nec dapibus eu, fermentum in ligula.'
   return (
     <article>
       <SEO
         schema={true}
         image={image.full.childImageSharp.fluid.src}
         title={title}
-        description={excerpt}
+        description={lede}
         blogPost={{
           author: '@xdanmorgan',
           datePublished: date,
@@ -164,42 +161,6 @@ function TableOfContents({
 }: {
   items: { url: string; title: string }[]
 }) {
-  const initial = items.reduce((acc, cur) => ({ ...acc, [cur.url]: false }), {})
-  const [status, setStatus] = useState({ ...initial })
-  // rules:
-  // 1. visible item can be the only one active after halfway
-  // 2. can show multiple on screen
-  // 3. if thre's none above halfway go back to the previous
-  // 4. if there is no previous, none active
-  // recalculate on resize
-  // const waypoints = items
-  //   .map(item => document.querySelector(item.url))
-  //   .filter(Boolean)
-  //   .reduce((acc, cur) => ({ ...acc, [cur.id]: cur.offsetTop }), {})
-  // // refresh when waypoints are recalculated
-  // useEffect(() => {
-  //   function onScroll() {
-  //     const pos = window.scrollY || window.pageYOffset
-  //     const viewport = {
-  //       min: pos,
-  //       mid: pos + window.innerHeight / 2,
-  //       max: pos + window.innerHeight,
-  //     }
-  //     const inView = Object.keys(waypoints).filter(
-  //       k => waypoints[k] <= viewport.max
-  //     )
-  //     const update = inView.reduce(
-  //       (acc, cur) => ({ ...acc, [`#${cur}`]: true }),
-  //       {
-  //         ...initial,
-  //       }
-  //     )
-  //     setStatus(update)
-  //   }
-  //   window.addEventListener('scroll', onScroll)
-  //   return () => window.removeEventListener('scroll', onScroll)
-  // }, [waypoints])
-
   return (
     <div className={cx(styles.toc, 'flx-g-1')}>
       <div className="p-3x md:px-4x md:py-6x">
@@ -209,7 +170,7 @@ function TableOfContents({
             <li key={heading.url}>
               <Link
                 className={cx('stealth caption d-block position-relative', {
-                  'is-active': status[heading.url],
+                  'is-active': false,
                 })}
                 to={heading.url}
               >

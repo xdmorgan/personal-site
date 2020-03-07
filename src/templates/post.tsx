@@ -9,7 +9,7 @@ import { SEO, Link } from 'gatsby-theme-xdmorgan'
 import { CodeBlock } from '../components'
 import styles from './post.module.scss'
 
-export default function Template({ data: { post, avatar } }) {
+export default function Template({ data: { site, post, avatar } }) {
   const {
     body,
     timeToRead,
@@ -22,7 +22,7 @@ export default function Template({ data: { post, avatar } }) {
     <article>
       <SEO
         schema={true}
-        image={image.full.childImageSharp.fluid.src}
+        image={site.meta.url + image.full.childImageSharp.fluid.src}
         title={title}
         description={lede}
         blogPost={{
@@ -193,6 +193,11 @@ function TableOfContents({ items = [] }: { items: TocItem[] }) {
 
 export const query = graphql`
   query PostPage($id: String!) {
+    site {
+      meta: siteMetadata {
+        url
+      }
+    }
     avatar: file(relativePath: { eq: "avatar.png" }) {
       childImageSharp {
         fluid(maxWidth: 148, quality: 50) {

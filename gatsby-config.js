@@ -1,7 +1,9 @@
 require('dotenv').config()
 
 module.exports = {
-  siteMetadata: {},
+  siteMetadata: {
+    url: process.env.SITE_META_URL || '',
+  },
   plugins: [
     {
       resolve: 'gatsby-theme-xdmorgan',

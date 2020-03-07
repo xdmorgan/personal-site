@@ -34,7 +34,7 @@ export function Header({
             )}
           >
             <NavLink to="/#about">About</NavLink>
-            <NavLink to="/#projects">Work</NavLink>
+            <NavLink to="/#projects">Projects</NavLink>
             <NavLink to="/#contact">Contact</NavLink>
           </ul>
         </nav>

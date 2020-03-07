@@ -105,7 +105,7 @@ export default function Template({ data: { post, avatar } }) {
             </div>
             <div
               style={{ borderTop: '1px solid var(--color-mystic)' }}
-              className="flx-g-0 p-3x md:px-4x md:py-6x"
+              className="flx-g-0 pt-3x px-3x md:px-4x md:pt-6x"
             >
               <h2 className="h5 mt-0 mb-2x md:mb-2x md:pb-05x">
                 Questions &amp; Comments

@@ -24,6 +24,7 @@ export default function Template({ data: { site, post, avatar } }) {
         schema={true}
         image={site.meta.url + image.full.childImageSharp.fluid.src}
         title={title}
+        appendTitle={false}
         description={lede}
         blogPost={{
           author: '@xdanmorgan',

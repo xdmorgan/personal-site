@@ -15,9 +15,9 @@ export function AboutSection() {
               marginRight: 'auto',
             }}
           >
-            Dan is a Front End Engineer{' '}
+            I'm a Front End Engineer{' '}
             <span className="fw-normal c-mystic">building design systems</span>{' '}
-            in Washington D.C.
+            in Washington&nbsp;D.C.
           </h1>
         </div>
       </div>
@@ -29,12 +29,12 @@ export function AboutSection() {
               'child-my-0 mb-2x lg:mb-0 lg:pr-8x'
             )}
           >
-            <h2 className="h3 mb-2x lg:mb-4x">Skills &amp; Expertise</h2>
+            <h2 className="h3 mb-2x">Skills &amp; Expertise</h2>
             <p className="small c-mystic">
-              Throughout his career, Dan has worked with companies like: Cartoon
-              Network, EA Sports, Facebook, Huge, LinkedIn, NASA, Oculus, and
-              Wayfair to craft digital products for web, mobile, and emerging
-              platforms.
+              Throughout my career, I&rsquo;ve worked with companies like:
+              Cartoon Network, EA Sports, Facebook, Huge, LinkedIn, NASA,
+              Oculus, and Wayfair to craft digital products for web, mobile, and
+              emerging platforms.
             </p>
           </div>
           <div className={cx(styles.grid__skills, styles.skills)}>

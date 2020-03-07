@@ -1,24 +1,24 @@
 ---
-title: 'Shopify Workflow: Local Development & Theme Versioning'
+title: 'Shopify Themes: Local Development & Version Control'
 date: 2020-03-05
 category: Tutorials
 status: draft
 tags: Shopify, Liquid, Tutorial
-lede: This is the first in a series of posts for developers getting started building Shopify themes, written by me, a developer getting started with Shopify themes.
+lede: This is the first in a series of posts for developers getting started building Shopify themes. In this post, we'll review local theme development and git version control.
 theme:
-  header: '#1f2230'
+  header: '#141f18'
 image:
-  src: ./mailchimp-api-interests/header.jpg
+  src: ./shopify-themes-local-development-and-version-control/header.jpg
   alt: 'Row of mailboxes'
   attribution:
-    text: 'Photo credit: Mathyas Kurmann on Unsplash'
-    link: 'https://unsplash.com/photos/fb7yNPbT0l8'
+    text: 'Photo by Marcus Loke on Unsplash'
+    link: 'https://unsplash.com/photos/xXJ6utyoSw0'
 ---
 
-## Shopify Workflow Series
+## Shopify Theme Series
 
-- Part 1: Local Development & Theme Versioning
-- Part 2: Automated Deployment with GitHub Actions (coming soon)
+- Part 1: Local Development & Version Control
+- Part 2: Automated Deployments with GitHub Actions (coming soon)
 
 ## Environment Setup
 
@@ -28,17 +28,21 @@ Before we can get started, you'll need a few things in order to follow along:
 - A [Shopify Partner Program](https://www.shopify.com/partners) account with access to your desired Store/theme so we can grant API permissions to sync our local work with the remote server.
 - One of [Homebrew](https://brew.sh/) or [Chocolatey](https://chocolatey.org/) package managers. If you're a Mac user like myself, Homebrew should be preinstalled and available in Terminal.
 
-## Installing the Shopify Theme CLI
+## Shopify Theme CLI
+
+### Installation
 
 Shopify has a number of tools to support different developer workflows. For theme development, we will need at least the [Shopify Theme Kit CLI](https://github.com/Shopify/themekit) installed and authenticated.
 
 Follow [the instructions here](https://shopify.github.io/themekit/) to install the CLI (`themekit`) and any supporting libraries (`shopify/shopify`).
 
-Once complete, typing `theme` into Terminal should yield something like the following output:
+Once complete, running the `theme --help` command should print a message like the following:
 
-```sh
+```bash
+$ theme --help
+Theme Kit is a tool kit for manipulating shopify themes
 
-Shoify ThemeKit CLI
-Version 420
+Theme Kit is a fast and cross platform tool that enables you to build shopify themes with ease.
 
+Complete documentation is available at https://shopify.github.io/themekit/
 ```

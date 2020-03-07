@@ -15,7 +15,7 @@ export default function Page({ data }: any) {
     posts: { nodes: posts },
     featuredProjectImage,
   } = data
-  const [featuredPost, ...recentPosts] = posts // real posts
+  const [featuredPost, ...recentPosts] = posts
   return (
     <>
       <AboutSection />

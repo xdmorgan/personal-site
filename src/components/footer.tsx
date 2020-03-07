@@ -52,8 +52,7 @@ export function Footer() {
             <NavLink to={LINKEDIN}>Linked In</NavLink>
             <NavLink to="/#articles">Blog</NavLink>
             <NavLink to="/styleguide">Styleguide</NavLink>
-            {/* <NavLink to="/">RSS</NavLink>
-            <NavLink to="/">Uses</NavLink> */}
+            <NavLink to="/rss.xml">RSS</NavLink>
           </ul>
           <p
             className={cx(

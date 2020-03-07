@@ -15,8 +15,10 @@ export function AboutSection() {
               marginRight: 'auto',
             }}
           >
-            I'm a Front End Engineer{' '}
-            <span className="fw-normal c-mystic">building design systems</span>{' '}
+            Front End Engineer{' '}
+            <span className="fw-normal c-mystic">
+              working on design systems
+            </span>{' '}
             in Washington&nbsp;D.C.
           </h1>
         </div>
@@ -37,8 +39,9 @@ export function AboutSection() {
             </p>
             <p className="small c-mystic">
               Whilst building dozens of products, I&rsquo;ve been introduced to
-              a diverse group of technologies and methodologies with a
-              specialization in UI architecture and design systems.
+              a broad spectrum of technologies and methodologies. In recent
+              years, I&rsquo;ve cultivated these skills to develop a
+              specialization in UI architecture and front end engineering.
             </p>
           </div>
           <div className={cx(styles.grid__skills, styles.skills)}>

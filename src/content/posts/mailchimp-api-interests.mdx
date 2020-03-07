@@ -92,14 +92,13 @@ const mc_api = new Mailchimp(MAILCHIMP_API_KEY)
 
 // Call subscribe func
 const response = await create_subscriber({
-  email: 'yo@danny.dev', 
+  email: 'example@email.com', 
   list_id: LIST_ID, 
   status: 'subscribed', 
   interests: [INTEREST_ID]
 });
 
-// Example subscriber function, see here for the unabridged source:
-// https://github.com/xdmorgan/netlify-functions/tree/master/functions/mailchimp-subscribe
+// Create new subscriber
 async function create_subscriber({ 
   email, 
   list_id, 
@@ -137,7 +136,7 @@ async function create_subscriber({
   }
 }
 
-// convert from Array to interest objects of `{ [key]: status }` shape
+// convert from String[] to interest object of `{ [id]: status }` shape
 function format_interests(arr = []) {
   return { interests: arr.reduce((acc, cur) => ({ ...acc, [cur]: true }), {}) }
 }
@@ -145,5 +144,5 @@ function format_interests(arr = []) {
 
 ## References & Resources
 
-- [Mailchimp API PHP Class](https://github.com/drewm/mailchimp-api/blob/master/src/MailChimp.php)
+- [Mailchimp API PHP Class](https://github.com/drewm/mailchimp-api)
 - [StackOverflow: Finding Mailchimp List IDs](https://stackoverflow.com/questions/37311116/can-you-get-a-mailchimp-interest-group-id-without-using-the-api)

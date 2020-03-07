@@ -90,10 +90,8 @@ module.exports = {
         `,
         feeds: [
           {
-            /* highlight-start */
             serialize: ({ query: { site, allMdx } }) => {
               return allMdx.edges.map(edge => {
-                /* highlight-end */
                 return Object.assign({}, edge.node.frontmatter, {
                   description: edge.node.frontmatter.lede,
                   date: edge.node.frontmatter.date,

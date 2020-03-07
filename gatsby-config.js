@@ -2,6 +2,11 @@ require('dotenv').config()
 
 module.exports = {
   siteMetadata: {
+    // used by gatsby-plugin-feed
+    title: process.env.SITE_META_TITLE || '',
+    // used by gatsby-plugin-feed
+    description: process.env.SITE_META_DESCRIPTION || '',
+    // used by post template and gatsby-plugin-sitemap
     url: process.env.SITE_META_URL || '',
   },
   plugins: [
@@ -30,6 +35,8 @@ module.exports = {
           icon: `src/images/avatar.png`,
         },
         seo: {
+          // Base page title
+          title: process.env.SITE_META_TITLE || '',
           // site meta description
           description: process.env.SITE_META_DESCRIPTION || '',
           // site meta keywords
@@ -45,6 +52,80 @@ module.exports = {
           // fkn base url
           url: process.env.SITE_META_URL || '',
         },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                siteUrl: url
+              }
+            }
+            allSitePage {
+              edges {
+                node {
+                  path
+                }
+              }
+            }
+        }`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl: url
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            /* highlight-start */
+            serialize: ({ query: { site, allMdx } }) => {
+              return allMdx.edges.map(edge => {
+                /* highlight-end */
+                return Object.assign({}, edge.node.frontmatter, {
+                  description: edge.node.frontmatter.lede,
+                  date: edge.node.frontmatter.date,
+                  url: site.siteMetadata.siteUrl + edge.node.fields.route,
+                  guid: site.siteMetadata.siteUrl + edge.node.fields.route,
+                  custom_elements: [{ 'content:encoded': edge.node.html }],
+                })
+              })
+            },
+            query: `
+              {
+                allMdx(
+                  sort: { order: DESC, fields: [frontmatter___date] },
+                ) {
+                  edges {
+                    node {
+                      html
+                      fields { route }
+                      frontmatter {
+                        title
+                        date
+                        lede
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            output: '/rss.xml',
+            title: 'Dan Morgan • Blog Feed',
+          },
+        ],
       },
     },
   ],

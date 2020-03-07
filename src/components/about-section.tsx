@@ -31,10 +31,14 @@ export function AboutSection() {
           >
             <h2 className="h3 mb-2x">Skills &amp; Expertise</h2>
             <p className="small c-mystic">
-              Throughout my career, I&rsquo;ve worked with companies like:
-              Cartoon Network, EA Sports, Facebook, Huge, LinkedIn, NASA,
-              Oculus, and Wayfair to craft digital products for web, mobile, and
-              emerging platforms.
+              Over my career, I&rsquo;ve worked with Cartoon Network, Cvent, EA
+              Sports, Facebook, Huge, LinkedIn, NASA, Oculus, and Wayfair to
+              craft digital products for mobile, web, and emerging platforms.
+            </p>
+            <p className="small c-mystic">
+              Whilst building dozens of products, I&rsquo;ve been introduced to
+              a diverse group of technologies and methodologies with a
+              specialization in UI architecture and design systems.
             </p>
           </div>
           <div className={cx(styles.grid__skills, styles.skills)}>

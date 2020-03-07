@@ -8,10 +8,10 @@ export function ContactSection() {
         <h2 className="h1 my-0">Want to get in touch?</h2>
         <p
           className="mt-2x mb-4x md:mt-3x para"
-          style={{ maxWidth: 660, marginLeft: 'auto', marginRight: 'auto' }}
+          style={{ maxWidth: 500, marginLeft: 'auto', marginRight: 'auto' }}
         >
-          If you’re looking to collaborate on your next project or just want to
-          say hello, feel free to drop me a line anytime. 🤙
+          If you’re looking to collaborate or just want to say hello, feel free
+          to drop me a line anytime. 🤙
         </p>
         <Button href="mailto:hello@danny.codes">Send me a message</Button>
       </div>

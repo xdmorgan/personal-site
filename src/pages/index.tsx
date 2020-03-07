@@ -23,7 +23,7 @@ export default function Page({ data }: any) {
         imageSrc={featuredProjectImage.childImageSharp}
         imageAlt="Designer fund employees"
         title="Design for Business Impact"
-        description="A triumvirate of Gatsby, Contentful, and Netlify power this Designer Fund microsite. The site was featured on Awwwards and integrates with the Mailchimp API using serverless Netlify Functions."
+        description="Gatsby, Contentful, and Netlify power this Designer Fund microsite featured on Awwwards and Communication Arts. Authentication integrates with Mailchimp using custom serverless Netlify Functions."
         url="https://designerfund.com/business-impact"
       />
       <ProjectsAndArticlesSection

@@ -44,15 +44,16 @@ export function Footer() {
               'md:align-r'
             )}
           >
-            <NavLink to="/">About</NavLink>
-            <NavLink to="/">Blog</NavLink>
-            <NavLink to="/">Contact</NavLink>
+            <NavLink to="/#about">About</NavLink>
+            <NavLink to="/#projects">Projects</NavLink>
+            <NavLink to="/#contact">Contact</NavLink>
             <NavLink to={GITHUB}>GitHub</NavLink>
             <NavLink to={TWITTER}>Twitter</NavLink>
             <NavLink to={LINKEDIN}>Linked In</NavLink>
-            <NavLink to="/">RSS</NavLink>
-            <NavLink to="/">Uses</NavLink>
+            <NavLink to="/#articles">Blog</NavLink>
             <NavLink to="/styleguide">Styleguide</NavLink>
+            {/* <NavLink to="/">RSS</NavLink>
+            <NavLink to="/">Uses</NavLink> */}
           </ul>
           <p
             className={cx(

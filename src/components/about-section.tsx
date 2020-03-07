@@ -38,18 +38,18 @@ export function AboutSection() {
               craft digital products for mobile, web, and emerging platforms.
             </p>
             <p className="small c-mystic">
-              Whilst building dozens of products, I&rsquo;ve been introduced to
-              a broad spectrum of technologies and methodologies. In recent
-              years, I&rsquo;ve cultivated these skills to develop a
-              specialization in UI architecture and front end engineering.
+              While building dozens of products, I&rsquo;ve gained experience
+              with a broad spectrum of technologies and methodologies. In recent
+              years, I&rsquo;ve focused on the following skills to specialize in
+              UI architecture and front end engineering.
             </p>
           </div>
           <div className={cx(styles.grid__skills, styles.skills)}>
-            <Skill title="Front-End Development">
+            <Skill title="Front End Development">
               HTML, JavaScript, React, Angular, Vue, CSS, Sass,
               styled-components, SVG, animation, and HTML email
             </Skill>
-            <Skill title="Full-Stack Development">
+            <Skill title="Full Stack Development">
               Node, Python, WordPress, GraphQL, REST, Firebase, and Relational
               &amp; Document DBs
             </Skill>
@@ -81,9 +81,9 @@ export function AboutSection() {
               Sketch, Figma, Photoshop, Illustrator, Zeplin, Invision, asset
               optimization, Abstract, and Framer X
             </Skill>
-            <Skill className="d-block md:d-none" title="Team Leadership">
-              Architecture, mentorship, code reviews, presentations, diagrams,
-              and pair programming
+            <Skill title="Team Leadership" className="d-block md:d-none">
+              Architecture, mentorship, code reviews, presentations, data flow
+              diagrams, and pair programming
             </Skill>
           </div>
         </div>

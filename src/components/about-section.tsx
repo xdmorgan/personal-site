@@ -39,8 +39,9 @@ export function AboutSection() {
             </p>
             <p className="small c-mystic">
               Whilst building dozens of products, I&rsquo;ve been introduced to
-              a broad spectrum of technologies and methodologies and specialized
-              in UI architecture and design systems.
+              a broad spectrum of technologies and methodologies. In recent
+              years, I&rsquo;ve cultivated these skills to develop a
+              specialization in UI architecture and front end engineering.
             </p>
           </div>
           <div className={cx(styles.grid__skills, styles.skills)}>

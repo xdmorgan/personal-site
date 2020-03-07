@@ -12,7 +12,7 @@
     "classnames": "^2.2.6",
     "dotenv": "^8.0.0",
     "gatsby": "^2.19.17",
-    "gatsby-theme-xdmorgan": "^2.2.0",
+    "gatsby-theme-xdmorgan": "^2.3.0",
     "prism-react-renderer": "^1.0.2",
     "prismjs": "^1.19.0",
     "react": "^16.12.0",

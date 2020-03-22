@@ -33,13 +33,14 @@ export function AboutSection() {
           >
             <h2 className="h3 mb-2x">Skills &amp; Expertise</h2>
             <p className="small c-mystic">
-              Over my career, I&rsquo;ve worked with Cartoon Network, Cvent, EA
-              Sports, Facebook, Huge, LinkedIn, NASA, Oculus, and Wayfair to
-              craft digital products for mobile, web, and emerging platforms.
+              Over my career, I&rsquo;ve helped Cartoon Network, Cvent, EA
+              Sports, Facebook, Huge, LinkedIn, NASA, Oculus, and Wayfair craft
+              digital products for mobile, web, and emerging platforms.
             </p>
             <p className="small c-mystic">
-              I&rsquo;ve gained experience with a broad spectrum of technologies
-              and methodologies. In recent years, I&rsquo;ve focused on the
+              In roles varying from UI designer to tech lead, I&rsquo;ve gained
+              valuable insight into a broad spectrum of technologies and
+              methodologies. In recent years, I&rsquo;ve focused on the
               following skills to specialize in UI architecture and front end
               engineering.
             </p>
@@ -54,16 +55,16 @@ export function AboutSection() {
               Relational &amp; Document DBs
             </Skill>
             <Skill title="Design Systems">
-              Atomic design, Storybook, tokens, theming, and component API
-              design
+              Atomic design, design tokens, application theming, and ergonomic
+              component API design
             </Skill>
             <Skill title="Project Architecture">
               AWS, GCP, Docker, NPM, JAMStack, headless CMS, serverless lambda
               functions, and CI/CD pipelines
             </Skill>
             <Skill title="Testing &amp; Tooling">
-              Webpack, Jest, Prettier, ESLint, Flow, TypeScript, Babel, Parcel,
-              Gulp, and Cypress
+              Webpack, Jest, Prettier, ESLint, TypeScript, Storybook, Babel,
+              Parcel, Gulp, and Cypress
             </Skill>
             <Skill title="Mobile &amp; Emerging Tech">
               Swift, React Native, Xamarin (C#), PWAs, Actions on Google, and

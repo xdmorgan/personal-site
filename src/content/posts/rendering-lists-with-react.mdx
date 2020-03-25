@@ -1,0 +1,41 @@
+---
+title: 'Designing a Reusable React List Component'
+date: 2020-03-24
+category: Tutorials
+status: draft
+tags: React, Components
+lede: 'A simple, reusable, and design-agnostic component designed for rendering arbitrary collections of data'
+theme:
+  header: '#273167'
+image:
+  src: './rendering-lists-with-react/header.jpg'
+  alt: 'Three shelves of books organized by their cover colors'
+  attribution:
+    text: 'Photo by Jason Leung on Unsplash'
+    link: 'https://unsplash.com/photos/D4YrzSwyIEc'
+---
+
+<highlight>
+
+**Heads up:** This post assumes familiarity with Hooks-era React and JavaScript Array methods (i.e. `map()`, `filter()`, and `reduce()`). For more information on either topic, I'd recommend these amazing resources:
+
+- **React**: Kent Dodd's [The Beginner's Guide to React](https://egghead.io/courses/the-beginner-s-guide-to-react) (free)
+- **Array methods**: Will Sentance's [Hard Parts: Functional Programming](https://frontendmasters.com/workshops/hard-parts-functional-js/) (requires [Frontend Masters](https://frontendmasters.com/) subscription)
+
+</highlight>
+
+## Status Quo
+
+Once mastered, JavaScript's Array methods become wonderfully expressive tools for simple and readable data manipulation. That said, once you've shaped your data, you'll want to render it in a similarly ergonomic manner. If you've used React long enough, you'll have certainly come across something like the following:
+
+```jsx
+const ToDos = ({ items = [] }) => (
+  <ul>
+    {items.map(item => <li key={item.text}>{item.text}</li>}
+  </ul>
+)
+```
+
+This is fine in some circumstances, but is there a more useful alternative? Thanksfully, there is! Enter the ListView component [inspired by React Native](https://reactnative.dev/docs/flatlist).
+
+

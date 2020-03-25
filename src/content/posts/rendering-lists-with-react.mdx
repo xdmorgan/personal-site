@@ -17,25 +17,62 @@ image:
 
 <highlight>
 
-**Heads up:** This post assumes familiarity with Hooks-era React and JavaScript Array methods (i.e. `map()`, `filter()`, and `reduce()`). For more information on either topic, I'd recommend these amazing resources:
+**Heads up:** This post references React Hooks and JavaScript Array methods (i.e. `map()`, `filter()`, and `reduce()`). For more information on either topic, check out these great resources:
 
 - **React**: Kent Dodd's [The Beginner's Guide to React](https://egghead.io/courses/the-beginner-s-guide-to-react) (free)
 - **Array methods**: Will Sentance's [Hard Parts: Functional Programming](https://frontendmasters.com/workshops/hard-parts-functional-js/) (requires [Frontend Masters](https://frontendmasters.com/) subscription)
 
 </highlight>
 
-## Status Quo
+## A Starting Point
 
-Once mastered, JavaScript's Array methods become wonderfully expressive tools for simple and readable data manipulation. That said, once you've shaped your data, you'll want to render it in a similarly ergonomic manner. If you've used React long enough, you'll have certainly come across something like the following:
+Once mastered, JavaScript's Array methods are wonderfully expressive tools for simple and readable data manipulation. In my experience, a better understanding of data manipulation makes codes easier to read, test, and maintain. That said, once you've transformed your data into its most concise form, you'll want to render it in a similarly deliberate manner. 
+
+Before we get started, take a look at the following example:
 
 ```jsx
-const ToDos = ({ items = [] }) => (
-  <ul>
-    {items.map(item => <li key={item.text}>{item.text}</li>}
-  </ul>
+const List = ({ children }) => <ul>{children}</ul>
+const Item = ({ children }) => (
+  <li>
+    <label><input type="checkbox" {...props} /> {children}</label>
+  </li>
+)
+
+const ChecklistExample = () => (
+  <div>
+    <h1>Daily objectives</h1>
+    <List>
+      <List.Item checked>Write blog post</List.Item>
+      <List.Item checked>Make some coffee</List.Item>
+      <List.Item checked={false}>Profit</List.Item>
+    </List>
+  </div>
 )
 ```
 
-This is fine in some circumstances, but is there a more useful alternative? Thanksfully, there is! Enter the ListView component [inspired by React Native](https://reactnative.dev/docs/flatlist).
+This is a common practice for lists of known length, it has convenient abstractions, is idiomatic React, and is easy to reason about. Inevitably though, things will get more complex. Over time, we'll want to introduce sorting or store our ever-growing list of responsibilities in a database for persistence.
+
+In order to do so, we'll need to update our code to loop through the now-varying collection of data and render a `<List.Item />` for each entry in our database.
+
+```jsx
+const DatabaseExample = ({ items = [] }) => (
+  <div>
+    <h1>Daily objectives</h1>
+    <List>
+      {items.map(item => (
+        <List.Item 
+          key={item.id}
+          checked={item.complete}
+        >
+          {item.description}
+        </List.Item>
+      ))}
+    </List>
+  </div>
+)
+```
 
 
+This `array.map` example is fine in lots of circumstances and ubiquitous throughout React codebases, but there is room for improvement. To improve upon it, we're going to write a `<ListView />` component [inspired by React Native](https://reactnative.dev/docs/flatlist) which is not concerned with DOM structure, data structure, or visual appearance, but is instead focused on the standardization and reduction of boilerplate when implementing common UI patterns for displaying collections of data.
+
+## Enter: List Renderer

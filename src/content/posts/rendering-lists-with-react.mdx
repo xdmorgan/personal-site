@@ -51,9 +51,9 @@ const ChecklistExample = () => (
 )
 ```
 
-The previous example is common practice for lists of known length, it has convenient abstractions and is easy to reason about. Inevitably though, requirements change over time; we'll want to introduce any of pagination, filtering, sorting, or database storage.
+This is a common practice for lists of known length, it has convenient abstractions and is easy to reason about. Inevitably though, requirements change over time, we'll want to introduce any of pagination, filtering, sorting, or database storage.
 
-In order to facilitate those updates, we'll need to modify the previosu example to loop through our variable length collection of data and render a `<List.Item />` for each entry in the database.
+In order to facilitate that functionality, we'll need to modify the previos example to loop through our variable length collection and render a `<List.Item />` for each entry in an array.
 
 ```jsx
 const DatabaseExample = ({ items = [] }) => (
@@ -74,11 +74,11 @@ const DatabaseExample = ({ items = [] }) => (
 ```
 
 
-Using `array.map` is idiomatic and ubiquitous throughout React codebases, but there is room for improvement. In the next section, we'll be rewriting this with a `<ListView />` abstraction [inspired by React Native](https://reactnative.dev/docs/flatlist) which is less concerned with DOM structure, data structure, or visual appearance and more focused on the facilitation of common UI patterns when displaying collections of data.
+Using `array.map()` is idiomatic and commonplace in React codebases, but there is room for improvement. In the next section, we'll be rewriting this example using a `<ListView />` abstraction [inspired by React Native](https://reactnative.dev/docs/flatlist) which is less concerned with DOM structure, data structure, or visual appearance and more focused on the facilitation of common UI patterns that occur when working with collections of data.
 
 ## New Challenger Approaches
 
-First, let's create ListView then loop through our data calling the `render()` prop for each iteration.
+First, let's create a `ListView` component equiuvalent to the previous `array.map()` example.
 
 ```jsx
 const ListView = ({ 
@@ -110,7 +110,7 @@ const Example = ({ items = [] }) => (
 )
 ```
 
-This works reasonably well, but we still have to wrap our ListView in the List element to ensure we retain the `ul > li` semantics in the HTML. To fix that, we can add an optional wrapper.
+This works reasonably well, but we still have to wrap our ListView in the List element to ensure we retain the `ul > li` semantics in the HTML. To fix that, we can add an optional prop to act as a wrapper around list items.
 
 
 ```jsx
@@ -145,7 +145,7 @@ const Example = ({ items = [] }) => (
 
 ## Adding to the API
 
-With our minimally viable ListView, we're now on strong footing to add functionality to simplify common list patterns. It may be tempting to immediately add `header` and `footer` props, but while those are certainly helpful in some circumstances, they suggest a vertical orientation which is not always the case in grids or horizontal carousels. Instead, it would be more generally usefl to render content *before* or *after* the body of data, so let's use that directionally-independent naming convention instead. 
+With our minimally viable ListView, we're now on strong footing to add functionality to simplify common list patterns. It may be tempting to immediately add `header` and `footer` props, but while those are certainly helpful in some circumstances, they suggest a vertical orientation which is not always the case in grids or horizontal carousels. Instead, it would be more generally useful to render content *before* or *after* the body of data, so let's use those names instead. 
 
 ```jsx
 const ListView = ({ 
@@ -192,6 +192,9 @@ const Example = ({ items = [] }) => (
 )
 ```
 
-## Conclusion
+## Composition
 
+### Sorting
+
+### Pagination
 Coming soon

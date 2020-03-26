@@ -17,16 +17,16 @@ image:
 
 <highlight>
 
-**Heads up:** This post references React Hooks and JavaScript Array methods (i.e. `map()`, `filter()`, and `reduce()`). For more information on either topic, check out these great resources:
+**Background:** This post discusses React Hooks and JavaScript Array methods (i.e. `map()`, `filter()`, and `reduce()`). For more information on either topic, check out these great resources:
 
 - **React**: Kent Dodd's [The Beginner's Guide to React](https://egghead.io/courses/the-beginner-s-guide-to-react) (free)
 - **Array methods**: Will Sentance's [Hard Parts: Functional Programming](https://frontendmasters.com/workshops/hard-parts-functional-js/) (requires [Frontend Masters](https://frontendmasters.com/) subscription)
 
 </highlight>
 
-## A Starting Point
+## Starting Point
 
-Once mastered, JavaScript's Array methods are wonderfully expressive tools for simple and readable data manipulation. In my experience, a better understanding of data manipulation makes codes easier to read, test, and maintain. That said, once you've transformed your data into its most concise form, you'll want to render it in a similarly deliberate manner. 
+Once mastered, JavaScript's Array methods are wonderfully expressive tools for simple and readable data manipulation. In my experience, a better understanding of data transformation makes codes easier to read, test, and maintain. That said, once you've distilled your data into its most concise form, you'll want to render it in a similarly expressive manner. 
 
 Before we get started, take a look at the following example:
 
@@ -37,6 +37,7 @@ const Item = ({ children }) => (
     <label><input type="checkbox" {...props} /> {children}</label>
   </li>
 )
+List.Item = Item
 
 const ChecklistExample = () => (
   <div>
@@ -50,9 +51,9 @@ const ChecklistExample = () => (
 )
 ```
 
-This is a common practice for lists of known length, it has convenient abstractions, is idiomatic React, and is easy to reason about. Inevitably though, things will get more complex. Over time, we'll want to introduce sorting or store our ever-growing list of responsibilities in a database for persistence.
+The previous example is common practice for lists of known length, it has convenient abstractions and is easy to reason about. Inevitably though, requirements change over time; we'll want to introduce any of pagination, filtering, sorting, or database storage.
 
-In order to do so, we'll need to update our code to loop through the now-varying collection of data and render a `<List.Item />` for each entry in our database.
+In order to facilitate those updates, we'll need to modify the previosu example to loop through our variable length collection of data and render a `<List.Item />` for each entry in the database.
 
 ```jsx
 const DatabaseExample = ({ items = [] }) => (
@@ -73,6 +74,124 @@ const DatabaseExample = ({ items = [] }) => (
 ```
 
 
-This `array.map` example is fine in lots of circumstances and ubiquitous throughout React codebases, but there is room for improvement. To improve upon it, we're going to write a `<ListView />` component [inspired by React Native](https://reactnative.dev/docs/flatlist) which is not concerned with DOM structure, data structure, or visual appearance, but is instead focused on the standardization and reduction of boilerplate when implementing common UI patterns for displaying collections of data.
+Using `array.map` is idiomatic and ubiquitous throughout React codebases, but there is room for improvement. In the next section, we'll be rewriting this with a `<ListView />` abstraction [inspired by React Native](https://reactnative.dev/docs/flatlist) which is less concerned with DOM structure, data structure, or visual appearance and more focused on the facilitation of common UI patterns when displaying collections of data.
 
-## Enter: List Renderer
+## New Challenger Approaches
+
+First, let's create ListView then loop through our data calling the `render()` prop for each iteration.
+
+```jsx
+const ListView = ({ 
+  items = [], 
+  render = () => {} 
+}) => (
+  <>
+    {array.map(render)}
+  </>
+)
+
+const Example = ({ items = [] }) => (
+  <div>
+    <h1>Daily objectives</h1>
+    <List>
+      <ListView
+        items={items}
+        render={(item, idx) => (
+          <List.Item 
+            key={item.id}
+            checked={item.complete}
+          >
+            {item.description}
+          </List.Item>
+        )}
+      />
+    </List>
+  </div>
+)
+```
+
+This works reasonably well, but we still have to wrap our ListView in the List element to ensure we retain the `ul > li` semantics in the HTML. To fix that, we can add an optional wrapper.
+
+
+```jsx
+const ListView = ({ 
+  items = [], 
+  render = () => {}, 
+  container: Container = React.Fragment 
+}) => (
+  <Container>
+    {array.map(render)}
+  </Container>
+)
+
+const Example = ({ items = [] }) => (
+  <div>
+    <h1>Daily objectives</h1>
+    <ListView
+      items={items}
+      container={List}
+      render={(item, idx) => (
+        <List.Item 
+          key={item.id}
+          checked={item.complete}
+        >
+          {item.description}
+        </List.Item>
+      )}
+    />
+  </div>
+)
+```
+
+## Adding to the API
+
+With our minimally viable ListView, we're now on strong footing to add functionality to simplify common list patterns. It may be tempting to immediately add `header` and `footer` props, but while those are certainly helpful in some circumstances, they suggest a vertical orientation which is not always the case in grids or horizontal carousels. Instead, it would be more generally usefl to render content *before* or *after* the body of data, so let's use that directionally-independent naming convention instead. 
+
+```jsx
+const ListView = ({ 
+  items = [], 
+  render = () => {}, 
+  as: Wrapper = React.Fragment,
+  container: Container = React.Fragment,
+  before = null,
+  after =  null
+}) => (
+  <Wrapper>
+    {before ? before() : null}
+    <Container>
+      {array.map(render)}
+    </Container>
+    {after ? after() : null}
+  </Wrapper>
+)
+
+const Example = ({ items = [] }) => (
+  <ListView
+    as="div"
+    items={items}
+    container={List}
+    before={() => (
+      <header>
+        <h1>Daily objectives</h1>
+      </header>
+    )}
+    render={(item, idx) => (
+      <List.Item 
+        key={item.id}
+        checked={item.complete}
+      >
+        {item.description}
+      </List.Item>
+    )}
+    after={() => (
+      <footer>
+        Complete: {items.filter(item => item.complete).length}
+      </footer>
+    )}
+  />
+)
+```
+
+## Conclusion
+
+Coming soon

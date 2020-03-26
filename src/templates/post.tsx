@@ -92,8 +92,9 @@ export default function Template({ data: { site, post, avatar } }) {
                 About the Author
               </h2>
               <p className="caption m-0">
-                Dan Morgan is a Front End Engineer at Wayfair based in
-                Washington D.C. Previously: Huge, Cvent, Gifn and PRPL.
+                Dan is a Front End Engineer based in Washington D.C. A long
+                suffering NUFC fan, he enjoys cooking, cycling, and PS4.
+                Previous experience includes: Huge, Cvent, Gifn & PRPL.
               </p>
             </div>
             <div className={cx(styles.toc, 'flx-g-1')}>

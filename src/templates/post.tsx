@@ -92,9 +92,9 @@ export default function Template({ data: { site, post, avatar } }) {
                 About the Author
               </h2>
               <p className="caption m-0">
-                Dan is a Front End Engineer based in Washington D.C. A long
-                suffering NUFC fan, he enjoys cooking, cycling, and PS4.
-                Previous experience includes: Huge, Cvent, Gifn & PRPL.
+                Dan is a front end engineer working on design systems at
+                Wayfair. For more information on his background and experience,{' '}
+                <Link to="/">see here</Link>.
               </p>
             </div>
             <div className={cx(styles.toc, 'flx-g-1')}>

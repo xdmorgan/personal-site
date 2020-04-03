@@ -27,65 +27,69 @@ image:
 ## Starting Point
 
 ```jsx
-// list.js
-const List = ({ children }) => <ul>{children}</ul>
-const Item = ({ children }) => (
+import React from "react";
+
+const List = ({ children }) => <ul>{children}</ul>;
+const Item = ({ children, ...props }) => (
   <li>
-    <label><input type="checkbox" {...props} /> {children}</label>
+    <label>
+      <input type="checkbox" {...props} /> {children}
+    </label>
   </li>
-)
-List.Item = Item
-export { List }
+);
+
+List.Item = Item;
+export { List };
 ```
 
 ```jsx
-// app.js
-import { List } from './list'
+// 01-starting-point.js
+import React from "react";
+import { List } from "./list";
 
-const App = () => (
-  <div>
-    <h1>Daily objectives</h1>
-    <List>
-      <List.Item checked>Write blog post</List.Item>
-      <List.Item checked>Make some coffee</List.Item>
-      <List.Item checked={false}>Profit</List.Item>
-    </List>
-  </div>
-)
+export default function Demo() {
+  return (
+    <div>
+      <h1>Daily objectives</h1>
+      <List>
+        <List.Item checked>Write blog post</List.Item>
+        <List.Item checked>Make some coffee</List.Item>
+        <List.Item checked={false}>Profit</List.Item>
+      </List>
+    </div>
+  );
+}
 ```
 
 ```jsx
-import { List } from './list'
+// 02-array-map.js
+import React from "react";
+import { List } from "./list";
 
-const App = ({ items = [] }) => (
-  <div>
-    <h1>Daily objectives</h1>
-    <List>
-      {items.map(item => (
-        <List.Item 
-          key={item.id}
-          checked={item.complete}
-        >
-          {item.description}
-        </List.Item>
-      ))}
-    </List>
-  </div>
-)
+export default function Demo({ items = [] }) {
+  return (
+    <div>
+      <h1>Daily objectives</h1>
+      <List>
+        {items.map(item => (
+          <List.Item key={item.id} checked={item.complete}>
+            {item.title}
+          </List.Item>
+        ))}
+      </List>
+    </div>
+  );
+}
 ```
 
 ## New Challenger Approaches
 
 ```jsx
-// list-view.js
-export const ListView = ({ 
-  items = [], 
-  render = () => {} 
-}) => (
-  <>
-    {array.map(render)}
-  </>
-)
+import React from "react";
+
+export const ListView = ({ items = [], render = () => {} }) => (
+  <>{items.map(render)}</>
+);
 ```
 
 ```jsx

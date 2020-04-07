@@ -33,16 +33,16 @@ export function AboutSection() {
           >
             <h2 className="h3 mb-2x">Skills &amp; Expertise</h2>
             <p className="small c-mystic">
-              Over my career, I&rsquo;ve helped Cartoon Network, Cvent, EA
-              Sports, Facebook, Huge, LinkedIn, NASA, Oculus, and Wayfair craft
-              digital products for mobile, web, and emerging platforms.
+              Over my career, I&rsquo;ve worked with companies including Cartoon
+              Network, Cvent, EA Sports, Facebook, Huge, LinkedIn, NASA, Oculus,
+              and Wayfair to craft digital products for mobile, web, and
+              emerging platforms.
             </p>
             <p className="small c-mystic">
-              In roles varying from UI designer to tech lead, I&rsquo;ve gained
-              valuable insight into a broad spectrum of technologies and
-              methodologies. In recent years, I&rsquo;ve focused on the
-              following skills to specialize in UI architecture and front end
-              engineering.
+              In roles varying from visual designer to tech lead, I&rsquo;ve
+              developed a holistic understanding of the software development
+              lifecycle. In recent years, I&rsquo;ve focused on the following to
+              specialize in UI architecture and front end engineering.
             </p>
           </div>
           <div className={cx(styles.grid__skills, styles.skills)}>

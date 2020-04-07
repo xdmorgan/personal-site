@@ -2,9 +2,9 @@
 title: 'Designing a Reusable React List Component'
 date: 2020-03-24
 category: Tutorials
-status: draft
+status: published
 tags: React, Components
-lede: 'A simple, reusable, and design-agnostic component designed for rendering arbitrary collections of data'
+lede: 'Building a simple, reusable, and design-agnostic React list rendering component to simplify working with collections of data'
 theme:
   header: '#273167'
 image:
@@ -15,61 +15,78 @@ image:
     link: 'https://unsplash.com/photos/D4YrzSwyIEc'
 ---
 
-<highlight>
+## Let's Get It
 
-**Background:** This post discusses React Hooks and JavaScript Array methods (i.e. `map()`, `filter()`, and `reduce()`). For more information on either topic, check out these great resources:
+In this post, we'll be building a declarative React list rendering component inspired by [Ant Design's List](https://ant.design/components/list/) and [React Native's FlatList](https://reactnative.dev/docs/flatlist) to use in situations where you may regularly reach for `array.map()`. While JavaScript's array methods are amazing modern additions to the language—they improve readability and foster immutable data transformation—they're fairly limited when it comes to UI rendering, but we can use them as a foundation for something better!
 
-- **React**: Kent Dodd's [The Beginner's Guide to React](https://egghead.io/courses/the-beginner-s-guide-to-react) (free)
-- **Array methods**: Will Sentance's [Hard Parts: Functional Programming](https://frontendmasters.com/workshops/hard-parts-functional-js/) (requires [Frontend Masters](https://frontendmasters.com/) subscription)
+Over the next few examples, we'll refactor an `array.map()` example to use a newly created `ListView`, then start to introduce functionality designed to cut boilerplate required to implement common patterns for organizing collections of data.
 
-</highlight>
+### List and List.Item
 
-## Starting Point
+Before we get started, we'll create a couple unstyled `List` and `List.Item` components to use in the rest of the examples. To follow along interactively, see this [CodeSandbox Project](https://codesandbox.io/s/rendering-lists-with-react-2y0v8) and feel free to fork and customize/style the examples as we go then [share them with me on Twitter](https://twitter.com/xdanmorgan)
 
 ```jsx
-import React from "react";
+import React from 'react'
 
-const List = ({ children }) => <ul>{children}</ul>;
+// The list container
+const List = ({ children }) => <ul>{children}</ul>
+
+// An individual list item with a controlled checkbox
 const Item = ({ children, ...props }) => (
   <li>
     <label>
       <input type="checkbox" {...props} /> {children}
     </label>
   </li>
-);
+)
 
-List.Item = Item;
-export { List };
+// Named export of List and static access of List.Item
+List.Item = Item
+export { List }
 ```
 
+### Hardcoded List Items
+
+Now we have `<List />` and `<List.Item />` created, we can use them to create a basic to-do list.
+
 ```jsx
-// 01-starting-point.js
-import React from "react";
-import { List } from "./list";
+import React from 'react'
+import { List } from './list'
 
 export default function Demo() {
   return (
-    <div>
-      <h1>Daily objectives</h1>
+    <main>
+      <h2>Daily objectives</h2>
       <List>
-        <List.Item checked>Write blog post</List.Item>
         <List.Item checked>Make some coffee</List.Item>
+        <List.Item checked>Write blog post</List.Item>
         <List.Item checked={false}>Profit</List.Item>
       </List>
-    </div>
-  );
+    </main>
+  )
 }
 ```
 
+### Using Array.map()
+
+As our list continues to grow, we'll update to use a simple data structure then start rendering a variable amount of items with `array.map()`—Don't forget the key prop!
+
 ```jsx
-// 02-array-map.js
-import React from "react";
-import { List } from "./list";
+import React from 'react'
+import { List } from './list'
+
+/*
+items = [
+  { "id": 2, "title": "Make some coffee", "complete": true }
+  { "id": 1, "title": "Write blog post", "complete": true }
+  { "id": 3, "title": "Profit", "complete": false }
+]
+*/
 
 export default function Demo({ items = [] }) {
   return (
-    <div>
-      <h1>Daily objectives</h1>
+    <main>
+      <h2>Daily objectives</h2>
       <List>
         {items.map(item => (
           <List.Item key={item.id} checked={item.complete}>
@@ -77,138 +94,250 @@ export default function Demo({ items = [] }) {
           </List.Item>
         ))}
       </List>
-    </div>
-  );
+    </main>
+  )
 }
 ```
 
 ## New Challenger Approaches
 
-```jsx
-import React from "react";
+So far, so good. The example above is a valid and standard approach in most React codebases. Over time, there will be other features we want to add to this list, such as filering, sorting, and pagination. As the project continues to grow, the boilerplate supporting these patterns will get fragmented and inconsistent, unless we have a way to centralize them.
 
-export const ListView = ({ items = [], render = () => {} }) => (
-  <>{items.map(render)}</>
-);
-```
-
-```jsx
-import { ListView } from './list-view'
-import { List } from './list'
-
-const App = ({ items = [] }) => (
-  <div>
-    <h1>Daily objectives</h1>
-    <List>
-      <ListView
-        items={items}
-        render={(item, idx) => (
-          <List.Item 
-            key={item.id}
-            checked={item.complete}
-          >
-            {item.description}
-          </List.Item>
-        )}
-      />
-    </List>
-  </div>
-)
-```
-
+Let's start our alternative approach by creating `ListView` to be functionally equivalent to `array.map()`
 
 ```jsx
 // list-view.js
-export const ListView = ({ 
-  items = [], 
-  render = () => {}, 
-  container: Container = React.Fragment 
-}) => (
-  <Container>
-    {array.map(render)}
-  </Container>
+import React from 'react'
+
+export const ListView = ({ items = [], render = () => {} }) => (
+  <>{items.map(render)}</>
 )
 ```
 
+We can now refactor our application code to replace our `List.Item` rendering
+
 ```jsx
-// app.js
+import React from 'react'
 import { ListView } from './list-view'
 import { List } from './list'
 
-const App = ({ items = [] }) => (
-  <div>
-    <h1>Daily objectives</h1>
-    <ListView
-      items={items}
-      container={List}
-      render={(item, idx) => (
-        <List.Item 
-          key={item.id}
-          checked={item.complete}
-        >
-          {item.description}
-        </List.Item>
-      )}
-    />
-  </div>
-)
+export default function Demo({ items = [] }) {
+  return (
+    <main>
+      <h2>Daily objectives</h2>
+      <List>
+        <ListView
+          items={items}
+          render={item => (
+            <List.Item key={item.id} checked={item.complete}>
+              {item.title}
+            </List.Item>
+          )}
+        />
+      </List>
+    </main>
+  )
+}
 ```
 
-## Adding to the API
+## Improving the API
+
+With the foundation in place, we can now add a few more props to support many more use-cases.
 
 ```jsx
-export const ListView = ({ 
-  items = [], 
-  render = () => {}, 
+import React from 'react'
+
+export const ListView = ({
+  items = [],
+  render = () => {},
   as: Wrapper = React.Fragment,
   container: Container = React.Fragment,
   before = null,
-  after =  null
+  after = null,
 }) => (
   <Wrapper>
     {before ? before() : null}
-    <Container>
-      {array.map(render)}
-    </Container>
+    <Container>{items.map(render)}</Container>
     {after ? after() : null}
   </Wrapper>
 )
 ```
+
 ```jsx
+import React from 'react'
 import { ListView } from './list-view'
 import { List } from './list'
 
-// app.js
-const App = ({ items = [] }) => (
-  <ListView
-    as="div"
-    items={items}
-    container={List}
-    before={() => (
-      <header>
-        <h1>Daily objectives</h1>
-      </header>
-    )}
-    render={(item, idx) => (
-      <List.Item 
-        key={item.id}
-        checked={item.complete}
-      >
-        {item.description}
-      </List.Item>
-    )}
-    after={() => (
-      <footer>
-        Complete: {items.filter(item => item.complete).length}
-      </footer>
-    )}
-  />
-)
+export default function Demo({ items = [] }) {
+  return (
+    <ListView
+      as="main"
+      items={items}
+      container={List}
+      before={() => (
+        <header>
+          <h1>Daily objectives</h1>
+        </header>
+      )}
+      render={(item, idx) => (
+        <List.Item key={item.id} checked={item.complete}>
+          {item.title}
+        </List.Item>
+      )}
+      after={() => (
+        <footer>Complete: {items.filter(item => item.complete).length}</footer>
+      )}
+    />
+  )
+}
 ```
 
 ## Composition
 
-### Sorting
+### Introducing Pagination
 
-### Pagination
-Coming soon
+To support traditional pagination we can add that functionality through composition. To do so, we'll wrap our `ListView` to create `PaginatedListView`.
+
+```jsx
+// paginated-list-view.js
+import React from 'react'
+import { ListView } from './list-view'
+
+// Pagination Hook
+export function usePagination(total, perPage, initial) {
+  const [current, setPage] = React.useState(initial)
+  const numPages =
+    total % perPage ? Math.floor(total / perPage) + 1 : total / perPage
+  const onPrevious = () => setPage(Math.max(1, current - 1))
+  const onNext = () => setPage(Math.min(current + 1, numPages))
+  return { current, onPrevious, onNext, numPages, setPage }
+}
+
+// Intercept list items, extract the items for or current page
+// then render a standard ListView
+export function PaginatedListView({
+  items,
+  perPage = -1,
+  currentPage = 1,
+  ...props
+}) {
+  const offset = (currentPage - 1) * perPage
+  const paginated = items.slice(offset, offset + perPage)
+  return <ListView {...props} items={paginated} />
+}
+```
+
+```jsx
+import React from 'react'
+import { PaginatedListView, usePagination } from './paginated-list-view'
+import { List } from './list'
+
+export default function Demo({ items = [], perPage = 6 }) {
+  const { current, onPrevious, onNext, numPages } = usePagination(
+    items.length,
+    perPage,
+    1
+  )
+  return (
+    <PaginatedListView
+      currentPage={current}
+      perPage={perPage}
+      as="main"
+      items={items}
+      container={List}
+      before={() => (
+        <header>
+          <h1>Daily objectives</h1>
+        </header>
+      )}
+      render={(item, idx) => (
+        <List.Item key={item.id} checked={item.complete}>
+          {item.title}
+        </List.Item>
+      )}
+      after={() => (
+        <footer>
+          <div>
+            <button onClick={onPrevious} disabled={current <= 1}>
+              Previous
+            </button>
+            <button onClick={onNext} disabled={current >= numPages}>
+              Next
+            </button>
+          </div>
+          <div>Complete: {items.filter(item => item.complete).length}</div>
+        </footer>
+      )}
+    />
+  )
+}
+```
+
+### Use a Table Instead?
+
+Yeah, no problem. We can do this without modifying any internals and keep our pagination for free.
+
+```jsx
+import React from 'react'
+import { PaginatedListView, usePagination } from './paginated-list-view'
+
+export default function Demo({ items = [], perPage = 6 }) {
+  const { current, onPrevious, onNext, numPages } = usePagination(
+    items.length,
+    perPage,
+    1
+  )
+  return (
+    <PaginatedListView
+      currentPage={current}
+      perPage={perPage}
+      as="table"
+      items={items}
+      container="tbody"
+      before={() => (
+        <thead>
+          <tr>
+            <th>Done</th>
+            <th>Title</th>
+          </tr>
+        </thead>
+      )}
+      render={item => (
+        <tr key={item.id}>
+          <td>
+            <input
+              type="checkbox"
+              onChange={() => {}}
+              checked={item.complete}
+              id={`item_${item.id}`}
+            />
+          </td>
+          <td>
+            <label htmlFor={`item_${item.id}`}>{item.title}</label>
+          </td>
+        </tr>
+      )}
+      after={() => (
+        <tfoot>
+          <tr>
+            <td>{items.filter(item => item.complete).length}</td>
+            <td>
+              <button onClick={onPrevious} disabled={current <= 1}>
+                Previous
+              </button>
+              <button onClick={onNext} disabled={current >= numPages}>
+                Next
+              </button>
+            </td>
+          </tr>
+        </tfoot>
+      )}
+    />
+  )
+}
+```
+
+## Next steps
+
+- Add list sorting and filtering by completion status using header controls
+- Create an alternate pagination composition which uses an IntersectionOberserver-wrapped footer to support infinite scrolling

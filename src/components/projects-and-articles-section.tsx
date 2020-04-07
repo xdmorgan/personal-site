@@ -260,7 +260,7 @@ function ArticlesSection(props) {
             </li>
           ))}
         </ul>
-        <footer className="child-my-0">
+        <footer className="child-my-0 d-none">
           <p>
             <>See here for a </>
             <Link to="/">full list of posts</Link>

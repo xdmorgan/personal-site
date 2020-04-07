@@ -172,8 +172,7 @@ pre {
 .wysiwyg ul,
 .wysiwyg ol,
 .wysiwyg dl,
-.wysiwyg blockquote,
-.wysiwyg figcaption {
+.wysiwyg blockquote {
   @include type-m-para;
 }
 

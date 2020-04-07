@@ -139,7 +139,7 @@ export default function Template({ data: { site, post, avatar } }) {
                 highlight: ({ className, ...props }) => (
                   <div
                     className={cx(
-                      'bg-spring-wood p-3x md:p-4x child-my-0',
+                      'bg-spring-wood p-3x md:p-4x my-4x my-6x child-my-0',
                       className
                     )}
                     {...props}

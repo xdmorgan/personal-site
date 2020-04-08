@@ -1,10 +1,10 @@
 ---
-title: 'Designing a Reusable React List Component'
+title: 'How to Build a React List Rendering Component'
 date: 2020-03-24
 category: Tutorials
 status: published
 tags: React, Components
-lede: 'Building a simple, reusable, and design-agnostic React list rendering component to simplify working with collections of data'
+lede: Building a simple, reusable, and design-agnostic React list rendering component to simplify working with collections of data
 theme:
   header: '#273167'
 image:
@@ -142,7 +142,7 @@ export default function Demo({ items = [] }) {
 
 ## Improving the API
 
-With the foundation in place, we can now add a few more props to support many more use-cases.
+With the foundation in place, let's add a few more props and, in doing so, add support for many more use-cases.
 
 ```jsx
 import React from 'react'
@@ -162,6 +162,13 @@ export const ListView = ({
   </Wrapper>
 )
 ```
+
+A quick note on what the newly added props do before we update the example code. In each case, when these optional props are omitted, they leave behind no trace of their existence rendering either `null` or a `Fragment` accordingly.
+
+- **as**: Render the whole thing in a wrapper element.
+- **container**: Render an element around the list body.
+- **before**: Render a block of content before the list body.
+- **after**: Render a block of content after the list body.
 
 ```jsx
 import React from 'react'
@@ -194,9 +201,11 @@ export default function Demo({ items = [] }) {
 
 ## Composition
 
+At this point, the ListView itself is fully functional and gives us a nice declarative API to render the original example entirely. Are we done? Not nearly. Now we're ready to really get started! With a flexible foundation in place, we can now write a series of thin wrapper components to implement custom functionality or styles.
+
 ### Introducing Pagination
 
-To support traditional pagination we can add that functionality through composition. To do so, we'll wrap our `ListView` to create `PaginatedListView`.
+As our list length grows, one of the first additions we'll want to make is the introduction of pagination. To support a traditional pagination pattern, we'll wrap the `ListView` with a specialized `PaginatedListView`.
 
 ```jsx
 // paginated-list-view.js
@@ -226,6 +235,14 @@ export function PaginatedListView({
   return <ListView {...props} items={paginated} />
 }
 ```
+
+<highlight>
+
+**Sidenote:** If you're new to React Hooks, this recently updated free course from Kent Dodds & Egghead [The Beginner's Guide to React](https://egghead.io/lessons/react-create-reusable-custom-hooks) is an excellent introduction to the topic.
+
+</highlight>
+
+To implement this in our example code, we'll need to add the `usePagination()` Hook, update the component name from `ListView` to `PaginatedListView`, then add two new props: `currentPage` and `perPage`.
 
 ```jsx
 import React from 'react'
@@ -273,9 +290,9 @@ export default function Demo({ items = [], perPage = 6 }) {
 }
 ```
 
-### Use a Table Instead?
+### Render a Table Instead?
 
-Yeah, no problem. We can do this without modifying any internals and keep our pagination for free.
+We suure can, let's swap out all the HTML in our example to semantically render a table without modifying anything below the surface and keep the pagination for free 🤑
 
 ```jsx
 import React from 'react'
@@ -337,7 +354,15 @@ export default function Demo({ items = [], perPage = 6 }) {
 }
 ```
 
-## Next steps
+## Further Improvement
+
+To expand upon the examples above, here's a few features that can be implemented in just few lines in new composing components without modifying the underlying ListView at all:
 
 - Add list sorting and filtering by completion status using header controls
-- Create an alternate pagination composition which uses an IntersectionOberserver-wrapped footer to support infinite scrolling
+- Create an alternate pagination pattern which uses an IntersectionOberserver-wrapped footer to support infinite scrolling
+
+Really, the possibilities are endless. Feel free to fork the [CodeSandbox Project](https://codesandbox.io/s/rendering-lists-with-react-2y0v8) or give it a shot in your next side-project and let me know what you find!
+
+I hope the examples above help to illustrate the value of a generic list rendering component and the power of React as a tool to standardize UI patterns irrespective of DOM elements rendered on screen. 
+
+For more information, be sure to check out [Ant Design's List](https://ant.design/components/list/) and [React Native's FlatList](https://reactnative.dev/docs/flatlist) excellent examples too.

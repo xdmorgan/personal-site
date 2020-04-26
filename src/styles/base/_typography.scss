@@ -371,12 +371,19 @@ blockquote {
   figure,
   & > img,
   blockquote,
+  // gifs, or assets not wrapped with gatsby-image wrapper
+  & > p > img:first-child:last-child, 
+  // gatsyb-image assets
   & > p > .gatsby-resp-image-wrapper {
     @include property-y(margin, spacing(6x));
 
     @include min-width(breakpoint(md)) {
       @include property-y(margin, spacing(8x));
     }
+  }
+
+  img {
+    max-width: 100%;
   }
 
   & > img {

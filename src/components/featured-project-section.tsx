@@ -23,7 +23,7 @@ export function FeaturedProjectSection({
     <section>
       <div className="container">
         <div className={styles.grid}>
-          <div className={styles.grid__image}>
+          <div className={cx(styles.grid__image, 'bg-alabaster')}>
             <Image
               fluid={imageSrc.fluid}
               alt={imageAlt}

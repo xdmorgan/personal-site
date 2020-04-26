@@ -1016,6 +1016,13 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
+"@babel/runtime@^7.8.7":
+  version "7.9.2"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.9.2.tgz#d90df0583a3a252f09aaa619665367bae518db06"
+  integrity sha512-NE2DtOdufG7R5vnfQUTehdTfNycfUANEtCa9PssN9O/xmTzP4E08UI797ixaei6hBEVL9BI/PsdJS5x7mWoB9Q==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/template@^7.1.0":
   version "7.4.4"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.4.4.tgz#f4b88d1225689a08f5bc3a17483545be9e4ed237"
@@ -6315,6 +6322,20 @@ gatsby-remark-autolink-headers@^2.1.24:
     mdast-util-to-string "^1.0.7"
     unist-util-visit "^1.4.1"
 
+gatsby-remark-copy-linked-files@^2.2.4:
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-copy-linked-files/-/gatsby-remark-copy-linked-files-2.2.4.tgz#09842a63b06857e35482edb0a9f2a3cff452525a"
+  integrity sha512-UxtoTrIAqqn+yghka6+nhFsmPgVUEBH2zITRV7RSOcdDgZoTOvrKxpKAoZkEsK/TSFzSZXDiJLDNSTzI598Udw==
+  dependencies:
+    "@babel/runtime" "^7.8.7"
+    cheerio "^1.0.0-rc.3"
+    fs-extra "^8.1.0"
+    is-relative-url "^3.0.0"
+    lodash "^4.17.15"
+    path-is-inside "^1.0.2"
+    probe-image-size "^4.1.1"
+    unist-util-visit "^1.4.1"
+
 gatsby-remark-images@^3.1.44:
   version "3.1.44"
   resolved "https://registry.yarnpkg.com/gatsby-remark-images/-/gatsby-remark-images-3.1.44.tgz#0e56e1576b7bd8415b4e969b81712eb0f3614d9e"
@@ -6376,10 +6397,10 @@ gatsby-telemetry@^1.1.49:
     stack-utils "1.0.2"
     uuid "3.3.3"
 
-gatsby-theme-xdmorgan@^2.3.1:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/gatsby-theme-xdmorgan/-/gatsby-theme-xdmorgan-2.3.1.tgz#c052b946b1a044357ee2f392b944bfc31cb27bbf"
-  integrity sha512-4tUPHh2NWiLDECHH7x2o/1Mmzm400TkPdba+PD/SVUZJiPQG8KOxgg5PVYpFERNyR057ECi7UC3C9f0SDDFn1A==
+gatsby-theme-xdmorgan@^2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/gatsby-theme-xdmorgan/-/gatsby-theme-xdmorgan-2.4.1.tgz#9aca07a66448f8b5e1193198c8a64cea06ee4e11"
+  integrity sha512-lgFftwiwG+4cpJB5hViLskFwog/5HMMIRXOjiSR04Ujqw9gJQv6cB6DSzl3RiDgueJlJc30pEMa0gj71YxFKvw==
   dependencies:
     "@mdx-js/mdx" "^1.5.5"
     "@mdx-js/react" "^1.5.5"
@@ -6394,6 +6415,7 @@ gatsby-theme-xdmorgan@^2.3.1:
     gatsby-plugin-sharp "^2.4.5"
     gatsby-plugin-typescript "^2.1.27"
     gatsby-remark-autolink-headers "^2.1.24"
+    gatsby-remark-copy-linked-files "^2.2.4"
     gatsby-remark-images "^3.1.44"
     gatsby-source-filesystem "^2.1.48"
     gatsby-transformer-remark "^2.6.51"
@@ -11974,6 +11996,11 @@ regenerator-runtime@^0.13.2:
   version "0.13.3"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.3.tgz#7cf6a77d8f5c6f60eb73c5fc1955b2ceb01e6bf5"
   integrity sha512-naKIZz2GQ8JWh///G7L3X6LaQUAMp2lvb1rvwwsURe/VXwD6VMfr+/1NuNw3ag8v2kY1aQ/go5SNn79O9JU7yw==
+
+regenerator-runtime@^0.13.4:
+  version "0.13.5"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.5.tgz#d878a1d094b4306d10b9096484b33ebd55e26697"
+  integrity sha512-ZS5w8CpKFinUzOwW3c83oPeVXoNsrLsaCoLtJvAClH135j/R77RuymhiSErhm2lKcwSCIpmvIWSbDkIfAqKQlA==
 
 regenerator-transform@^0.14.0:
   version "0.14.1"

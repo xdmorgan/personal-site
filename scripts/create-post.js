@@ -66,13 +66,12 @@ async function main() {
     QUESTIONS.HEADER_IMAGE_ATTR_LINK,
   ])
 
-  console.log(combined)
-
   const combined = {
     title,
     unsplash_query,
     ...results,
   }
+  console.log(combined)
 }
 
 main()

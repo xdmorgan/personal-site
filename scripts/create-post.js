@@ -5,6 +5,7 @@ const inquirer = require('inquirer')
 const slugify = require('slugify')
 
 const UNSPLASH_BASE_URL = 'https://unsplash.com/s/photos/'
+const LOCAL_BLOG_BASE_URL = 'http://localhost:8000/blog/'
 const [NOW_DATE] = new Date().toISOString().split('T')
 const DEST_DIR = path.join(__dirname, '../src/content/posts')
 
@@ -161,6 +162,8 @@ async function main() {
     path.join(DEST_DIR, 'mailchimp-api-interests/header.jpg'),
     path.join(DEST_DIR, answers.asset_dir, answers.header_image_src)
   )
+  // open browser to newly created post
+  await execa('open', [LOCAL_BLOG_BASE_URL + answers.slug])
 }
 
 main()

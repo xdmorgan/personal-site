@@ -1,0 +1,44 @@
+---
+title: 'Automated Testing and Linting for Python Projects'
+date: 2020-08-02
+category: 'Tutorials'
+status: 'draft'
+tags: 'python, pytest, flake8'
+lede: 'How to setup a Python application for automated testing and linting using Pytest and Flake8 on Mac OS and GitHub Actions'
+theme:
+  header: '#111111'
+image:
+  src: './python-automated-testing-and-linting/header.jpg'
+  alt: 'Seven mops lined up alongside a red wall'
+  attribution:
+    text: 'Photo by @zhenhappy on Unsplash'
+    link: 'https://unsplash.com/photos/pj-BrFZ9eAA'
+---
+
+I don't work on Python projects as much as I'd like, so when I do, I usually need to start from scratch and look up the latest (read easiest) way to setup automated tests and linting. Luckily, libraries like Pytest and Flake8 and continuous integration platforms like GitHub Actions have made the process easy and free.
+
+In this post, we'll walkthrough setting up a Python application for automated tests using Pytest as well as code-style linting with Flake8 and then integrated them into our git workflow using pre-commit. First, we'll set up them up to run locally on Mac OS to give us real-time feedback while we work. Second, we'll add a simple GitHub Action to run our test suite and check code-style against pull requests to ensure no wonky code makes it into our main branch.
+
+## Prerequisites
+
+### Install Python 3
+
+If you have not done so already, install python3 executable. To check whether this is already installed on your machine, run the following in your terminal of choice. For what its worth, I use the integrated terminal in VS Code with ZSH.
+
+```bash
+# good to go
+➜  which python3
+/usr/local/bin/python3
+
+# need to install
+➜  which python3
+python3 not found
+```
+
+If you need to install Python 3 before proceeding, follow [the official guide here](https://www.python.org/downloads/).
+
+<highlight>
+
+**Thanks for reading!** I'll continue to update periodically, but if you find any issues before I do, please feel free to open up an issue or PR to suggest an edit (link in the sidebar).
+
+</highlight>

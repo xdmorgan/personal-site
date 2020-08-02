@@ -4,6 +4,7 @@ const inquirer = require('inquirer')
 const slugify = require('slugify')
 
 const UNSPLASH_BASE_URL = 'https://unsplash.com/s/photos/'
+const [NOW_DATE] = new Date().toISOString().split('T')
 
 const QUESTIONS = {
   TITLE: { type: 'input', name: 'title' }, // required
@@ -11,6 +12,7 @@ const QUESTIONS = {
   SLUG: { type: 'input', name: 'slug' }, // optional, generated default added inline
   FILE_NAME: { type: 'input', name: 'file_name' }, // optional, generated default added inline
   ASSET_DIR: { type: 'input', name: 'asset_dir' }, // optional, generated default added inline
+  POST_DATE: { type: 'input', name: 'post_date', default: NOW_DATE }, // optional
   CATEGORY: { type: 'input', name: 'category', default: '' }, // optional
   TAGS: { type: 'input', name: 'tags', default: '' }, // optional
   LEDE: { type: 'input', name: 'lede', default: 'Lorem ipsum sit dolor' }, // optional
@@ -56,6 +58,7 @@ async function main() {
     { ...QUESTIONS.SLUG, default: slugified },
     { ...QUESTIONS.FILE_NAME, default: slugified + '.mdx' },
     { ...QUESTIONS.ASSET_DIR, default: slugified },
+    QUESTIONS.POST_DATE,
     QUESTIONS.CATEGORY,
     QUESTIONS.TAGS,
     QUESTIONS.LEDE,

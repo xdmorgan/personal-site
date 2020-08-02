@@ -17,7 +17,7 @@ image:
 
 I don't work on Python projects very often, so when I do, I usually need to start from scratch and look up the latest (read: easiest) way to setup automated tests and linting. Luckily, open-source libraries and continuous integration platforms have made the process quick and free. After testing a few different combinations, I've found a solution that works well for me and I hope you'll find it similarly helpful.
 
-First, we'll configure Pytest and Flake8 in our application. Second, we'll integrate those into our local git workflow using git hooks (via pre-commit). Third, we'll mirror our local testing in a GitHub Action which will run against pull requests and ensure no wonky code makes it into our main branch.
+First, we'll configure Pytest and Flake8 in our application. Second, we'll integrate those into our local Git workflow using Git hooks (via pre-commit). Third, we'll mirror our local testing in a GitHub Action which will run against pull requests and ensure no wonky code makes it into our main branch.
 
 ## Prerequisites
 
@@ -25,7 +25,7 @@ In order to dive right in, you'll need to have Python3, a local git repo, and a 
 
 - **Python 3**: To check whether Python 3.x is installed, run `which python3` in terminal. If the command is not found, follow [the official guide](https://www.python.org/downloads/).
 - **GitHub repo**: If needed, [create a GitHub repo](https://github.com/new).
-- **Local repo**: If you're starting from scratch, clone the GitHub repo created in the step above. If you already have a local project but haven't linked your remote git repo, see the [GitHub docs](https://docs.github.com/en/github/importing-your-projects-to-github/adding-an-existing-project-to-github-using-the-command-line) for steps.
+- **Local repo**: If you're starting from scratch, clone the GitHub repo created in the step above. If you already have a local project but haven't linked your remote Git repo, see the [GitHub docs](https://docs.github.com/en/github/importing-your-projects-to-github/adding-an-existing-project-to-github-using-the-command-line) for steps.
 
 ## Install Dependencies
 
@@ -101,11 +101,11 @@ src/main_test.py:9: AssertionError
 ====================== 1 failed, 1 passed in 0.06s ======================
 ```
 
-Before going back and fixing the failing test, leave it as-is in its failing state, we'll come back to it later.
+Before going back and fixing the failing test, leave it as-is in its failing state. We'll come back to it later.
 
 ## Run Lint Command
 
-Next we'll identify undesirable formatting within our code. To do so, edit your test file and remove the line-breaks from in-between the sample tests and save.
+Next we'll identify undesirable formatting within our code. To do so, edit your test file and remove the line breaks from in-between the sample tests and save.
 
 ```py
 # main_test.py
@@ -117,7 +117,7 @@ def test_failure():
 
 ```
 
-If your editor is automatically applying standard formatting as you save, that's great it will make things easy going forwards. That said, for this next example, humor me and bypass it temporarily. If you're using VS Code, select **File: Save without Formatting** from the command palette:
+If your editor is automatically applying standard formatting as you save, that's great. It will make things easier going forward. That said, for this next example, humor me and bypass it temporarily. If you're using VS Code, select **File: Save without Formatting** from the command palette:
 
 ![Save without formatting in VS Code](./python-automated-testing-and-linting/save-without-formatting.jpg)
 
@@ -155,7 +155,7 @@ Next, run pre-commit's install script to add the hook:
 pre-commit installed at .git/hooks/pre-commit
 ```
 
-We're now ready to commit the changes in a new git branch and in doing so, test the newly installed hook. To do so, follow the commands below:
+We're now ready to commit the changes in a new Git branch and in doing so, test the newly installed hook. To do so, follow the commands below:
 
 ```bash
 ➜  git checkout -b add-tests-and-linting
@@ -284,14 +284,10 @@ If you're following along, you should see the failing test we added earlier. Rem
 
 ![Passing checks](./python-automated-testing-and-linting/passing-checks.jpg)
 
-This second time around, all checks should pass. With that, everything is set up both locally and remotely. There's nothing left to do but smash that merge button and go home for the day, our work here is done.
+This second time around, all checks should pass. With that, everything is set up both locally and remotely. There's nothing left to do but smash that merge button and go home for the day. Our work here is done.
 
-## TL;DR: Link to Demo
+## TL;DR: Link to Code
 
-In a hurry? If you'd prefer to just fork the end result and try it yourself, see [xdmorgan/python-app-testing-and-linting](https://github.com/xdmorgan/python-app-testing-and-linting)
+In a hurry? Want to use the end result as a starting point for your next project? See [xdmorgan/python-app-testing-and-linting](https://github.com/xdmorgan/python-app-testing-and-linting) on GitHub for everything covered above.
 
-<highlight>
-
-**Thanks for reading!** I'll continue to update periodically as I modify my personal workflow. If you find any issues or know of a better way, please feel free to open up an issue or PR against the demo project via the link above or suggest an edit to this article using the link in sidebar.
-
-</highlight>
+As I continue to adjust my workflow, I'll update this periodically. In the meantime, if you find any problems or know of a better way, please feel free to create an issue or open a PR against the demo repo linked above. To suggest an edit to this article, use the link in the sidebar.

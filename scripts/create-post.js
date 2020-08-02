@@ -8,11 +8,12 @@ const UNSPLASH_BASE_URL = 'https://unsplash.com/s/photos/'
 const LOCAL_BLOG_BASE_URL = 'http://localhost:8000/blog/'
 const [NOW_DATE] = new Date().toISOString().split('T')
 const DEST_DIR = path.join(__dirname, '../src/content/posts')
+const ROOT_LOG_PATH = './src/content/posts'
 
 const INITIAL_CONTENTS = {
   Blank: ``,
   Roundup: `
-Into blurb
+Intro paragraph...
 
 ## Top Highlight
 
@@ -44,10 +45,12 @@ const QUESTIONS = {
   title: { type: 'input', name: 'title' }, // required
   unsplash_query: { type: 'input', name: 'unsplash_query', default: 'hello' }, // optional
   slug: { type: 'input', name: 'slug' }, // optional, generated default added inline
-  file_name: { type: 'input', name: 'file_name' }, // optional, generated default added inline
-  asset_dir: { type: 'input', name: 'asset_dir' }, // optional, generated default added inline
   publish_date: { type: 'input', name: 'publish_date', default: NOW_DATE }, // optional
-  publish_status: { type: 'input', name: 'publish_status', default: 'draft' }, // optional
+  publish_status: {
+    type: 'list',
+    name: 'publish_status',
+    choices: ['draft', 'published'],
+  },
   category: {
     type: 'list',
     name: 'category',
@@ -60,11 +63,6 @@ const QUESTIONS = {
     name: 'theme_header_color',
     default: 'rebeccapurple',
   }, // optional
-  header_image_src: {
-    type: 'input',
-    name: 'header_image_src',
-    default: 'header.jpg',
-  }, // optional, generated default added inline
   header_image_alt: { type: 'input', name: 'header_image_alt' }, // optional, generated default added inline
   header_image_attr_text: {
     type: 'input',
@@ -93,7 +91,7 @@ lede: '${data.lede}'
 theme:
   header: '${data.theme_header_color}'
 image:
-  src: './${data.asset_dir}/${data.header_image_src}'
+  src: './${data.slug}/header.jpg'
   alt: '${data.header_image_alt}'
   attribution:
     text: '${data.header_image_attr_text}'
@@ -117,21 +115,15 @@ async function main() {
   // open unsplash
   const { unsplash_query } = await inquirer.prompt([QUESTIONS.unsplash_query])
   await execa('open', [UNSPLASH_BASE_URL + slugify(unsplash_query)])
-  // second round of questions
-  const { slug } = await inquirer.prompt([
-    { ...QUESTIONS.slug, default: slugified },
-  ])
   // ask remainder of questions
   const results = await inquirer.prompt([
-    { ...QUESTIONS.file_name, default: slug + '.mdx' },
-    { ...QUESTIONS.asset_dir, default: slug },
+    { ...QUESTIONS.slug, default: slugified },
     QUESTIONS.publish_date,
     QUESTIONS.publish_status,
     QUESTIONS.category,
     QUESTIONS.tags,
     QUESTIONS.lede,
     QUESTIONS.theme_header_color,
-    QUESTIONS.header_image_src,
     { ...QUESTIONS.header_image_alt, default: unsplash_query },
     QUESTIONS.header_image_attr_text,
     QUESTIONS.header_image_attr_link,
@@ -148,22 +140,27 @@ async function main() {
     getTemplateFrontmatter(answers),
     getTemplateContent(answers),
   ]
+
+  const filename = `${answers.slug}.mdx`
+  const dirname = answers.slug
+
   // write post mdx file
-  await fs.writeFile(
-    path.join(DEST_DIR, answers.file_name),
-    sections.join('\n')
-  )
-  await fs.ensureDir(path.join(DEST_DIR, answers.asset_dir))
+  await fs.writeFile(path.join(DEST_DIR, filename), sections.join('\n'))
+  await fs.ensureDir(path.join(DEST_DIR, dirname))
   // this kinda sucks but it prevents an undefined childImageSharp error
   // otherwise, you'd need to pick, optimize, and save the unsplash image
   // before continuing. Might be cool to answer the image question with
   // a URL then do all that automatically (plus attribution) :thinking_face:
   await fs.copyFile(
     path.join(DEST_DIR, 'mailchimp-api-interests/header.jpg'),
-    path.join(DEST_DIR, answers.asset_dir, answers.header_image_src)
+    path.join(DEST_DIR, dirname, 'header.jpg')
   )
-  // open browser to newly created post
+  // give Gatz a second to re-compile then open browser to newly created post
+  console.log('Creating files...')
+  await new Promise((resolve) => setTimeout(resolve, 5000))
   await execa('open', [LOCAL_BLOG_BASE_URL + answers.slug])
+  // log a relative path to command+click and open when returning from browser
+  console.log(`Sucessfully created ${path.join(ROOT_LOG_PATH, filename)}`)
 }
 
 main()

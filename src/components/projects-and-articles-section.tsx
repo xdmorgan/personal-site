@@ -33,7 +33,7 @@ function ProjectsSection() {
               heading={() => (
                 <Link
                   className="no-underline"
-                  to="http://yasly.com/work/hotpoints/"
+                  to="https://yasly.com/archive/hotpoints/"
                 >
                   Hotpoints App
                 </Link>
@@ -252,7 +252,7 @@ function ArticlesSection(props) {
           <h2 className="h2">Articles &amp; Tutorials</h2>
         </header>
         <ul className="list-reset mb-4x md:mb-8x">
-          {props.recentPosts.map(recentPost => (
+          {props.recentPosts.map((recentPost) => (
             <li key={recentPost.title} className="mb-2x md:mb-3x">
               <Link className="h4 no-underline" to={recentPost.url}>
                 {recentPost.title}
